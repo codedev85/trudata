@@ -139,8 +139,7 @@
 
                 <div class="side-navigation__inner_link_container">
                     <a href="user-insight.html" class="side-navigation__link ">
-                        <?xml version="1.0"?>
-                        <?xml version="1.0"?>
+                      
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                             id="Capa_1" x="0px" y="0px" width="21px" height="21px" viewBox="0 0 510 510"
                             style="enable-background:new 0 0 510 510;" xml:space="preserve" class="">
@@ -163,7 +162,7 @@
 
                 <div class="side-navigation__inner_link_container">
                     <a href="settings-admin.html" class="side-navigation__link">
-                        <?xml version="1.0"?>
+                  
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                             id="Capa_1" x="0px" y="0px" viewBox="0 0 268.765 268.765"
                             style="enable-background:new 0 0 268.765 268.765;" xml:space="preserve" height="19px"
@@ -186,7 +185,7 @@
 
                 <div class="side-navigation__inner_link_container">
                     <a href="contact-us.html" class="side-navigation__link">
-                        <?xml version="1.0"?>
+                  
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                             id="Capa_1" x="0px" y="0px" viewBox="0 0 480.56 480.56"
                             style="enable-background:new 0 0 480.56 480.56;" xml:space="preserve" width="21px"

@@ -112,8 +112,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Montserrat:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link rel="stylesheet" href="vendors/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="vendors/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../vendors/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../vendors/css/owl.carousel.min.css">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="favicon.ico">
     <style>
