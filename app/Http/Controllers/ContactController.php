@@ -11,7 +11,10 @@ class ContactController extends Controller
 {
     //
     public function getContactPage(){
-        return view('contact.contact-us');
+
+        $contact = Contact::all();
+    //  dd($contact);
+        return view('contact.contact-us')->with('contact',$contact);
     }
 
     public function  showContactUsPage(){

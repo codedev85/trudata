@@ -32,54 +32,7 @@
     <header class="why__header">
 
         <nav class="why__header_navigation">
-
-            <div class="row why__header_inner_nav">
-
-                <div class="header__menu_btn menu__icon header__menu_btn--resp">
-                    <img src="resources/images/R.svg" alt="">
-                </div>
-
-
-                <div class="why__header_logo_container">
-                    <img src="resources/images/icon_logo__white.png" alt="">
-                </div>
-
-                <div class="why__header_menu_links">
-
-                    <a href="{{ url('/') }}" class="why__header_link">
-                        Home
-                    </a>
-                    <a href="{{ url('/about-us/') }}" class="why__header_link why__header_link--active">
-                        About tru-DATA
-                    </a>
-                    <a href="why_tru.html" class="why__header_link">
-                        Why tru-DATA
-                    </a>
-                    <!-- <a href="blog.html" class="why__header_link">
-                        Blog
-                    </a> -->
-                    <a href="contact.html" class="why__header_link">
-                        Contact
-                    </a>
-
-                </div>
-
-                <div class="Why__header__links">
-
-                    <!-- <a href="" class="header_link header_log">
-                        Log In
-                    </a> -->
-
-                    <a href="" class="header_link header_link--bordered">
-                        GET STARTED
-                    </a>
-
-                </div>
-
-
-
-            </div>
-
+             @include('partials.nav')
         </nav>
 
 
@@ -89,10 +42,10 @@
             <!-- <img src="resources/images/about.jpg.jpg" alt="" srcset="">  -->
             <div class="why__hero_text why__hero_text--center">
                 <h2 class="why__hero_title why__hero_title--centered">
-                    ABOUT US
+                   {{$about->hero_text_big}}
                 </h2>
                 <p class="why__hero_sub why__hero_sub--centered">
-                    Welcome to tru-DATA
+                  {{$about->hero_text_small}}
                 </p>
             </div>
         </div>
@@ -100,42 +53,54 @@
     </header>
 
     <section class="mission_about_section">
-
+            <?php
+            $mission =json_decode($about->mission);
+            $missionDesc  = json_decode($about->mission_desc);
+           // dd($missionDesc)
+           // dd($mission);
+            ?>
         <div class="mission_about row">
             <h2 class="mission__about_title">
-                Our Mission
+             {{$mission[0]}}
             </h2>
 
             <p class="text__about">
-                Our mission is to progressively eliminate counterfeiting and ease document verification processes in
+                {{$missionDesc[0]}}
+         
+                {{-- Our mission is to progressively eliminate counterfeiting and ease document verification processes in
                 Nigeria
                 and the greater West African region. Powered by an advanced HD Barcode(TM) system, tru-DATA verifies
                 genuine
-                documents and detects counterfeit documents in seconds.
+                documents and detects counterfeit documents in seconds. --}}
             </p>
         </div>
 
         <div class="mission_about row">
             <h2 class="mission__about_title">
-                Know About <span style="text-transform: lowercase">tru-</span><span
-                style="text-transform: uppercase">data</span>
+                {{$mission[1]}}
+                {{-- Know About <span style="text-transform: lowercase">tru-</span><span
+                style="text-transform: uppercase">data</span> --}}
             </h2>
 
             <p class="text__about">
-                tru-DATA is Nigeria's first Automated True Identity Verification Platform that ensures that encrypted
+                    {{$missionDesc[1]}}
+                {{-- tru-DATA is Nigeria's first Automated True Identity Verification Platform that ensures that encrypted
                 documents can NEVER be altered in a lifetime and does not require Internet Data on the mobile
-                application to verify the encrypted document.
+                application to verify the encrypted document. --}}
             </p>
 
-            <p class="text__about">tru-DATA is a user friendly mobile and web application developed to authenticate
+            <p class="text__about">
+                {{$missionDesc[2]}}
+                {{-- tru-DATA is a user friendly mobile and web application developed to authenticate
                 documents,
                 progressively eliminate counterfeiting and ease document verification processes. tru-DATA is a positive
-                identity verification software developed to encrypt and authenticate document.
+                identity verification software developed to encrypt and authenticate document. --}}
             </p>
             <p class="text__about">
-                tru-DATA is a subsidiary of TrippleGee & CO. PLC, registered as tru-DATA LIMITED in Nigeria. TrippleGee
+                {{$missionDesc[3]}}
+                {{-- tru-DATA is a subsidiary of TrippleGee & CO. PLC, registered as tru-DATA LIMITED in Nigeria. TrippleGee
                 & CO. PLC, is an indigenous security print and label services provider. The tru-DATA technology, the
-                web, desktop and mobile applications are proprietary software of TrippleGee & CO. PLC.
+                web, desktop and mobile applications are proprietary software of TrippleGee & CO. PLC. --}}
             </p>
         </div>
 
@@ -151,78 +116,83 @@
             </h1>
 
             <div class="team__outer_container">
-
+        
                 <div class="team__individual_container">
 
                     <div class="team__pic_container">
-                        <img src="resources/images/gbade.jpeg" alt="" class="team_pic">
+                        {{-- <img src="resources/images/gbade.jpeg" alt="" class="team_pic"> --}}
+                        <img src="{{url('storage/'.$leaders[0]->img)}}" alt="" class="team_pic">
                     </div>
 
                     <div class="team_card_discription">
 
                         <h2 class="team_card__name">
-                            LATE CHIEF GBADE GIWA
+                            {{$leaders[0]->name}}
                         </h2>
 
                         <h3 class="team_card__title">
-                            Late Chairman tru-DATA
+                          {{$leaders[0]->title}}
                         </h3>
 
 
                         <p class="team_card__content">
-                            Chief Gbade G Giwa has a wealth of administrative and entrepreneurial experience built over
+                            {{$leaders[0]->desc}}
+                            {{-- Chief Gbade G Giwa has a wealth of administrative and entrepreneurial experience built over
                             a long and distinguished career spanning forty one years across different manufacturing
                             sectors. He started his working career with CFAO in Lagos in 1969, an appointment he left in
                             1970 and went on to work with other excellent brands like Chellarams, UAC of Nigeria Limited
-                            and Lipton of Nigeria Limited.
+                            and Lipton of Nigeria Limited. --}}
                         </p>
 
                     </div>
                 </div>
+               
 
                 <div class="team__individual_container team__individual_container--second">
 
                     <div class="team__pic_container">
-                        <img src="resources/images/abosede.jpeg" alt="" class="team_pic">
+                            <img src="{{url('storage/'.$leaders[1]->img)}}" alt="" class="team_pic">
+                        {{-- <img src="resources/images/abosede.jpeg" alt="" class="team_pic"> --}}
                     </div>
 
                     <div class="team_card_discription">
 
                         <h2 class="team_card__name">
-                            Mrs. GIWA ABOSEDE
+                            {{-- Mrs. GIWA ABOSEDE --}}
+                            {{$leaders[1]->name}}
                         </h2>
 
                         <h3 class="team_card__title">
-                            Executive Director
+                            {{$leaders[1]->title}}
+                            {{-- Executive Director --}}
                         </h3>
 
                         <p class="team_card__content">
-                            
+                            {{$leaders[1]->desc}}
                         </p>
 
                     </div>
                 </div>
+               
                 <div class="team__individual_container">
 
                     <div class="team__pic_container">
-                        <img src="resources/images/jumoke.jpeg" alt="" class="team_pic">
+                            <img src="{{url('storage/'.$leaders[2]->img)}}" alt="" class="team_pic">
+                        {{-- <img src="resources/images/jumoke.jpeg" alt="" class="team_pic"> --}}
                     </div>
 
                     <div class="team_card_discription">
 
                         <h2 class="team_card__name">
-                            JUMOKE ODUWOLE
+                          {{$leaders[2]->name}}
                         </h2>
 
                         <h3 class="team_card__title">
-                            CTO (Chief technology Officer)
+                           {{$leaders[2]->title}}
                         </h3>
 
                         <p class="team_card__content">
-                            A Tech Entrepreneur, Full Stack Web Developer, Business Developer and Brand Manager, She
-                            has more than 11 years' experience in designing brands, developing digital products and
-                            technologies for businesses in Sub-Saharan Africa. |She has worked with more than 100
-                            businesses on their digital technology and strategies. 
+                       {{{$leaders[2]->desc}}}
                         </p>
 
                     </div>
@@ -255,13 +225,14 @@
                 <div class="stacked_img_outer_container">
 
                     <div class="stack__outer">
-                        <!-- <div class="stack__pop_up">
+                        <div class="stack__pop_up">
                             <h2 class="team_card__pop_name">
-                                Bayo Onile-Ere
+                                {{$teams[0]->name}}
+                               
                             </h2>
 
                             <h3 class="team_card__pop_title">
-                                Product Manager
+                                {{$teams[0]->title}}
                             </h3>
 
                             <p class="team_card__pop_content">
@@ -273,7 +244,7 @@
                                 she
                                 meets everyday.
                             </p>
-                        </div> -->
+                        </div> 
                         
                         <div class="stacked_img_container">
 
@@ -285,6 +256,7 @@
 
                                 <p class="stacked__name">
                                     Bayo Onile-Ere
+                                  
                                 </p>
 
                                 <div class="stacked__name_tag">
@@ -686,14 +658,15 @@
 
         <div class="row about__join_inner">
             <h2 class="team__section_title">
-                Join Our Team !!!
+                {{$about->join_our_team_header}} !!!
             </h2>
 
             <p class="text__about">
-                We are reimagining and reworking how verification services get delivered to everyone. We are
+                    {{$about->join_our_team_desc}}
+                {{-- We are reimagining and reworking how verification services get delivered to everyone. We are
                 democratising
                 wealth management services and making them available cheaply to the masses with technology. If you are
-                passionate about this cause as much as we do, please join us.
+                passionate about this cause as much as we do, please join us. --}}
             </p>
 
             <a href="" class="home__btn home__btn--colored">
@@ -738,13 +711,13 @@
                         <div class="info__inner_contact_container">
                             <img src="resources/images/phone.svg" alt="" class="info_inner_icon">
                             <span class="info_inner_text">
-                                +234-8055190715
+                               {{$contact->contact_number}}
                             </span>
                         </div>
                         <div class="info__inner_contact_container">
                             <img src="resources/images/mail.svg" alt="" class="info_inner_icon">
                             <span class="info_inner_text">
-                                info@trudata.com
+                              {{$contact->contact_email}}
                             </span>
                         </div>
 
@@ -757,7 +730,7 @@
             <div class="map__container">
                 <div class="mapouter">
                     <div class="gmap_canvas"><iframe width="100%" height="100%" id="gmap_canvas"
-                            src="https://maps.google.com/maps?q=62%20old%20yaba%20road&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            src="{{$contact->embed_url}}"
                             frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Werbung: <a
                             href="https://www.jetzt-drucken-lassen.de">jetzt-drucken-lassen.de</a></div>
                     <style>
@@ -783,8 +756,8 @@
     </section>
 
     <footer class="footer">
-
-        <div class="footer__container row">
+  @include('partials.footer')
+        {{-- <div class="footer__container row">
 
             <div class="footer__item_flex_container">
 
@@ -931,7 +904,7 @@
 
             </div>
 
-        </div>
+        </div> --}}
 
     </footer>
 
@@ -963,7 +936,7 @@
                 Home <img src="resources/images/arrow-point-to-right.svg" height="12px" class="right__arrow_resp" alt="">
             </a>
 
-            <a href="about.html" class="resp_menu__link  resp_menu__link--active">
+            <a href="{{url('/about-us/')}}" class="resp_menu__link  resp_menu__link--active">
                 <?xml version="1.0"?>
                 <?xml version="1.0"?>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
@@ -1039,7 +1012,7 @@
 
 
 
-            <a href="why_tru.html" class="resp_menu__link  Subscribe resp_menu_drp__js">
+            <a href="{{url('/why-tru-data/')}}" class="resp_menu__link  Subscribe resp_menu_drp__js">
                 <?xml version="1.0"?>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                     id="Capa_1" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 912.1 912.1"
@@ -1082,7 +1055,7 @@
                     Blog
                 </a> -->
 
-            <a href="contact.html" class="resp_menu__link  Subscribe resp_menu_drp__js">
+            <a href="{{url('/contact-us/')}}" class="resp_menu__link  Subscribe resp_menu_drp__js">
                 <?xml version="1.0"?>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                     id="Capa_1" x="0px" y="0px" viewBox="0 0 511.882 511.882"

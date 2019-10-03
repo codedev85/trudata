@@ -1,26 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -202,34 +179,19 @@
   <br><br>
             <div class="main-content__container">
 
-          
                 <div class="main-content__inner_wrapper">
-
-                    <form id="form-submit" method="post" action="{{url('/post-leadership/')}}" enctype="multipart/form-data">
+                    <form id="form-submit" method="post" action="{{url('/post-team/')}}" enctype="multipart/form-data">
                         @csrf
                     <div class="main__container">
                         <div class="center__container">
-                        
-                    
-                      
-
-
                         <div class="center__container--wrapper center__container--third-wrapper">
-                            <h3>Add To Leadership</h3>
+                            <h3>Add New Team</h3>
                             <br>
                                 <input  class="input" placeholder="fullname" name="fullname" value="">
                                 <input type="email" placeholder="title" name="title" value=""/>
                                 <input type="file" name="img" value="">
-                                <textarea name="desc"></textarea>
-                               
-                                {{-- <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1840px Height - 1236px</span> <img src="../resource/images/featuredimg__tworeport.jpg"></div> --}}
+                           </div>
                         </div>
-                   
-
-                      
-                 
-                     
-                    </div>
                     </div>
                 </form>
                 </div>
@@ -488,10 +450,10 @@
     <script src="../resource/js/admin.js"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
-    {{-- <script>
+    <script>
         $('textarea').ckeditor();
         // $('.textarea').ckeditor(); // if class is prefered.
-    </script> --}}
+    </script>
 
     <!-- build:js /../assets/scripts/App.js -->
     <script src="../assets/scripts/App-3a24d57a57.js"></script> <!-- endbuild -->

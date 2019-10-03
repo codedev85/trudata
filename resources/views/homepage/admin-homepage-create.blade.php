@@ -117,6 +117,44 @@
                         Back to Main Site
                     </a>
                 </div>
+                
+                <div class="side-navigation__inner_link_container">
+                        <a href="{{ url('/all-partners/') }}" class="side-navigation__link">
+                            <svg width="21" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.0415 3.5722H3.00724C3.00724 3.5722 1.94403 3.40412 1.94403 2.89987L17.2541 1.72328V0.714782C17.2541 0.714782 17.0655 -0.205645 15.3404 0.0424469L1.73139 1.89137C1.73139 1.89137 0.0302734 2.05945 0.0302734 3.74029V13.3211C0.0302734 14.2492 0.982263 15.0019 2.15667 15.0019H17.0415C18.2159 15.0019 19.1679 14.2492 19.1679 13.3211V5.25304C19.1679 4.32488 18.2159 3.5722 17.0415 3.5722ZM15.7656 10.4636C14.9436 10.4636 14.2772 9.93686 14.2772 9.28705C14.2772 8.63724 14.9436 8.11046 15.7656 8.11046C16.5877 8.11046 17.2541 8.63724 17.2541 9.28705C17.2541 9.93686 16.5877 10.4636 15.7656 10.4636Z"
+                                        fill="#ffffff" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0">
+                                        <rect width="19.1376" height="15.0019" fill="white"
+                                            transform="translate(0.0302734)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                          Partners
+                        </a>
+                    </div>
+
+                    <div class="side-navigation__inner_link_container">
+                        <a href="{{ url('/teams/') }}" class="side-navigation__link">
+                            <svg width="21" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.0415 3.5722H3.00724C3.00724 3.5722 1.94403 3.40412 1.94403 2.89987L17.2541 1.72328V0.714782C17.2541 0.714782 17.0655 -0.205645 15.3404 0.0424469L1.73139 1.89137C1.73139 1.89137 0.0302734 2.05945 0.0302734 3.74029V13.3211C0.0302734 14.2492 0.982263 15.0019 2.15667 15.0019H17.0415C18.2159 15.0019 19.1679 14.2492 19.1679 13.3211V5.25304C19.1679 4.32488 18.2159 3.5722 17.0415 3.5722ZM15.7656 10.4636C14.9436 10.4636 14.2772 9.93686 14.2772 9.28705C14.2772 8.63724 14.9436 8.11046 15.7656 8.11046C16.5877 8.11046 17.2541 8.63724 17.2541 9.28705C17.2541 9.93686 16.5877 10.4636 15.7656 10.4636Z"
+                                        fill="#ffffff" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0">
+                                        <rect width="19.1376" height="15.0019" fill="white"
+                                            transform="translate(0.0302734)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                          Team
+                        </a>
+                    </div>
 
                 <div class="side-navigation__inner_link_container">
                     {{-- <a href="" class="side-navigation__link"> --}}
@@ -150,7 +188,93 @@
 
             
                 
+                {{-- <div class="side-navigation__inner_link_container">
+                    <a href="user-insight.html" class="side-navigation__link ">
+                      
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            id="Capa_1" x="0px" y="0px" width="21px" height="21px" viewBox="0 0 510 510"
+                            style="enable-background:new 0 0 510 510;" xml:space="preserve" class="">
+                            <g>
+                                <g>
+                                    <g id="history">
+                                        <path
+                                            d="M267.75,12.75c-89.25,0-168.3,48.45-209.1,122.4L0,76.5v165.75h165.75    l-71.4-71.4c33.15-63.75,96.9-107.1,173.4-107.1C372.3,63.75,459,150.45,459,255s-86.7,191.25-191.25,191.25    c-84.15,0-153-53.55-181.05-127.5H33.15c28.05,102,122.4,178.5,234.6,178.5C402.9,497.25,510,387.6,510,255    C510,122.4,400.35,12.75,267.75,12.75z M229.5,140.25V270.3l119.85,71.4l20.4-33.15l-102-61.2v-107.1H229.5z"
+                                            data-original="#000000" class="active-path" data-old_color="#ffffff"
+                                            fill="#ffffff" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
 
+
+                        User Insight
+                    </a>
+                </div>
+
+                <div class="side-navigation__inner_link_container">
+                    <a href="settings-admin.html" class="side-navigation__link">
+                  
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            id="Capa_1" x="0px" y="0px" viewBox="0 0 268.765 268.765"
+                            style="enable-background:new 0 0 268.765 268.765;" xml:space="preserve" height="19px"
+                            width="21px" class="">
+                            <g>
+                                <g id="Settings">
+                                    <g>
+                                        <path
+                                            d="M267.92,119.461c-0.425-3.778-4.83-6.617-8.639-6.617    c-12.315,0-23.243-7.231-27.826-18.414c-4.682-11.454-1.663-24.812,7.515-33.231c2.889-2.641,3.24-7.062,0.817-10.133    c-6.303-8.004-13.467-15.234-21.289-21.5c-3.063-2.458-7.557-2.116-10.213,0.825c-8.01,8.871-22.398,12.168-33.516,7.529    c-11.57-4.867-18.866-16.591-18.152-29.176c0.235-3.953-2.654-7.39-6.595-7.849c-10.038-1.161-20.164-1.197-30.232-0.08    c-3.896,0.43-6.785,3.786-6.654,7.689c0.438,12.461-6.946,23.98-18.401,28.672c-10.985,4.487-25.272,1.218-33.266-7.574    c-2.642-2.896-7.063-3.252-10.141-0.853c-8.054,6.319-15.379,13.555-21.74,21.493c-2.481,3.086-2.116,7.559,0.802,10.214    c9.353,8.47,12.373,21.944,7.514,33.53c-4.639,11.046-16.109,18.165-29.24,18.165c-4.261-0.137-7.296,2.723-7.762,6.597    c-1.182,10.096-1.196,20.383-0.058,30.561c0.422,3.794,4.961,6.608,8.812,6.608c11.702-0.299,22.937,6.946,27.65,18.415    c4.698,11.454,1.678,24.804-7.514,33.23c-2.875,2.641-3.24,7.055-0.817,10.126c6.244,7.953,13.409,15.19,21.259,21.508    c3.079,2.481,7.559,2.131,10.228-0.81c8.04-8.893,22.427-12.184,33.501-7.536c11.599,4.852,18.895,16.575,18.181,29.167    c-0.233,3.955,2.67,7.398,6.595,7.85c5.135,0.599,10.301,0.898,15.481,0.898c4.917,0,9.835-0.27,14.752-0.817    c3.897-0.43,6.784-3.786,6.653-7.696c-0.451-12.454,6.946-23.973,18.386-28.657c11.059-4.517,25.286-1.211,33.281,7.572    c2.657,2.89,7.047,3.239,10.142,0.848c8.039-6.304,15.349-13.534,21.74-21.494c2.48-3.079,2.13-7.559-0.803-10.213    c-9.353-8.47-12.388-21.946-7.529-33.524c4.568-10.899,15.612-18.217,27.491-18.217l1.662,0.043    c3.853,0.313,7.398-2.655,7.865-6.588C269.044,139.917,269.058,129.639,267.92,119.461z M134.595,179.491    c-24.718,0-44.824-20.106-44.824-44.824c0-24.717,20.106-44.824,44.824-44.824c24.717,0,44.823,20.107,44.823,44.824    C179.418,159.385,159.312,179.491,134.595,179.491z"
+                                            data-original="#000000" class="active-path" data-old_color="#FFFCFC"
+                                            fill="#FFFFFF" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+
+                        Settings
+                    </a>
+                </div>
+
+                <div class="side-navigation__inner_link_container">
+                    <a href="contact-us.html" class="side-navigation__link">
+                  
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            id="Capa_1" x="0px" y="0px" viewBox="0 0 480.56 480.56"
+                            style="enable-background:new 0 0 480.56 480.56;" xml:space="preserve" width="21px"
+                            height="19px" class="">
+                            <g>
+                                <g>
+                                    <g>
+                                        <path
+                                            d="M365.354,317.9c-15.7-15.5-35.3-15.5-50.9,0c-11.9,11.8-23.8,23.6-35.5,35.6c-3.2,3.3-5.9,4-9.8,1.8    c-7.7-4.2-15.9-7.6-23.3-12.2c-34.5-21.7-63.4-49.6-89-81c-12.7-15.6-24-32.3-31.9-51.1c-1.6-3.8-1.3-6.3,1.8-9.4    c11.9-11.5,23.5-23.3,35.2-35.1c16.3-16.4,16.3-35.6-0.1-52.1c-9.3-9.4-18.6-18.6-27.9-28c-9.6-9.6-19.1-19.3-28.8-28.8    c-15.7-15.3-35.3-15.3-50.9,0.1c-12,11.8-23.5,23.9-35.7,35.5c-11.3,10.7-17,23.8-18.2,39.1c-1.9,24.9,4.2,48.4,12.8,71.3    c17.6,47.4,44.4,89.5,76.9,128.1c43.9,52.2,96.3,93.5,157.6,123.3c27.6,13.4,56.2,23.7,87.3,25.4c21.4,1.2,40-4.2,54.9-20.9    c10.2-11.4,21.7-21.8,32.5-32.7c16-16.2,16.1-35.8,0.2-51.8C403.554,355.9,384.454,336.9,365.354,317.9z"
+                                            data-original="#000000" class="active-path" data-old_color="#ffffff"
+                                            fill="#FFFFFF" />
+                                        <path
+                                            d="M346.254,238.2l36.9-6.3c-5.8-33.9-21.8-64.6-46.1-89c-25.7-25.7-58.2-41.9-94-46.9l-5.2,37.1    c27.7,3.9,52.9,16.4,72.8,36.3C329.454,188.2,341.754,212,346.254,238.2z"
+                                            data-original="#000000" class="active-path" data-old_color="#ffffff"
+                                            fill="#FFFFFF" />
+                                        <path
+                                            d="M403.954,77.8c-42.6-42.6-96.5-69.5-156-77.8l-5.2,37.1c51.4,7.2,98,30.5,134.8,67.2c34.9,34.9,57.8,79,66.1,127.5    l36.9-6.3C470.854,169.3,444.354,118.3,403.954,77.8z"
+                                            data-original="#000000" class="active-path" data-old_color="#ffffff"
+                                            fill="#FFFFFF" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+
+                        Contact Us
+                    </a>
+                </div>
+
+                <div class="side-navigation__inner_link_container">
+                    <a href="" class="side-navigation__link">
+                        <svg width="21" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.7887 0.446232C12.1312 0.380944 10.4524 0.978096 9.18677 2.23903C7.60724 3.81267 7.40133 5.696 8.12143 7.48359L1.45916 14.121C0.209901 15.3656 0.209901 17.3833 1.45916 18.6279C2.70843 19.8725 4.73368 19.8725 5.98294 18.6279L12.6452 11.9905C14.4395 12.7079 16.3299 12.5028 17.9094 10.9291C19.597 9.24788 20.0981 6.83607 19.4215 4.71658L15.7178 8.40645L12.5187 7.60965L11.7189 4.42245L15.4226 0.732581C14.8907 0.564057 14.3412 0.467993 13.7887 0.446231L13.7887 0.446232ZM3.72106 14.7808C4.60482 14.7808 5.32062 15.494 5.32062 16.3745C5.32062 17.2549 4.60482 17.968 3.72106 17.968C2.83729 17.968 2.12149 17.2549 2.12149 16.3745C2.12149 15.494 2.83729 14.7808 3.72106 14.7808Z"
+                                fill="#E5E5E5" />
+                        </svg>
+                        Support
+                    </a>
+                </div> --}}
             </div>
 
         </div>
@@ -202,132 +326,103 @@
   <br><br>
             <div class="main-content__container">
 
-          
-                <div class="main-content__inner_wrapper">
 
-                    <form id="form-submit" method="post" action="{{url('/post-leadership/')}}" enctype="multipart/form-data">
+                <div class="main-content__inner_wrapper">
+                        {{-- admin-homepage-update/{id} --}}
+                    <form id="form-submit" method="post" action="{{url('/admin-homepage-update/'.$homepage[0]->id)}}" enctype="multipart/form-data">
                         @csrf
                     <div class="main__container">
                         <div class="center__container">
-                        
-                    
-                      
-
-
-                        <div class="center__container--wrapper center__container--third-wrapper">
-                            <h3>Add To Leadership</h3>
-                            <br>
-                                <input  class="input" placeholder="fullname" name="fullname" value="">
-                                <input type="email" placeholder="title" name="title" value=""/>
-                                <input type="file" name="img" value="">
-                                <textarea name="desc"></textarea>
+                            <div class="center__container--wrapper center__container--second-wrapper">
+                            <input  class="input" placeholder="title" name="hero_bg_text" value="{{$homepage[0]->hero_title}}">
+                                <input type="text" name="hero_bg_small" value="{{$homepage[0]->hero_desc}}">
+                                <input type="file" name="hero_bg">
+                                <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1919px Height - 494px</span> 
+                                    <img src="{{url('storage/')}}" height="150">
+                                </div>
+                            </div>
+                            <div class="form__container--section-vision">
+                                <h3>Benefits</h3>
+                                <?php
                                
-                                {{-- <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1840px Height - 1236px</span> <img src="../resource/images/featuredimg__tworeport.jpg"></div> --}}
-                        </div>
-                   
+                                $benefit = json_decode($homepage[0]->benefits);
+                                // dd($benefit);
+                                // $mission_desc  = json_decode($about->mission_desc);
+                               
 
-                      
-                 
+                                ?>
+                            <div class="vision_switchable--container v--switchable-container--on">
+                                <input type="file" name="benefit_image"/>
+                                <textarea placeholder="text" name="benefit[]"> {{$benefit[0]}}</textarea>
+                            </div>
+                            <div class="vision_switchable--container ">
+                                <textarea placeholder="text" name="benefit[]"> {{$benefit[1]}}</textarea>
+                             </div>
+                             <div class="vision_switchable--container ">
+                                <textarea placeholder="text" name="benefit[]"> {{$benefit[2]}}</textarea>
+                             </div>
+                             <div class="vision_switchable--container ">
+                                <textarea placeholder="text" name="benefit[]"> {{$benefit[3]}}</textarea>
+                             </div>
+                             <div class="vision_switchable--container ">
+                                <textarea placeholder="text" name="benefit[]"> {{$benefit[4]}}</textarea>
+                             </div>
+                             <div class="vision_switchable--container ">
+                                <textarea placeholder="text" name="benefit[]"> {{$benefit[5]}}</textarea>
+                             </div>
+                             <div class="vision_switchable--container ">
+                                <textarea placeholder="text" name="benefit[]"> {{$benefit[6]}}</textarea>
+                             </div>
+                             <div class="vision_switchable--container ">
+                                <textarea placeholder="text" name="benefit[]"> {{$benefit[7]}}</textarea>
+                             </div>
                      
-                    </div>
-                    </div>
-                </form>
-                </div>
+                                <div>
+                                    <div class="white__small--btn-wrapper">
+                                        <button class="white__small--btn v-js-btn"><span>1</span></button> <button class="white__small--btn v-js-btn"><span>2</span></button> 
+                                        <button class="white__small--btn v-js-btn"><span>3</span></button><button class="white__small--btn v-js-btn"><span>4</span></button>
+                                        <button class="white__small--btn v-js-btn"><span>5</span></button> <button class="white__small--btn v-js-btn"><span>6</span></button> 
+                                        <button class="white__small--btn v-js-btn"><span>7</span></button><button class="white__small--btn v-js-btn"><span>8</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form__container--section-vision">
+                                <h3>Who We Are</h3>
+                                 <input type="text" name="who_we_are" value="{{$homepage[0]->who_we_are_title}}"/>
+                                <textarea placeholder="text" name="who_we_are_desc">{{$homepage[0]->who_we_are_desc}}</textarea>
+                           </div>
+                           <div class="form__container--section-vision">
+                            <h3>About Tru Data</h3>
+                             <input type="text" name="about_title" value="{{$homepage[0]->about_trudata_title}}"/>
+                            <textarea placeholder="text" name="about_desc">{{$homepage[0]->about_trudata_desc}}</textarea>
+                       </div>
 
-                
 
-                {{-- <div class="analytics_section">
+                       <div class="form__container--section-vision">
+                        <h3>tru-DATA At Your Service Whatever Your Needs</h3>
+                        <?php
+                       
+                         $service = json_decode($homepage[0]->trudata_serrvices);
+                      
+                        // $mission_desc  = json_decode($about->mission_desc);
 
-                    <div class="analytics_section__stat">
-
-                        <h3 class="analytics_section__title main-content__text main-content__text--small">
-                            OVERALL STATS AS OF TODAY
-                        </h3>
-                        <div class="analytics_section__table-container">
-                            <table class="analytics_section__table main-content__text main-content__text--ex-small">
-                                <tr>
-                                    <th></th>
-                                    <th>
-                                        <a href="" class="analytics_section__reset_btn">
-                                            <img src="../assets/images/refresh-button.svg" alt="">
-                                        </a>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td>TOTAL AMOUNT DEPOSIT</td>
-                                    <td class="analytics_section__table-centered">550</td>
-                                </tr>
-                                <tr>
-                                    <td>TOTAL AMOUNT OF DOCUMENT VERIFIED</td>
-                                    <td class="analytics_section__table-centered">550</td>
-                                </tr>
-                            </table>
-
-                            <table class="analytics_section__table main-content__text main-content__text--ex-small">
-                                <tr>
-                                    <th></th>
-                                    <th>
-                                        <a href="" class="analytics_section__reset_btn">
-                                            <img src="../assets/images/refresh-button.svg" alt="">
-                                        </a>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td class="main-content__text--bold">DOCUMENTS</td>
-                                    <td class="main-content__colored-text analytics_section__table-centered">20</td>
-                                </tr>
-                                <tr>
-                                    <td>Successful</td>
-                                    <td class="analytics_section__table-centered">5</td>
-                                </tr>
-                                <tr>
-                                    <td>Voided</td>
-                                    <td class="analytics_section__table-centered">5</td>
-                                </tr>
-                                <tr>
-                                    <td>Expired</td>
-                                    <td class="analytics_section__table-centered">5</td>
-                                </tr>
-                                <tr>
-                                    <td>Pending</td>
-                                    <td class="analytics_section__table-centered">5</td>
-                                </tr>
-                            </table>
+                            ?>
+                        <div class="values--switchable--container values--switchable-container--on">
+                                    <input type="file" name="service_img"/>
+                                    <textarea placeholder="text" name="service[]">{{$service[0]}}</textarea>
                         </div>
-
-                    </div>
-
-
-
-                </div> --}}
-
-
-
-                {{-- <div class="canvas__container" style="width:90%; margin: 0 auto 40px auto">
-                    <div class="canvas__select">
-                        <div class="canvas__label">
-                            <p class="main-content__text main-content__text--small">
-                                Showing metrics for Custom Period
-                            </p>
-
-                            <div class="custom-select" style="width: 220px">
-                                <select name="" id="">
-                                    <option value="0">Today</option>
-                                    <option value="1">This Week</option>
-                                    <option value="2">This Month</option>
-                                    <option value="3">Last 30 Days</option>
-                                    <option value="4">Last 90 Days</option>
-                                    <option value="4">This Year</option>
-                                </select>
+                        <div class="values--switchable--container ">
+                                  <textarea placeholder="text" name="service[]">{{$service[0]}}</textarea>
+                        </div>
+                            <div>
+                                <div class="white__small--btn-wrapper">
+                                    <button class="white__small--btn values--js-btn"><span>1</span></button> <button class="white__small--btn values--js-btn"><span>2</span></button> 
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <canvas id="myChart"></canvas>
-
-                </div> --}}
-
-
+                </form>
+                </div>
 
             </div>
 
@@ -428,21 +523,21 @@
     <script>
         //switching missions;
 
-        let switchBtns = document.querySelectorAll(".js-btn");
-        let switchableContainers = document.querySelectorAll(".switchable-container");
-        for (let i = 0; i < switchBtns.length; i++) {
-            switchBtns[i].addEventListener('click', function(e) {
-                e.preventDefault();
-                switchableContainers.forEach(function(item) {
-                    item.classList.remove('switchable-container--on');
-                });
-                switchBtns.forEach(function(item) {
-                    item.classList.remove('active');
-                });
-                switchableContainers[i].classList.add('switchable-container--on');
-                switchBtns[i].classList.add('active')
-            })
-        }
+        // let switchBtns = document.querySelectorAll(".js-btn");
+        // let switchableContainers = document.querySelectorAll(".switchable-container");
+        // for (let i = 0; i < switchBtns.length; i++) {
+        //     switchBtns[i].addEventListener('click', function(e) {
+        //         e.preventDefault();
+        //         switchableContainers.forEach(function(item) {
+        //             item.classList.remove('switchable-container--on');
+        //         });
+        //         switchBtns.forEach(function(item) {
+        //             item.classList.remove('active');
+        //         });
+        //         switchableContainers[i].classList.add('switchable-container--on');
+        //         switchBtns[i].classList.add('active')
+        //     })
+        // }
         //swiyching visions
         let VisionswitchBtns = document.querySelectorAll(".v-js-btn");
         let VisionswitchableContainers = document.querySelectorAll(".vision_switchable--container ");
@@ -467,12 +562,12 @@
             ValuesswitchBtns[i].addEventListener('click', function(e) {
                 e.preventDefault();
                 ValueswitchableContainers.forEach(function(item) {
-                    item.classList.remove('values--switchable--container-on');
+                    item.classList.remove('values--switchable-container--on');
                 });
                 ValuesswitchBtns.forEach(function(item) {
                     item.classList.remove('active');
                 });
-                ValueswitchableContainers[i].classList.add('values--switchable--container-on');
+                ValueswitchableContainers[i].classList.add('values--switchable-container--on');
                 ValuesswitchBtns[i].classList.add('active')
             })
         }

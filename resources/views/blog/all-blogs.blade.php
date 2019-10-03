@@ -9,6 +9,7 @@
         Dashboard
     </title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- build:css /assets/styles/styles.css -->
     <link rel="stylesheet" href="../assets/styles/styles-a4b2e688ed.css">
     <!-- endbuild -->
@@ -16,6 +17,12 @@
     <!-- build:js /assets/scripts/Vendor.js -->
     <script src="../assets/scripts/Vendor-57062a8ee8.js"></script>
     <!-- endbuild -->
+    <style>
+  .edit-action-button{
+    width: 85%;
+  }
+
+    </style>
 </head>
 
 <body>
@@ -122,7 +129,8 @@
 
 
             </header>
-
+            <br><br>
+            @include('flash::message')
             <div class="main-content__container">
 
                 <div class="manage-account">
@@ -131,9 +139,9 @@
 
                     <div class="manage-account__tool-bar">
                    
-                        <a href="{{url('/leadership-create/')}}" class="btn manage-account__btn btn--create btn--medium">
+                        <a href="{{url('/create-blog/')}}" class="btn manage-account__btn btn--create btn--medium">
                             <img src="../assets/images/plus_.svg" alt="">
-                            &nbsp;&nbsp;Create New Leadership
+                            &nbsp;&nbsp;Create New Blog
                         </a>
                     
                     </div>
@@ -156,15 +164,16 @@
                                     </h3>
                                     <h3
                                         class="manage-account_user-list-title main-content__text main-content__text--bold">
-                                       Name
+                                       Title
                                     </h3>
+                                
                                     <h3
                                         class="manage-account_user-list-title main-content__text main-content__text--bold">
-                                        Email Address
+                                        Editor
                                     </h3>
                                     <h3
-                                        class="manage-account_user-list-title main-content__text main-content__text--bold">
-                                        Role
+                                    class="manage-account_user-list-title main-content__text main-content__text--bold">
+                                    Role
                                     </h3>
                                     <h3
                                         class="manage-account_user-list-title main-content__text main-content__text--bold">
@@ -172,33 +181,57 @@
                                     </h3>
 
                                 </div>
-           @foreach($leaders as $leader)
+           @foreach($blogs as $blog)
                                <div class="manage-account_user-list-item">
 
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
                                         <span class="manage-account_status-on"></span>
                                     </p>
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
-                                       {{$leader->name}}
+                                       {{$blog->title}}
                                     </p>
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
-                                       {{$leader->title}}
+                                       {{$blog->user['name']}} - (<small>{{$blog->user['email']}}</small>)
                                     </p>
                                     <p
                                         class="manage-account_user-list-title main-content__text main-content__text--small">
-                                       {{$leader->role['name']}}
+                                       {{-- {{$blog->user['role_id']}} --}}
+                                       @if($blog->user['role_id'] == 1)
+                                       Super Admin
+                                       @elseif($blog->user['role_id'] == 2)
+                                       Admin
+                                       @elseif($blog->user['role_id'] ==3)
+                                       Editor
+                                       @endif
                                     </p>
-                                    <p class="manage-account_user-list main-content__text main-content__text--small">
-                                        {{-- <a href="user-info.html" class="manage-account_user-view">
-                                            <img src="../assets/images/eye.svg" class="manage-account_eye-icon"
-                                                alt="">
-                                        </a> --}}
-                                    &nbsp;&nbsp;&nbsp; <a href="{{url('/leadership-edit/'.$leader->id)}}" class="btn btn--danger">
+                                    <p class="manage-account_user-list main-content__text main-content__text--small edit-action-button">
+                                     
+                                    &nbsp;&nbsp;&nbsp; <a href="{{url('/blog-edit/'.$blog->id)}}" class="btn btn--danger">
                                             EDIT
                                         </a>
-                                        &nbsp;&nbsp;&nbsp; <a href="" class="manage-account_user-del">
+                                        @IF($blog->publish == 0)
+                                                &nbsp;&nbsp;&nbsp; <a href="{{url('/publish/'.$blog->id)}}" class="btn btn--danger">
+                                                PUBLISH
+                                                </a>
+                                       @else 
+                                                &nbsp;&nbsp;&nbsp; <a href="{{url('/unpublish-article/'.$blog->id)}}" class="btn btn--info">
+                                                    UNPUBLISH
+                                                </a>
+                                       @endif
+
+                                     @if($blog->featured_article == 0)
+                                       &nbsp;&nbsp;&nbsp; <a href="{{url('/feature/'.$blog->id)}}" class="btn btn--danger">
+                                       FEATURED  
+                                      </a>
+
+                                      @else
+                                      &nbsp;&nbsp;&nbsp; <a href="{{url('/unfeature-article/'.$blog->id)}}" class="btn btn--info">
+                                       UNFEATURE 
+                                       </a>
+                                       @endif
+                                        {{-- &nbsp;&nbsp;&nbsp; <a href="" class="manage-account_user-del">
                                             <img src="../assets/images/delete.svg" alt="">
-                                        </a>
+                                        </a> --}}
                                     </p>
 
                                 </div>
@@ -992,7 +1025,7 @@
 
     </div>
 
-    <div class="modal__manage-acct">
+    {{-- <div class="modal__manage-acct">
 
         <div class="modal__inner modal__inner--adjusted modal__inner--acct">
 
@@ -1086,7 +1119,7 @@
 
         </div>
 
-    </div>
+    </div> --}}
 
 
 

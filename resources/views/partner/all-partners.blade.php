@@ -131,9 +131,9 @@
 
                     <div class="manage-account__tool-bar">
                    
-                        <a href="{{url('/leadership-create/')}}" class="btn manage-account__btn btn--create btn--medium">
+                        <a href="{{url('/creata-partners/')}}" class="btn manage-account__btn btn--create btn--medium">
                             <img src="../assets/images/plus_.svg" alt="">
-                            &nbsp;&nbsp;Create New Leadership
+                            &nbsp;&nbsp;Create New Team
                         </a>
                     
                     </div>
@@ -158,13 +158,10 @@
                                         class="manage-account_user-list-title main-content__text main-content__text--bold">
                                        Name
                                     </h3>
+                                
                                     <h3
                                         class="manage-account_user-list-title main-content__text main-content__text--bold">
-                                        Email Address
-                                    </h3>
-                                    <h3
-                                        class="manage-account_user-list-title main-content__text main-content__text--bold">
-                                        Role
+                                        Logo
                                     </h3>
                                     <h3
                                         class="manage-account_user-list-title main-content__text main-content__text--bold">
@@ -172,28 +169,26 @@
                                     </h3>
 
                                 </div>
-           @foreach($leaders as $leader)
+           @foreach($partners as $partner)
                                <div class="manage-account_user-list-item">
 
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
                                         <span class="manage-account_status-on"></span>
                                     </p>
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
-                                       {{$leader->name}}
+                                       {{$partner->partner_name}}
                                     </p>
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
-                                       {{$leader->title}}
+                                       {{-- {{$partner->partner_image}} --}}
+                                       <img src="{{url('storage/'.$partner->partner_img)}}" height="40" width="80"/>
                                     </p>
-                                    <p
+                                    {{-- <p
                                         class="manage-account_user-list-title main-content__text main-content__text--small">
                                        {{$leader->role['name']}}
-                                    </p>
+                                    </p> --}}
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
-                                        {{-- <a href="user-info.html" class="manage-account_user-view">
-                                            <img src="../assets/images/eye.svg" class="manage-account_eye-icon"
-                                                alt="">
-                                        </a> --}}
-                                    &nbsp;&nbsp;&nbsp; <a href="{{url('/leadership-edit/'.$leader->id)}}" class="btn btn--danger">
+                                     
+                                    &nbsp;&nbsp;&nbsp; <a href="{{url('/edit-partner/'.$partner->id)}}" class="btn btn--danger">
                                             EDIT
                                         </a>
                                         &nbsp;&nbsp;&nbsp; <a href="" class="manage-account_user-del">
@@ -992,7 +987,7 @@
 
     </div>
 
-    <div class="modal__manage-acct">
+    {{-- <div class="modal__manage-acct">
 
         <div class="modal__inner modal__inner--adjusted modal__inner--acct">
 
@@ -1086,7 +1081,7 @@
 
         </div>
 
-    </div>
+    </div> --}}
 
 
 

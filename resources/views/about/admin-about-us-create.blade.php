@@ -137,6 +137,25 @@
                         </a>
                     </div>
 
+                    <div class="side-navigation__inner_link_container">
+                        <a href="{{ url('/teams/') }}" class="side-navigation__link">
+                            <svg width="21" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.0415 3.5722H3.00724C3.00724 3.5722 1.94403 3.40412 1.94403 2.89987L17.2541 1.72328V0.714782C17.2541 0.714782 17.0655 -0.205645 15.3404 0.0424469L1.73139 1.89137C1.73139 1.89137 0.0302734 2.05945 0.0302734 3.74029V13.3211C0.0302734 14.2492 0.982263 15.0019 2.15667 15.0019H17.0415C18.2159 15.0019 19.1679 14.2492 19.1679 13.3211V5.25304C19.1679 4.32488 18.2159 3.5722 17.0415 3.5722ZM15.7656 10.4636C14.9436 10.4636 14.2772 9.93686 14.2772 9.28705C14.2772 8.63724 14.9436 8.11046 15.7656 8.11046C16.5877 8.11046 17.2541 8.63724 17.2541 9.28705C17.2541 9.93686 16.5877 10.4636 15.7656 10.4636Z"
+                                        fill="#ffffff" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0">
+                                        <rect width="19.1376" height="15.0019" fill="white"
+                                            transform="translate(0.0302734)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                          Team
+                        </a>
+                    </div>
+
                 <div class="side-navigation__inner_link_container">
                     {{-- <a href="" class="side-navigation__link"> --}}
                       
@@ -307,63 +326,6 @@
   <br><br>
             <div class="main-content__container">
 
-                {{-- <div class="main-content__inner_wrapper">
-
-                    <p class="main-content__text">
-                        Your application is currently in <span class="main-content__colored-text">Test Mode</span> -
-                        this
-                        means there’re a couple more things to finish up
-                        before you can start scanning online. The guides below will show you how to do this.
-                    </p>
-
-                    <div class="main-content__actions_container">
-
-                        <div class="main-content__actions_inner_container">
-                            <div class="main-content__icon-container">
-                                <img src="../assets/images/switch-icon.svg" alt="">
-                            </div>
-                            <p class="main-content__text main-content__text--small main-content__colored-text">
-                                Activate Your Email
-                            </p>
-                            <div class="main-content__btn_container">
-                                <a href="" class="btn">
-                                    START
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="main-content__actions_inner_container">
-                            <div class="main-content__icon-container">
-                                <img src="../assets/images/help-icon.svg" alt="">
-                            </div>
-                            <p class="main-content__text main-content__text--small main-content__colored-text">
-                                Get Help by Chat, Phone or Email
-                            </p>
-                            <div class="main-content__btn_container">
-                                <a href="" class="btn">
-                                    SHOW ME
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="main-content__actions_inner_container">
-                            <div class="main-content__icon-container">
-                                <img src="../assets/images/list.svg" width="19" alt="">
-                            </div>
-                            <p class="main-content__text main-content__text--small main-content__colored-text">
-                                Verifiable Organizations
-                            </p>
-                            <div class="main-content__btn_container">
-                                <a href="" class="btn btn--create">
-                                    EDIT
-                                </a>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div> --}}
 
                 <div class="main-content__inner_wrapper">
 
@@ -395,17 +357,34 @@
                             <div class="vision_switchable--container ">
                                 <br>
                                     <input type="text" name="vision[]" value="{{$mission_header[1]}}"/>
-                                <textarea placeholder="text" name="why_tru_data[]">{{$mission_desc[1]}}"</textarea>
+                                <textarea placeholder="text" name="why_tru_data[]">{{$mission_desc[1]}}</textarea>
                              </div>
+                             <div class="vision_switchable--container ">
+                                    <br>
+                                        <input type="text" name="vision[]" value="{{$mission_header[1]}}"/>
+                                    <textarea placeholder="text" name="why_tru_data[]">{{$mission_desc[2]}}</textarea>
+                                 </div>
+                                 <div class="vision_switchable--container ">
+                                        <br>
+                                            <input type="text" name="vision[]" value="{{$mission_header[1]}}"/>
+                                        <textarea placeholder="text" name="why_tru_data[]">{{$mission_desc[3]}}</textarea>
+                                     </div>
                      
                                 <div>
                                     <div class="white__small--btn-wrapper">
                                         <button class="white__small--btn v-js-btn"><span>1</span></button> <button class="white__small--btn v-js-btn"><span>2</span></button> 
-                                        {{-- <button class="white__small--btn v-js-btn"><span>3</span></button><button class="white__small--btn v-js-btn"><span>4</span></button> --}}
+                                        <button class="white__small--btn v-js-btn"><span>3</span></button><button class="white__small--btn v-js-btn"><span>4</span></button>
                                     </div>
                                 </div>
                             </div>
-                         
+                            <div class="form__container--section-vision">
+                                <h3>Join Our Team</h3>
+                          
+                            {{-- <div class="vision_switchable--container v--switchable-container--on"> --}}
+                                <br>
+                                 <input type="text" name="team_header" value="{{$about->join_our_team_header}}"/>
+                                <textarea placeholder="text" name="team_desc">{{$about->join_our_team_desc}}</textarea>
+                            {{-- </div> --}}
                   
                    
 
@@ -674,10 +653,10 @@
     <script src="../resource/js/admin.js"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
-    <script>
+    {{-- <script>
         $('textarea').ckeditor();
         // $('.textarea').ckeditor(); // if class is prefered.
-    </script>
+    </script> --}}
 
     <!-- build:js /../assets/scripts/App.js -->
     <script src="../assets/scripts/App-3a24d57a57.js"></script> <!-- endbuild -->

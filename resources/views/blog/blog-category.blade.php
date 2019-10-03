@@ -1,26 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +32,23 @@
         }
         .why_us_img{
             width:20%;
+        }
+        .text-area{
+            width: 100%;
+            height: 404px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border: 1px solid #C4C4C4;
+            box-sizing: border-box;
+            border-radius: 4px;
+            color: black;
+            margin-top: 20px;
+        }
+        .wraper-height{
+            height: 288px;
+
         }
     </style>
 </head>
@@ -97,7 +91,6 @@
                         Dashboard
                     </a>
                 </div>
-
 
                 <div class="side-navigation__inner_link_container">
                     <a href="{{ url('/') }}" class="side-navigation__link">
@@ -202,34 +195,21 @@
   <br><br>
             <div class="main-content__container">
 
-          
                 <div class="main-content__inner_wrapper">
-
-                    <form id="form-submit" method="post" action="{{url('/post-leadership/')}}" enctype="multipart/form-data">
+                    <form id="form-submit" method="post" action="{{url('/post-blog-category/')}}" enctype="multipart/form-data">
                         @csrf
                     <div class="main__container">
                         <div class="center__container">
-                        
-                    
-                      
-
-
-                        <div class="center__container--wrapper center__container--third-wrapper">
-                            <h3>Add To Leadership</h3>
+                        <div class="center__container--wrapper center__container--third-wrapper wraper-height">
+                            <h3>Add Blog Category</h3>
                             <br>
-                                <input  class="input" placeholder="fullname" name="fullname" value="">
-                                <input type="email" placeholder="title" name="title" value=""/>
-                                <input type="file" name="img" value="">
-                                <textarea name="desc"></textarea>
-                               
-                                {{-- <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1840px Height - 1236px</span> <img src="../resource/images/featuredimg__tworeport.jpg"></div> --}}
+                                <input  class="input" placeholder="Category" name="category" value="">
+                                {{-- <input type="file" name="img" value="">
+                                <textarea class="text-area" name="blog_main"></textarea> --}}
+                                {{-- <input type="email" placeholder="title" name="title" value=""/> --}}
+                            
+                           </div>
                         </div>
-                   
-
-                      
-                 
-                     
-                    </div>
                     </div>
                 </form>
                 </div>

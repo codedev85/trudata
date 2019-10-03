@@ -11,8 +11,10 @@ class TruDataController extends Controller
 {
     //
     public function getTruDataPage(){
+       $trudata = Trudata::orderBy('created_at','DESC')->first();
        
-        return view('tru-data.trudata');
+      
+        return view('tru-data.trudata')->with('trudata',$trudata);
     }
 
     public function updateWhyUsPage($id){

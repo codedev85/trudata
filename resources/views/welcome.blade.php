@@ -1,102 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html> --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -210,17 +111,23 @@
                 CONSIDER THE MANY KEY BENEFITS OF
             </h2>
             <p class="features__sub__text">
-                africa first documents verification app for individuals <span
-                    style="text-transform: lowercase">and</span> companies
+                africa first documents verification app for individuals and companies
             </p>
 
             <div class="features__mockup_container">
+                <?php 
+                
+                $benefit = json_decode($homepage->benefits);
+              //  dd($benefit);
+
+
+                ?>
 
                 <div class="features__left_items">
 
                     <div class="features__left_inner_item">
                         <p class="features__left_inner_text">
-                            quick verification process
+                            {{$benefit[0]}}
                         </p>
                         <div class="features__left_inner_icon_container">
                             <img src="resources/images/quick_verify.svg" class="features_inner_icon" alt="">
@@ -229,8 +136,7 @@
 
                     <div class="features__left_inner_item">
                         <p class="features__left_inner_text">
-                            access through mobile app <span style="text-transform: lowercase">and</span> various
-                            cliients's websites.
+                            {{$benefit[1]}}.
                         </p>
                         <div class="features__left_inner_icon_container">
                             <img src="resources/images/access_thru.svg" class="features_inner_icon" alt="">
@@ -239,7 +145,7 @@
 
                     <div class="features__left_inner_item">
                         <p class="features__left_inner_text">
-                            Save time <span style="text-transform: lowercase">and</span> man power.
+                           {{$benefit[2]}}
                         </p>
                         <div class="features__left_inner_icon_container">
                             <img src="resources/images/save.svg" class="features_inner_icon" alt="">
@@ -248,7 +154,7 @@
 
                     <div class="features__left_inner_item">
                         <p class="features__left_inner_text">
-                            simplified payment
+                           {{$benefit[3]}}
                         </p>
                         <div class="features__left_inner_icon_container">
                             <img src="resources/images/wallet.svg" class="features_inner_icon" alt="">
@@ -257,7 +163,7 @@
 
                     <div class="features__left_inner_item item__resp">
                         <p class="features__left_inner_text">
-                            easy to collect verfication fee
+                            {{$benefit[4]}}
                         </p>
                         <div class="features__left_inner_icon_container">
                             <img src="resources/images/easy.svg" class="features_inner_icon" alt="">
@@ -266,7 +172,7 @@
 
                     <div class="features__left_inner_item item__resp">
                         <p class="features__left_inner_text">
-                            access by authorised personnel </p>
+                            {{$benefit[5]}} </p>
                         <div class="features__left_inner_icon_container">
                             <img src="resources/images/access_By.png" class="features_inner_icon" alt="">
                         </div>
@@ -274,8 +180,7 @@
 
                     <div class="features__left_inner_item item__resp">
                         <p class="features__left_inner_text">
-                            central admin to monitor <span style="text-transform: lowercase">and</span> verify user
-                            activites
+                           {{$benefit[6]}}
                         </p>
                         <div class="features__left_inner_icon_container">
                             <img src="resources/images/admin__svg.svg" class="features_inner_icon" alt="">
@@ -284,7 +189,7 @@
 
                     <div class="features__left_inner_item item__resp">
                         <p class="features__left_inner_text">
-                            minimal <span style="text-transform: lowercase">and</span> transferrable cost
+                            {{$benefit[7]}}
                         </p>
                         <div class="features__left_inner_icon_container">
                             <img src="resources/images/minimal.svg" class="features_inner_icon" alt="">
@@ -308,7 +213,7 @@
                             <img src="resources/images/easy.svg" class="features_inner_icon" alt="">
                         </div>
                         <p class="features__right_inner_text">
-                            easy to collect verfication fee
+                            {{$benefit[4]}}
                         </p>
                     </div>
                     <div class="features__right_inner_item">
@@ -316,7 +221,7 @@
                             <img src="resources/images/access_By.png" class="features_inner_icon" alt="">
                         </div>
                         <p class="features__right_inner_text">
-                            access by authorised personnel
+                           {{$benefit[5]}}
                         </p>
                     </div>
                     <div class="features__right_inner_item">
@@ -324,8 +229,9 @@
                             <img src="resources/images/admin__svg.svg" class="features_inner_icon" alt="">
                         </div>
                         <p class="features__right_inner_text">
-                            central admin to monitor <span style="text-transform: lowercase">and</span> verify user
-                            activites
+                            {{-- central admin to monitor <span style="text-transform: lowercase">and</span> verify user
+                            activites --}}
+                            {{$benefit[6]}}
                         </p>
                     </div>
                     <div class="features__right_inner_item">
@@ -333,7 +239,8 @@
                             <img src="resources/images/transfer.svg" class="features_inner_icon" alt="">
                         </div>
                         <p class="features__right_inner_text">
-                            minimal <span style="text-transform: lowercase">and</span> transferrable cost
+                            {{$benefit[7]}}
+                            {{-- minimal <span style="text-transform: lowercase">and</span> transferrable cost --}}
                         </p>
                     </div>
 
@@ -360,12 +267,15 @@
 
             <div class="about_second_container">
                 <h2 class="about__title about__title--black">
-                    <span style="text-transform: lowercase">tru-</span><span
+                    <span style="text-transform: lowercase">
+                        {{$homepage->who_we_are_title}}
+                        {{-- tru-</span><span
                         style="text-transform: uppercase">data</span> Web <span
-                        style="text-transform: lowercase">and</span> Mobile App
+                        style="text-transform: lowercase">and</span> Mobile App --}}
                 </h2>
                 <p class="about__text about__text--black">
-                    <span style="text-transform: lowercase">tru-</span><span
+                        {{$homepage->who_we_are_desc}}
+                    {{-- <span style="text-transform: lowercase">tru-</span><span
                         style="text-transform: uppercase">data</span> seeks to be the leader in the Document
                     Verification Technology Space. This means that,
                     end-users (the individuals, corporates that verify documents) will download only one application to
@@ -375,7 +285,7 @@
                     seeks to
                     be the ON-THE-GO solution for all documents. This can be achieved through digital, communications
                     <span style="text-transform: lowercase">and</span>
-                    market penetration strategies to reach end-users. .
+                    market penetration strategies to reach end-users. . --}}
                 </p>
 
                 <a href="about.html" class="home__btn home__btn--resp">
@@ -395,14 +305,15 @@
 
         <div class="row">
             <h2 class="home__data_title">
-                About tru-DATA
+                {{$homepage->about_trudata_title}}
             </h2>
 
             <p class="home__data_content">
-                tru-DATA is a user-friendly mobile and web application that is developed to authenticate documents,
+                {{$homepage->about_trudata_desc}}
+                {{-- tru-DATA is a user-friendly mobile and web application that is developed to authenticate documents,
                 progressively eliminate counterfeiting, and ease document verification processes.
                 tru-DATA is also an e-platform for retrieving, reclaiming and repossessing documents easily.
-                This technology is currently owned and proprietary to only TrippleGee & CO. PLC in West Africa.
+                This technology is currently owned and proprietary to only TrippleGee & CO. PLC in West Africa. --}}
             </p>
         </div>
 
@@ -416,6 +327,10 @@
                 <span style="text-transform: lowercase">tru-</span><span style="text-transform: uppercase">data</span>
                 at your service whatever your needs
             </h2>
+            <?php 
+             $service = json_decode($homepage->trudata_serrvices);
+            
+            ?>
 
             <div class="service__flex_container">
 
@@ -426,12 +341,13 @@
                     <div class="service__text_container">
 
                         <p class="service__text_inner">
-                            tru-DATA mobile technology solution does not require internet access to verify the document
+                            {{$service[0]}}
+                            {{-- tru-DATA mobile technology solution does not require internet access to verify the document
                             because the encrypted data, is on the already printed document. Unlike the QR code system
                             that
                             requires a website link to access more information. it's easy and fast as it scans your
                             document
-                            and delivers result instantly. Fake document can also be reported
+                            and delivers result instantly. Fake document can also be reported --}}
                         </p>
 
                         <a href="about.html" class="home__btn home__btn--colored">
@@ -449,10 +365,11 @@
                     <div class="service__text_container">
 
                         <p class="service__text_inner">
-                            tru-DATA provides a suite of solutions that embed documents into encrypted barcodes which
+                            {{$service[1]}}
+                            {{-- tru-DATA provides a suite of solutions that embed documents into encrypted barcodes which
                             are then scanned during the verification process. While the QRCODE is similar visually, it
                             lacks the security and high data storing capacity provided by tru-DATA code. The tru-DATA
-                            codes can also be printed on as many documents as possible to further fortify verification.
+                            codes can also be printed on as many documents as possible to further fortify verification. --}}
                         </p>
 
                         <a href="about.html" class="home__btn home__btn--colored">
@@ -603,18 +520,26 @@
 
 
             <div class="sliderContainer owl-carousel owl-one">
-                <div class="slider__self-container">
+                    @foreach($partners as $partner)
+                    <div class="slider__self-container">
+    
+                        <img src="{{url('storage/'.$partner->partner_img)}}" alt="" class="partner__img">
+                    </div>
+                    @endforeach
+                {{-- <div class="slider__self-container">
 
                     <img src="resources/images/trippleGee.png" alt="" class="partner__img">
-                </div>
-                <div class="slider__self-container">
+                </div> --}}
+                <!-- uncheck later -->
+                {{-- <div class="slider__self-container">
                     <img src="resources/images/kjkNEWLOGO1.png" alt=""
                         class="partner__img">
                 </div>
                 <div class="slider__self-container">
 
                     <img src="resources/images/3rie.jpeg" alt="" class="partner__img">
-                </div>
+                </div> --}}
+                <!-- end of partners image -->
                 <!-- <div class="slider__self-container">
                     <img src="resources/images/hi-res-transparent-background-web1.png" alt="" class="partner__img">
                 </div>
@@ -762,7 +687,7 @@
                         <a href="" class="footer__text">
                             How It Works
                         </a>
-                        <a href="blog.html" class="footer__text">
+                        <a href="{{url('/blog')}}" class="footer__text">
                             Blog
                         </a>
                         <a href="faq.html" class="footer__text">

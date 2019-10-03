@@ -5680,7 +5680,7 @@ textarea.priv__text--area {
 
 .v--switchable-container--on,
 .switchable-container--on,
-.values--switchable--container-on,
+.values--switchable-container--on,
 .adv--switchable--container-on {
     display: contents;
 }

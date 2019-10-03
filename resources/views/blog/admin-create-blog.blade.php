@@ -1,26 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +32,34 @@
         }
         .why_us_img{
             width:20%;
+        }
+        .text-area{
+            width: 100%;
+            height: 404px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border: 1px solid #C4C4C4;
+            box-sizing: border-box;
+            border-radius: 4px;
+            color: black;
+            margin-top: 20px;
+        }
+        select{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #C4C4C4;
+            box-sizing: border-box;
+            border-radius: 4px;
+            color: black;
+            font-family: Poppins;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 17px;
+            line-height: 31px;
+            text-align: justify;
+            text-transform: lowercase;
         }
     </style>
 </head>
@@ -97,6 +102,25 @@
                         Dashboard
                     </a>
                 </div>
+
+                <div class="side-navigation__inner_link_container">
+                        <a href="{{ url('/blog-category/') }}" class="side-navigation__link">
+                            <svg width="21" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.0415 3.5722H3.00724C3.00724 3.5722 1.94403 3.40412 1.94403 2.89987L17.2541 1.72328V0.714782C17.2541 0.714782 17.0655 -0.205645 15.3404 0.0424469L1.73139 1.89137C1.73139 1.89137 0.0302734 2.05945 0.0302734 3.74029V13.3211C0.0302734 14.2492 0.982263 15.0019 2.15667 15.0019H17.0415C18.2159 15.0019 19.1679 14.2492 19.1679 13.3211V5.25304C19.1679 4.32488 18.2159 3.5722 17.0415 3.5722ZM15.7656 10.4636C14.9436 10.4636 14.2772 9.93686 14.2772 9.28705C14.2772 8.63724 14.9436 8.11046 15.7656 8.11046C16.5877 8.11046 17.2541 8.63724 17.2541 9.28705C17.2541 9.93686 16.5877 10.4636 15.7656 10.4636Z"
+                                        fill="#ffffff" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0">
+                                        <rect width="19.1376" height="15.0019" fill="white"
+                                            transform="translate(0.0302734)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                           Create Blog Category
+                        </a>
+                    </div>
 
 
                 <div class="side-navigation__inner_link_container">
@@ -144,7 +168,7 @@
                                 d="M6.11157 10.4579C6.11157 13.522 7.97685 16.81 10.2763 16.81C12.5767 16.81 14.4419 13.522 14.4419 10.4579C14.442 4.10627 6.11157 4.09368 6.11157 10.4579Z"
                                 fill="#FFffff" />
                         </svg>
-                     <button class="side-navigation__link" id="form-submit-button"> SAVE CHANGES </button>
+                     <button class="side-navigation__link" id="form-submit-button"> PUBLISH </button>
                     {{-- </a> --}}
                 </div>  
 
@@ -202,35 +226,29 @@
   <br><br>
             <div class="main-content__container">
 
-          
                 <div class="main-content__inner_wrapper">
-
-                    <form id="form-submit" method="post" action="{{url('/post-leadership/')}}" enctype="multipart/form-data">
+                    <form id="form-submit" method="post" action="{{url('/post-blog/')}}" enctype="multipart/form-data">
                         @csrf
-                    <div class="main__container">
+                    <div class="main__container"> 
                         <div class="center__container">
-                        
-                    
-                      
-
-
                         <div class="center__container--wrapper center__container--third-wrapper">
-                            <h3>Add To Leadership</h3>
+                            <h3>Add Blog</h3>
                             <br>
-                                <input  class="input" placeholder="fullname" name="fullname" value="">
-                                <input type="email" placeholder="title" name="title" value=""/>
+                                <input  class="input" placeholder="title" name="title" value="">
+                                <select name="category" >
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                                </select>
+                                <br>
                                 <input type="file" name="img" value="">
-                                <textarea name="desc"></textarea>
+                                <textarea class="text-area" name="blog_main"></textarea>
+                                {{-- <input type="email" placeholder="title" name="title" value=""/> --}}
                                
-                                {{-- <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1840px Height - 1236px</span> <img src="../resource/images/featuredimg__tworeport.jpg"></div> --}}
+                           </div>
                         </div>
+                    </div>
                    
-
-                      
-                 
-                     
-                    </div>
-                    </div>
                 </form>
                 </div>
 

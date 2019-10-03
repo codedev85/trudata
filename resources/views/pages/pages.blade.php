@@ -355,22 +355,22 @@
                             <div class="main-content__card main-content__card--right-space">
                                 <h1 class="main-content__card-title main-content__card-title--success">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                    400
+                         
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                    TOTAL DOCUMENTS
+                                    Menu
                                 </p>
                             </div>
 
                             <div class="main-content__card main-content__card--right-space">
                                 <h1 class="main-content__card-title main-content__card-title--danger">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                    213
+                              
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--fail">
-                                    UNVERIFIED DOCUMENTS
+                                   Footer
                                 </p>
                             </div>
 
@@ -379,7 +379,7 @@
                                 <h1
                                     class="main-content__card-title main-content__colored-text main-content__card-title--success">
                                     <!-- <img src="../assets/images/orange-naira.png" height="18px" class="orange-naira" alt=""> -->
-                                    197
+                                  
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
@@ -398,21 +398,21 @@
 
                         <div class="main-content__card_container">
 
-                            <div class="main-content__card main-content__card--right-space">
+                            <a href="{{url('admin-homepage-edit')}}" class="main-content__card main-content__card--right-space">
                                 <h1 class="main-content__card-title main-content__card-title--success">
-                                    <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                    400
+                                 {{-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt="">  --}}
+                           
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                    CODE GENERATED
+                                    HomePage
                                 </p>
-                            </div>
+                            </a>
 
                             <a href="{{url('/edit-about-us/'.$about[0]->id)}}" class="main-content__card main-content__card--right-space">
                                 <h1 class="main-content__card-title main-content__card-title--danger">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                    213
+                                   
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--fail">
@@ -424,7 +424,7 @@
                                 <h1
                                     class="main-content__card-title main-content__colored-text main-content__card-title--success">
                                     <!-- <img src="../assets/images/orange-naira.png" height="18px" class="orange-naira" alt=""> -->
-                                    197
+                             
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
@@ -439,7 +439,7 @@
                             {{-- Account Review --}}
                         </h1>
 
-                        <div class="main-content__card_container">
+                        {{-- <div class="main-content__card_container">
 
                             <div class="main-content__card main-content__card--right-space">
                                 <h1 class="main-content__card-title main-content__card-title--success">
@@ -474,7 +474,7 @@
                                 </p>
                             </div>
 
-                        </div>
+                        </div> --}}
 
                     </div>
 

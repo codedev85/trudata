@@ -205,7 +205,7 @@
           
                 <div class="main-content__inner_wrapper">
 
-                    <form id="form-submit" method="post" action="{{url('/post-leadership/')}}" enctype="multipart/form-data">
+                    <form id="form-submit" method="post" action="{{url('/post-partner/')}}" enctype="multipart/form-data">
                         @csrf
                     <div class="main__container">
                         <div class="center__container">
@@ -215,14 +215,12 @@
 
 
                         <div class="center__container--wrapper center__container--third-wrapper">
-                            <h3>Add To Leadership</h3>
+                            <h3>Add Partners</h3>
                             <br>
-                                <input  class="input" placeholder="fullname" name="fullname" value="">
-                                <input type="email" placeholder="title" name="title" value=""/>
-                                <input type="file" name="img" value="">
-                                <textarea name="desc"></textarea>
-                               
-                                {{-- <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1840px Height - 1236px</span> <img src="../resource/images/featuredimg__tworeport.jpg"></div> --}}
+                                <input  class="input" placeholder="fullname" name="name" value="{{$findPartner->partner_name}}">
+                                <input type="file" name="partner_img" value="">
+                                <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1840px Height - 1236px</span>
+                                     <img src="{{url('storage/'.$findPartner->partner_img)}}" height="100" width="100"></div>
                         </div>
                    
 
