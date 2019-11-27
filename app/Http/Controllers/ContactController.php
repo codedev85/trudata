@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
 use App\Contact;
+use App\Footer;
+use App\Social;
+use App\Menu;
+use Mail;
+use Auth;
 
 class ContactController extends Controller
 {
@@ -13,8 +18,11 @@ class ContactController extends Controller
     public function getContactPage(){
 
         $contact = Contact::all();
-    //  dd($contact);
-        return view('contact.contact-us')->with('contact',$contact);
+        $footer = Footer::all();
+        $socials = Social::all();
+        $menu   = Menu::orderBy('created_at','DESC')->first();
+    // dd($contact);
+        return view('contact.contact-us')->with('contact',$contact)->with('footer',$footer)->with('socials',$socials)->with('menu',$menu);
     }
 
     public function  showContactUsPage(){
@@ -39,13 +47,13 @@ class ContactController extends Controller
           if($request->hasFile('hero_bg')){
               
               $this->validate($request, [
-                  'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
+                  'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1918,min-height=490',
               ]);
   
               $hero_image = $request->file('hero_bg');
               $ext = $hero_image->getClientOriginalExtension();
               $image_resize = Image::make($hero_image->getRealPath());
-              $resize = Image::make($image_resize)->fit(1272, 375)->encode($ext);
+              $resize = Image::make($image_resize)->fit(1918, 490)->encode($ext);
               $hash = md5($resize->__toString());
               $path = "{$hash}.$ext";
               $url = 'why-tru/'.$path;
@@ -138,5 +146,33 @@ class ContactController extends Controller
   
           flash('Updated Successfully')->success();
           return back();
+    }
+
+    public function contactKJK(){
+
+        return view('contact.contact-kjk');
+    }
+
+    public function sendMailToKJK(Request $request){
+
+        //dd($request);
+
+  
+            //gmail credentials
+            //trudataservices@gmail.com
+            //trud@t@123
+            //   $this->email= $request->input('email');
+                $this->message = $request->input('message');
+                $this->subject = $request->input('subject');
+                $this->data = array('name'=>"Ogbonna Vitalis(sender_name)", "f_name" => Auth::user()->name , "body" => $this->message);
+                Mail::send(['text/html'=>'mails.mail'],['name'=>'$artsttsts'], function($message){
+                $message->to('acebiz1985@gmail.com','KJK COMMUNIVATIONS')->subject($this->subject) ->setBody($this->data['body']);
+                $message->from(Auth::user()->email, Auth::user()->email);
+      
+              });
+              flash('Email Sent  Successfully')->success();
+              return back();
+      
+          
     }
 }

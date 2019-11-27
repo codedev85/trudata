@@ -1,5 +1,10 @@
 <div class="row why__header_inner_nav">
-    
+        <?php 
+
+        $menu = json_decode($menu->menu);
+        
+        
+        ?>
                         <div class="header__menu_btn menu__icon header__menu_btn--resp">
                                 <img src="resources/images/R.svg" alt="">
                             </div>
@@ -11,19 +16,23 @@
                     <div class="why__header_menu_links">
     
                         <a href="{{url('/')}}" class="why__header_link">
-                            Home
+                            {{-- Home --}}
+                            {{Ucfirst($menu[0])}}
                         </a>
                         <a href="{{url('/about-us/')}}" class="why__header_link">
-                            About tru-DATA
+                            {{Ucfirst($menu[1])}}
+                            {{-- About tru-DATA --}}
                         </a>
                         <a href="{{url('/why-tru-data/')}}" class="why__header_link">
-                            Why tru-DATA
+                            {{Ucfirst($menu[2])}}
+                            {{-- Why tru-DATA --}}
                         </a>
                         <!-- <a href="blog.html" class="why__header_link">
                             Blog
                         </a> -->
                         <a href="{{url('/contact-us/')}}" class="why__header_link  why__header_link--active">
-                            Contact
+                            {{Ucfirst($menu[3])}}
+                            {{-- Contact --}}
                         </a>
     
                     </div>

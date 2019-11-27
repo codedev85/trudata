@@ -9,6 +9,9 @@ use App\About;
 use App\Leadership;
 use App\Team;
 use App\Contact;
+use App\Footer;
+use App\Social;
+use App\Menu;
 
 class AboutController extends Controller
 {
@@ -16,15 +19,20 @@ class AboutController extends Controller
     public function getAboutUsPage(){
 
         $about = About::orderBy('created_at','DESC')->first();
-        $leaders = Leadership::all();
+        $leaders = Leadership::where('status',1)->get();
         $teams  = Team::all();
         $contact = Contact::orderby('created_at','DESC')->first();
-      
+        $footer = Footer::all();
+        $socials = Social::all();
+        $menu = Menu::orderBy('created_at','DESC')->first();
    
         return view('about.about-us')
                                 ->with('about',$about)
                                 ->with('leaders',$leaders)
                                 ->with('teams',$teams)
+                                ->with('footer',$footer)
+                                ->with('socials',$socials)
+                                ->with('menu',$menu)
                                 ->with('contact' ,$contact);
     }
 
@@ -48,14 +56,14 @@ class AboutController extends Controller
         if($request->hasFile('hero_bg')){
             
             $this->validate($request, [
-                'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
+                'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1918,min-height=490',
             ]);
 
            
             $hero_image = $request->file('hero_bg');
             $ext = $hero_image->getClientOriginalExtension();
             $image_resize = Image::make($hero_image->getRealPath());
-            $resize = Image::make($image_resize)->fit(1272, 375)->encode($ext);
+            $resize = Image::make($image_resize)->fit(1918, 490)->encode($ext);
             $hash = md5($resize->__toString());
             $path = "{$hash}.$ext";
             $url = 'about-us/'.$path;
@@ -89,17 +97,18 @@ class AboutController extends Controller
         $team_desc      = $request->input('team_desc');
 
          
-        if($request->hasFile('hero_bg') && $request->hasFile('verify_hero_bg') && $request->hasFile('why_tru_data_hero_bg')&& $request->hasFile('contact_hero_bg')){
+        if($request->hasFile('hero_bg') ){
+            //|| $request->hasFile('verify_hero_bg') || $request->hasFile('why_tru_data_hero_bg') || $request->hasFile('contact_hero_bg')
             
             $this->validate($request, [
-                'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
+                'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1918,min-height=490',
             ]);
 
            
             $hero_image = $request->file('hero_bg');
             $ext = $hero_image->getClientOriginalExtension();
             $image_resize = Image::make($hero_image->getRealPath());
-            $resize = Image::make($image_resize)->fit(1272, 375)->encode($ext);
+            $resize = Image::make($image_resize)->fit(1918, 490)->encode($ext);
             $hash = md5($resize->__toString());
             $path = "{$hash}.$ext";
             $url = 'about-us/'.$path;
@@ -115,6 +124,8 @@ class AboutController extends Controller
                 'join_our_team_desc'   => $team_desc,
                 // 'updated_at'       => date('Y,M,D'),
             ]);
+            flash('Updated Successfully')->success();
+            return back();
       }else{
 
                 $findWhyUsPage = About::where('id',$id)->update([
@@ -126,14 +137,16 @@ class AboutController extends Controller
                     'join_our_team_desc'   => $team_desc,
                     // 'updated_at'     => date('Y,M,D'),
                 ]);
+                flash('Updated Successfully')->success();
+                return back();
       }
 
-        flash('Updated Successfully')->success();
-        return back();
+      flash('Error saving the data !!!')->error();
+      return back();
     }
 
     public function leadershipIndex(){
-       $leaders = Leadership::all();
+       $leaders = Leadership::paginate(5);
 
         return view('leadership.admin-leadership-index')->with('leaders',$leaders);
     }
@@ -248,8 +261,36 @@ class AboutController extends Controller
 
 
         public function teamIndex(){
-            $teams = Team::all();
+            $teams = Team::paginate(5);
+           
+          
             return view('team.team-index')->with('teams',$teams);
+        }
+
+
+
+        public function removeTeam(Request $request , $id){
+   
+
+            Team::where('id',$id)->update([
+                'status'=> 0,
+            ]);
+
+            flash('Membership revoked ')->success();
+            return back();
+
+            
+        }
+
+        public function approveTeam(Request $request , $id){
+          
+            Team::where('id',$id)->update([
+                'status'=> 1,
+            ]);
+
+            flash('Memebership approved')->success();
+            return back();
+
         }
         public function createTeam(){
 
@@ -373,5 +414,24 @@ class AboutController extends Controller
               return back();
           }
         
+ public function approveLeadership(Request $request , $id){
 
+  Leadership::where('id',$id)->update([
+      'status' => 1,
+  ]);
+
+  flash('Leadership Approved Successfully')->success();
+   return back();
+ }
+
+
+ public function suspendLeadership(Request $request , $id){
+
+    Leadership::where('id',$id)->update([
+        'status' => 0,
+    ]);
+
+    flash('Leadership revoked Successfully')->success();
+  return back();
+   }
 }

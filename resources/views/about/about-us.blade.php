@@ -23,6 +23,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <title>Tru-Data</title>
+    <style>
+    .about__hero_container {
+        width: 100%;
+        position: relative;
+        background: url({{url('storage/'.$about->hero_bg)}});
+        /* background: url(../resources/images/about.jpg.jpg); */
+        background-position: center center;
+        height: 45vh;
+    }
+    .dimension{
+        color:red;
+    }
+    </style>
 </head>
 
 
@@ -118,7 +131,7 @@
             <div class="team__outer_container">
         
                 <div class="team__individual_container">
-
+@if(!empty($leaders[0]))
                     <div class="team__pic_container">
                         {{-- <img src="resources/images/gbade.jpeg" alt="" class="team_pic"> --}}
                         <img src="{{url('storage/'.$leaders[0]->img)}}" alt="" class="team_pic">
@@ -146,7 +159,8 @@
 
                     </div>
                 </div>
-               
+     @endif 
+     @if(!empty($leaders[1]))         
 
                 <div class="team__individual_container team__individual_container--second">
 
@@ -174,6 +188,8 @@
                     </div>
                 </div>
                
+    @endif
+     @if(!empty($leaders[2]))
                 <div class="team__individual_container">
 
                     <div class="team__pic_container">
@@ -197,6 +213,7 @@
 
                     </div>
                 </div>
+    @endif
 
             </div>
 

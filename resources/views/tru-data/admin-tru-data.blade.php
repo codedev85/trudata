@@ -74,7 +74,7 @@
             <div class="side-navigation__link_container">
 
                 <div class="side-navigation__inner_link_container">
-                    <a href="{{ url('/home') }}" class="side-navigation__link side-navigation__link--active">
+                    <a href="{{ url('/admin') }}" class="side-navigation__link side-navigation__link--active">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
                                 <path
@@ -114,7 +114,7 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                        Back to Main Site
+                        Back to Main Site 
                     </a>
                 </div>
 
@@ -268,10 +268,22 @@
                         <div class="header__log_container">
 
                             <p class="header__log-text">
-                                LOG OUT
+                                {{-- LOG OUT
                                 <span class="icon icon--logout">
                                     <img src="../assets/images/log_out.svg" height="20" alt="">
-                                </span>
+                                </span> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                  </a>
+                                  <span class="icon icon--logout">
+                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                    </span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                   
+                                </form>
                             </p>
 
                         </div>
@@ -347,7 +359,12 @@
                 </div> --}}
 
                 <div class="main-content__inner_wrapper">
-
+                        <div class="form__header--list1">
+                                <p class="">
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                </p>
+                             
+                            </div>
                     <form id="form-submit" method="post" action="{{url('/admin-why-us-page-edit/'.$whyUs->id)}}" enctype="multipart/form-data">
                         @csrf
                     <div class="main__container">

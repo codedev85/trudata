@@ -1438,58 +1438,64 @@ header {
     padding-bottom: 29px;
 }
 
-.why__hero_container {
+
+/* .why__hero_container {
     width: 100%;
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url(../images/why__hero_img.jpg);
     background-position: left left;
     background-size: cover;
     height: 50vh;
-}
+} */
 
-.terms__hero_container {
+
+/* .terms__hero_container {
     width: 100%;
     position: relative;
     background: url(../images/faq.jpg);
     background-position: left left;
     background-size: cover;
     height: 45vh;
-}
+} */
 
-.contact__hero_container {
+
+/* .contact__hero_container {
     width: 100%;
     position: relative;
     background: url(../images/contact__hero.jpg);
     background-position: left left;
     background-size: cover;
     height: 45vh;
-}
+} */
 
-.faq__hero_container {
+
+/* .faq__hero_container {
     width: 100%;
     position: relative;
     background: url(../images/faq.jpg);
     background-position: left left;
     background-size: cover;
     height: 60vh;
-}
+} */
 
-.about__hero_container {
+
+/* .about__hero_container {
     width: 100%;
     position: relative;
     background: url(../images/about.jpg.jpg);
     background-position: center center;
     height: 45vh;
-}
+} */
 
-.blog__hero_container {
+
+/* .blog__hero_container {
     width: 100%;
     position: relative;
     background: url(../images/blog__hero.jpg);
     background-position: top left;
     height: 40vh;
     background-repeat: no-repeat;
-}
+} */
 
 @media only screen and (max-width: 990px) {
     .why__hero_container {
@@ -4132,8 +4138,7 @@ div.sign__in.reveal {
     border-radius: 4px;
     border: none;
     background: #F66C0E;
-    color: white;
-    font-family: Poppins;
+    color: white font-family: Poppins;
     margin-top: 8px;
     padding: 11px 14px;
 }

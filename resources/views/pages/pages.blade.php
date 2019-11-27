@@ -46,6 +46,17 @@
             justify-content: center;
             align-items: center;
         }
+        .menu_img{
+            margin-left:79px;
+        }
+        .font_home{
+            text-decoration:none;
+            font-size:16px;
+
+        }
+        a{
+            text-decoration:none;
+        }
     </style>
 </head>
 
@@ -64,7 +75,7 @@
             <div class="side-navigation__link_container">
 
                 <div class="side-navigation__inner_link_container">
-                    <a href="{{ url('/home') }}" class="side-navigation__link side-navigation__link--active">
+                    <a href="{{ url('/admin') }}" class="side-navigation__link side-navigation__link--active">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
                                 <path
@@ -235,7 +246,7 @@
                 <div class="header__container">
 
                     <p class="header__custom-msg">
-                        Hi, Jim Doe - Welcome to tru-Data !!!
+                        Hi, {{Auth::user()->name}} - Welcome to tru-Data !!!
                     </p>
 
                     <div class="header__custom_inner-right_container">
@@ -255,10 +266,22 @@
                         <div class="header__log_container">
 
                             <p class="header__log-text">
-                                LOG OUT
+                                {{-- LOG OUT
                                 <span class="icon icon--logout">
                                     <img src="../assets/images/log_out.svg" height="20" alt="">
-                                </span>
+                                </span> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                  </a>
+                                  <span class="icon icon--logout">
+                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                    </span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                   
+                                </form>
                             </p>
 
                         </div>
@@ -352,38 +375,42 @@
 
                         <div class="main-content__card_container">
 
-                            <div class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--success">
+                            <a  href="{{url('/menu-page/')}}" class="main-content__card main-content__card--right-space">
+                               
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                         
+                                <img src="resource/images/casestudy__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--success font_home">
+                                Menu
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                    Menu
+                                   
                                 </p>
-                            </div>
+                            </a>
 
-                            <div class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--danger">
+                            <a  href="{{url('/footer/'.$footer[0]->id)}}" class="main-content__card main-content__card--right-space">
+                                <img src="resource/images/privpolicy__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--danger font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
+                                    Footer
                               
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--fail">
-                                   Footer
+                                   
                                 </p>
-                            </div>
+                            </a>
 
                             <a href="{{ url('/admin-why-us-page/'.$whyUs[0]->id) }}" class="main-content__card main-content__card--right-space">
-                            
+                                <img src="resource/images/homepage__tworeport.svg" alt="" class="homepage__img menu_img" id="aboutscc__img">
                                 <h1
-                                    class="main-content__card-title main-content__colored-text main-content__card-title--success">
+                                    class="main-content__card-title main-content__colored-text main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/orange-naira.png" height="18px" class="orange-naira" alt=""> -->
-                                  
+                                    Why Choose Us
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                  Why Choose Us
+                                 
                                 </p>
                             
                             </a>
@@ -399,36 +426,40 @@
                         <div class="main-content__card_container">
 
                             <a href="{{url('admin-homepage-edit')}}" class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--success">
+                                <img src="resource/images/advisory__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--success font_home">
                                  {{-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt="">  --}}
+                                 HomePage
                            
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                    HomePage
+                                   
                                 </p>
                             </a>
 
                             <a href="{{url('/edit-about-us/'.$about[0]->id)}}" class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--danger">
+                                <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--danger font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                   
+                                    About Us
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--fail">
-                                  About Us
+                                
                                 </p>
                             </a>
   
                             <a href="{{url('/contact-us-update/'.$contact[0]->id)}}" class="main-content__card main-content__card--right-space">
+                                <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img menu_img">
                                 <h1
-                                    class="main-content__card-title main-content__colored-text main-content__card-title--success">
+                                    class="main-content__card-title main-content__colored-text main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/orange-naira.png" height="18px" class="orange-naira" alt=""> -->
-                             
+                                    Contact Us
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                  Contact Us
+                                
                                 </p>
                             </a>
 
@@ -439,42 +470,47 @@
                             {{-- Account Review --}}
                         </h1>
 
-                        {{-- <div class="main-content__card_container">
+                        <div class="main-content__card_container">
 
-                            <div class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--success">
+                            <a href="{{url('/all-faqs/')}}" class="main-content__card main-content__card--right-space">
+                                <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                    &#x20A6; 33,400
+                                    FAQ
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                    SUCCESSFUL TRANSACTION: 30
+                                 
                                 </p>
-                            </div>
+                            </a>
 
-                            <div class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--danger">
+                            <a href="{{url('/update-term/'.$term[0]->id)}}" class="main-content__card main-content__card--right-space">
+                                <img src="resource/images/solutions__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--danger font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                    &#x20A6; 2,100
+                                    Privacy Policy
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--fail">
-                                    UNSUCCESSFUL TRANSACTIONS: 3
+                                    
                                 </p>
-                            </div>
+                            </a>
 
-                            <div class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--success">
+                            <a href="{{url('/socials/')}}" class="main-content__card main-content__card--right-space">
+                                <img src="resource/images/menu__tworeport.svg" alt="" class="homepage__img menu_img">
+                               
+                                <h1 class="main-content__card-title main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/orange-naira.png" height="18px" class="orange-naira" alt=""> -->
-                                    &#x20A6; 25,300
+                                    <br>
+                                   Socials
                                 </h1>
-                                <p
+                                {{-- <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
                                     TOTAL TRANSACTIONS: 33
-                                </p>
-                            </div>
+                                </p> --}}
+                            </a>
 
-                        </div> --}}
+                        </div>
 
                     </div>
 

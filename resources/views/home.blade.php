@@ -46,6 +46,19 @@
             justify-content: center;
             align-items: center;
         }
+
+   
+        .menu_img{
+            margin-left:79px;
+        }
+        .font_home{
+            text-decoration:none;
+            font-size:16px;
+
+        }
+        a{
+            text-decoration:none;
+        }
     </style>
 </head>
 
@@ -64,7 +77,7 @@
             <div class="side-navigation__link_container">
 
                 <div class="side-navigation__inner_link_container">
-                    <a href="{{ url('/home') }}" class="side-navigation__link side-navigation__link--active">
+                    <a href="{{ url('/admin') }}" class="side-navigation__link side-navigation__link--active">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
                                 <path
@@ -235,7 +248,7 @@
                 <div class="header__container">
 
                     <p class="header__custom-msg">
-                        Hi, Jim Doe - Welcome to tru-Data !!!
+                        Hi, {{Auth::user()->name}} - Welcome to tru-Data !!!
                     </p>
 
                     <div class="header__custom_inner-right_container">
@@ -255,10 +268,22 @@
                         <div class="header__log_container">
 
                             <p class="header__log-text">
-                                LOG OUT
+                                {{-- LOG OUT
                                 <span class="icon icon--logout">
                                     <img src="../assets/images/log_out.svg" height="20" alt="">
-                                </span>
+                                </span> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                  </a>
+                                  <span class="icon icon--logout">
+                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                    </span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                   
+                                </form>
                             </p>
 
                         </div>
@@ -353,37 +378,39 @@
                         <div class="main-content__card_container">
 
                             <a  href="{{url('/all-blogs/')}}" class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--success">
+                                <img src="resource/images/solutions__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                   
+                                    Blog Management
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                    Blog Management
+                                   
                                 </p>
                             </a>
 
-                            <div class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--danger">
+                            <a href="{{url('/roles/')}}" class="main-content__card main-content__card--right-space">
+                                <img src="resource/images/menu__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--danger font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                
+                                    Roles & Permissions
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--fail">
-                                    UNVERIFIED DOCUMENTS
+                                   
                                 </p>
-                            </div>
+                            </a>
 
                             <a href="{{ url('/pages/') }}" class="main-content__card main-content__card--right-space">
-                            
+                                <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img menu_img">
                                 <h1
-                                    class="main-content__card-title main-content__colored-text main-content__card-title--success">
+                                    class="main-content__card-title main-content__colored-text main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/orange-naira.png" height="18px" class="orange-naira" alt=""> -->
-                                  
+                                    Pages
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                  Pages
+                                 
                                 </p>
                             
                             </a>
@@ -397,40 +424,43 @@
                         <br>
 
                         <div class="main-content__card_container">
-
-                            <div class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--success">
+                          
+                            <a href="{{url('/all-admin/')}}" class="main-content__card main-content__card--right-space">
+                                <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                             
+                                    Admin Management
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                    Admin Management
+                                    
                                 </p>
-                            </div>
+                            </a>
 
-                            <div class="main-content__card main-content__card--right-space">
-                                <h1 class="main-content__card-title main-content__card-title--danger">
+                            <a href="{{url('/update-user/'.Auth::user()->id)}}" class="main-content__card main-content__card--right-space">
+                                <img src="resource/images/advisory__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <h1 class="main-content__card-title main-content__card-title--danger font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
-                                 
+                                    Change Password
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--fail">
-                                   Change Password
+                                 
                                 </p>
-                            </div>
+                            </a>
 
-                            <div class="main-content__card main-content__card--right-space">
+                            <a href="{{url('/contact-developer/')}}" class="main-content__card main-content__card--right-space">
+                                    <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img menu_img">
                                 <h1
-                                    class="main-content__card-title main-content__colored-text main-content__card-title--success">
+                                    class="main-content__card-title main-content__colored-text main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/orange-naira.png" height="18px" class="orange-naira" alt=""> -->
-                                   
+                                    Contact KJK
                                 </h1>
                                 <p
                                     class="main-content__text main-content__text--small main-content__text--capitalize main-content__text--success">
-                                    Contact KJK
+                                    
                                 </p>
-                            </div>
+                            </a>
 
                         </div>
 

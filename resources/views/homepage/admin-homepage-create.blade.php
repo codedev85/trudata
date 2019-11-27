@@ -1,26 +1,4 @@
-{{-- @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,6 +34,15 @@
         .why_us_img{
             width:20%;
         }
+     .video__container{
+         height:600px;
+     }
+     .benefit_img{
+         margin-left:350px;
+     }
+     .dimension{
+         color:red;
+     }
     </style>
 </head>
 
@@ -74,7 +61,7 @@
             <div class="side-navigation__link_container">
 
                 <div class="side-navigation__inner_link_container">
-                    <a href="{{ url('/home') }}" class="side-navigation__link side-navigation__link--active">
+                    <a href="{{ url('/admin') }}" class="side-navigation__link side-navigation__link--active">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
                                 <path
@@ -306,10 +293,22 @@
                         <div class="header__log_container">
 
                             <p class="header__log-text">
-                                LOG OUT
+                                {{-- LOG OUT
                                 <span class="icon icon--logout">
                                     <img src="../assets/images/log_out.svg" height="20" alt="">
-                                </span>
+                                </span> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                  </a>
+                                  <span class="icon icon--logout">
+                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                    </span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                   
+                                </form>
                             </p>
 
                         </div>
@@ -326,55 +325,94 @@
   <br><br>
             <div class="main-content__container">
 
-
+                  
                 <div class="main-content__inner_wrapper">
                         {{-- admin-homepage-update/{id} --}}
+                        <div class="form__header--list1">
+                                <p class="">
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                </p>
+                             
+                            </div>
                     <form id="form-submit" method="post" action="{{url('/admin-homepage-update/'.$homepage[0]->id)}}" enctype="multipart/form-data">
                         @csrf
                     <div class="main__container">
                         <div class="center__container">
-                            <div class="center__container--wrapper center__container--second-wrapper">
+                            <div class="center__container--wrapper center__container--second-wrapper video__container">
                             <input  class="input" placeholder="title" name="hero_bg_text" value="{{$homepage[0]->hero_title}}">
                                 <input type="text" name="hero_bg_small" value="{{$homepage[0]->hero_desc}}">
                                 <input type="file" name="hero_bg">
-                                <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1919px Height - 494px</span> 
-                                    <img src="{{url('storage/')}}" height="150">
+                                <input type="hidden" name="hero_bg_db" value="{{$homepage[0]->video_url}}"/>
+                               
+                                <div class="container custom__edit--img-inner"><span class="span__text--container" class="video_width"></span> 
+                                    {{-- <img src="{{url('storage/')}}" height="150"> --}}
+                              
+                                    <video autoplay="" muted="" loop="" id="myVideo" width="320" height="240">
+                                            <source src="{{url('storage/'.$homepage[0]->video_url)}}" type="video/mp4">
+                                        </video>
                                 </div>
                             </div>
+
+                            <div class="center__container">
+                                    <div class="center__container--wrapper center__container--second-wrapper video__container">
+                                        <input type="file" name="hero_bg_img">
+                                        <input type="hidden" name="hero_bg_img_db" value="{{$homepage[0]->hero_image}}"/>
+                                       
+                                        <div class="container custom__edit--img-inner"><span class="span__text--container" class="video_width"></span> 
+                                            <span class="dimension">Width:587px height:658px</span>
+                                            <img src="{{url('storage/'.$homepage[0]->hero_image)}}" width="50" height="450">
+                                      
+                                            
+                                        </div>
+                                    </div>
+                                 
+                         
                             <div class="form__container--section-vision">
                                 <h3>Benefits</h3>
                                 <?php
                                
                                 $benefit = json_decode($homepage[0]->benefits);
-                                // dd($benefit);
-                                // $mission_desc  = json_decode($about->mission_desc);
-                               
+                                     // dd($benefit);
+                                    // $mission_desc  = json_decode($about->mission_desc);
+                                 //video_url
+                                //benefits_url
+                                //trudata_services_img
 
                                 ?>
                             <div class="vision_switchable--container v--switchable-container--on">
                                 <input type="file" name="benefit_image"/>
-                                <textarea placeholder="text" name="benefit[]"> {{$benefit[0]}}</textarea>
+                                <input type="hidden" name="benefit_image_db" value="{{$homepage[0]->benefits_url}}"/>
+                                <input placeholder="text" name="benefit[]" value="{{$benefit[0]}}" />
+                                <span class="dimension">Width:587px height:1023px</span>
+                                <img src="{{url('storage/'.$homepage[0]->benefits_url)}}" width="100" height="100" class="benefit_img"/>
                             </div>
                             <div class="vision_switchable--container ">
-                                <textarea placeholder="text" name="benefit[]"> {{$benefit[1]}}</textarea>
+                                    <input placeholder="text" name="benefit[]" value="{{$benefit[1]}}" />
+                                {{-- <textarea placeholder="text" name="benefit[]"> {{$benefit[1]}}</textarea> --}}
                              </div>
                              <div class="vision_switchable--container ">
-                                <textarea placeholder="text" name="benefit[]"> {{$benefit[2]}}</textarea>
+                                    <input placeholder="text" name="benefit[]" value="{{$benefit[2]}}" />
+                                {{-- <textarea placeholder="text" name="benefit[]"> {{$benefit[2]}}</textarea> --}}
                              </div>
                              <div class="vision_switchable--container ">
-                                <textarea placeholder="text" name="benefit[]"> {{$benefit[3]}}</textarea>
+                                    <input placeholder="text" name="benefit[]" value="{{$benefit[3]}}" />
+                                {{-- <textarea placeholder="text" name="benefit[]"> {{$benefit[3]}}</textarea> --}}
                              </div>
                              <div class="vision_switchable--container ">
-                                <textarea placeholder="text" name="benefit[]"> {{$benefit[4]}}</textarea>
+                                    <input placeholder="text" name="benefit[]" value="{{$benefit[4]}}" />
+                                {{-- <textarea placeholder="text" name="benefit[]"> {{$benefit[4]}}</textarea> --}}
                              </div>
                              <div class="vision_switchable--container ">
-                                <textarea placeholder="text" name="benefit[]"> {{$benefit[5]}}</textarea>
+                                    <input placeholder="text" name="benefit[]" value="{{$benefit[5]}}" />
+                                {{-- <textarea placeholder="text" name="benefit[]"> {{$benefit[5]}}</textarea> --}}
                              </div>
                              <div class="vision_switchable--container ">
-                                <textarea placeholder="text" name="benefit[]"> {{$benefit[6]}}</textarea>
+                                    <input placeholder="text" name="benefit[]" value="{{$benefit[6]}}" />
+                                {{-- <textarea placeholder="text" name="benefit[]"> {{$benefit[6]}}</textarea> --}}
                              </div>
                              <div class="vision_switchable--container ">
-                                <textarea placeholder="text" name="benefit[]"> {{$benefit[7]}}</textarea>
+                                    <input placeholder="text" name="benefit[]" value="{{$benefit[7]}}" />
+                                {{-- <textarea placeholder="text" name="benefit[]"> {{$benefit[7]}}</textarea> --}}
                              </div>
                      
                                 <div>
@@ -386,6 +424,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form__container--section-vision">
+                                    <h3>Upload Video</h3>
+                                     <input type="file" name="video_upload" >
+                                     <input type="hidden" name="video_upload_db" name="{{$homepage[0]->video_upload}}"/>
+                                   
+                               </div>
                             <div class="form__container--section-vision">
                                 <h3>Who We Are</h3>
                                  <input type="text" name="who_we_are" value="{{$homepage[0]->who_we_are_title}}"/>
@@ -409,6 +453,7 @@
                             ?>
                         <div class="values--switchable--container values--switchable-container--on">
                                     <input type="file" name="service_img"/>
+                                    <input type="hidden" name="trudata_services_db" value="{{$homepage[0]->trudata_services_img}}"/>
                                     <textarea placeholder="text" name="service[]">{{$service[0]}}</textarea>
                         </div>
                         <div class="values--switchable--container ">

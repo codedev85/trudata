@@ -6,27 +6,34 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
 use App\Trudata;
+use App\Footer;
+use App\Social;
+use App\Menu;
 
 class TruDataController extends Controller
 {
     //
     public function getTruDataPage(){
        $trudata = Trudata::orderBy('created_at','DESC')->first();
-       
+       $footer = Footer::all();
+       $socials = Social::all();
+       $menu = Menu::orderBy('created_at','DESC')->first();
       
-        return view('tru-data.trudata')->with('trudata',$trudata);
+      
+        return view('tru-data.trudata')->with('trudata',$trudata)->with('footer',$footer)->with('socials',$socials)->with('menu',$menu);
     }
 
     public function updateWhyUsPage($id){
 
         $whyUs = Trudata::where('id',$id)->first();
+     
     
         return view('tru-data.admin-tru-data')->with('whyUs',$whyUs);
     }
 
     public function EditWhyUsPage(Request $request,$id){
 
-  // dd($request);
+//   dd($request);
 
 
         $why_us_text_big = $request->input('hero-bg-text');
@@ -36,17 +43,24 @@ class TruDataController extends Controller
         $contact_number = $request->input('contact_number');
         $why_tru_data = json_encode($request->input('why_tru_data'));
       
-
+         $array = [];
       
-        if($request->hasFile('hero_bg') && $request->hasFile('verify_hero_bg') && $request->hasFile('why_tru_data_hero_bg')&& $request->hasFile('contact_hero_bg')){
-            
+        if($request->hasFile('hero_bg')  || $request->hasFile('verify_hero_bg') || $request->hasFile('why_tru_data_hero_bg')|| $request->hasFile('contact_hero_bg')){
+         
             $this->validate($request, [
-                'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
-                'verify_hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1920,min-height=518',
-                'why_tru_data_hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1840,min-height=1236',
-                'contact_hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1840,min-height=1236',
+                'hero_bg' => 'mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
+                'verify_hero_bg' => 'mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1920,min-height=518',
+                'why_tru_data_hero_bg' => 'mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1840,min-height=1236',
+                'contact_hero_bg' => 'mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1840,min-height=1236',
             ]);
 
+
+             array_push($array , $request->file('hero_bg'));
+             array_push($array , $request->file('verify_hero_bg'));
+             array_push($array , $request->file('why_tru_data_hero_bg'));
+             array_push($array , $request->file('contact_hero_bg'));
+            //  dd($array);
+        
             $verify = $request->file('verify_hero_bg');
             $ext = $verify->getClientOriginalExtension();
             $image_resize_verify = Image::make($verify->getRealPath());
@@ -54,11 +68,10 @@ class TruDataController extends Controller
             $hash_verify = md5($resize_verify->__toString());
             $path_verify = "{$hash_verify}.$ext";
             $url_verify = 'why-tru/'.$path_verify;
-          
             Storage::put($url_verify, $resize_verify->__toString());
-           
+        
 
-
+    
             $hero_image = $request->file('hero_bg');
             $ext = $hero_image->getClientOriginalExtension();
             $image_resize = Image::make($hero_image->getRealPath());
@@ -67,7 +80,8 @@ class TruDataController extends Controller
             $path = "{$hash}.$ext";
             $url = 'why-tru/'.$path;
             Storage::put($url, $resize->__toString());
-
+       
+       
             
             $why_tru = $request->file('why_tru_data_hero_bg');
             $ext = $why_tru->getClientOriginalExtension();
@@ -77,6 +91,7 @@ class TruDataController extends Controller
             $path = "{$hashWhyUs}.$ext";
             $url_why_us = 'why-tru/'.$path;
             Storage::put($url_why_us, $resize_why_tru->__toString());
+   
 
 
 
@@ -88,6 +103,7 @@ class TruDataController extends Controller
             $path = "{$hashContact}.$ext";
             $url_contact_us = 'why-tru/'.$path;
             Storage::put($url_contact_us, $resize_contact_us->__toString());
+
 
             $findWhyUsPage = Trudata::where('id',$id)->update([
                 'hero_bg_text'   => $why_us_text_big,
@@ -102,8 +118,11 @@ class TruDataController extends Controller
                 'contact_img'    => $url_contact_us,
                 'updated_at'     => date('Y,M,D'),
             ]);
+            
+        flash('Updated Successfully')->success();
+        return back();
       }else{
-
+     
                 $findWhyUsPage = Trudata::where('id',$id)->update([
                     'hero_bg_text'   => $why_us_text_big,
                     'hero_bg_small'  => $why_us_text_small,
@@ -113,9 +132,12 @@ class TruDataController extends Controller
                     'why_us'         => $why_tru_data,
                     // 'updated_at'     => date('Y,M,D'),
                 ]);
+                
+        flash('Updated Successfully')->success();
+        return back();
       }
 
-        flash('Updated Successfully')->success();
+        flash('Error uploading the data!!')->error();
         return back();
 
   }

@@ -10,12 +10,29 @@
     </title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet">
     <!-- build:css /assets/styles/styles.css -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/styles/styles-a4b2e688ed.css">
     <!-- endbuild -->
 
     <!-- build:js /assets/scripts/Vendor.js -->
     <script src="../assets/scripts/Vendor-57062a8ee8.js"></script>
     <!-- endbuild -->
+    <style>
+          .pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    z-index: 2;
+    color: grey;
+    cursor: default;
+    background-color: transparent;
+    border-color: grey;
+}
+
+
+    </style>
 </head>
 
 <body>
@@ -33,7 +50,7 @@
             <div class="side-navigation__link_container">
 
                 <div class="side-navigation__inner_link_container">
-                    <a href="{{url('/home')}}" class="side-navigation__link">
+                    <a href="{{url('/admin')}}" class="side-navigation__link">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
                                 <path
@@ -107,10 +124,22 @@
                         <div class="header__log_container">
 
                             <p class="header__log-text">
-                                LOG OUT
+                                {{-- LOG OUT
                                 <span class="icon icon--logout">
                                     <img src="../assets/images/log_out.svg" height="20" alt="">
-                                </span>
+                                </span> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                  </a>
+                                  <span class="icon icon--logout">
+                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                    </span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                   
+                                </form>
                             </p>
 
                         </div>
@@ -143,11 +172,18 @@
             
 
                     <div class="manage-account__body">
-
+                        @include('flash::message')
                         <div class="manage-account-user-wrapper manage-account-user-wrapper--view">
 
                             <div class="manage-account_user-list-container">
-
+                                
+                                    <div class="form__header--list1">
+                                            <p class="">
+                                                <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                            </p>
+                                        
+                                        </div>
+                                        <br>
                                 <div class="manage-account_user-list-item-header">
 
                                     <h3
@@ -190,13 +226,22 @@
                                     &nbsp;&nbsp;&nbsp; <a href="{{url('/team-edit/'.$team->id)}}" class="btn btn--danger">
                                             EDIT
                                         </a>
-                                        &nbsp;&nbsp;&nbsp; <a href="" class="manage-account_user-del">
-                                            <img src="../assets/images/delete.svg" alt="">
+                                        @if($team->status == 1)
+                                        &nbsp;&nbsp;&nbsp; <a href="{{url('/remove/team/'.$team->id)}}" class="manage-account_user-del btn btn--suspend">
+                                            {{-- <img src="../assets/images/delete.svg" alt=""> --}}
+                                            REMOVE
                                         </a>
+
+                                       @else
+                                        &nbsp;&nbsp;&nbsp; <a href="{{url('/approve/team/'.$team->id)}}" class="manage-account_user-del btn btn--approve">
+                                            {{-- <img src="../assets/images/delete.svg" alt=""> --}}
+                                            APPROVE
+                                        </a>
+                                        @endif
                                     </p>
 
                                 </div>
-                @endforeach
+                              @endforeach
 
                          
 
@@ -206,12 +251,12 @@
                             <div class="page__pagination">
 
                                 <div class="page__pagination_links">
-
-                                    <a href="" class="page__pagination_link">Previous</a>
+                                 {{$teams->links()}}
+                                    {{-- <a href="" class="page__pagination_link">Previous</a>
                                     <a href="" class="page__pagination_link page__pagination_link--active">1</a>
                                     <a href="" class="page__pagination_link">2</a>
                                     <a href="" class="page__pagination_link">3</a>
-                                    <a href="" class="page__pagination_link">Next</a>
+                                    <a href="" class="page__pagination_link">Next</a> --}}
 
                                 </div>
 

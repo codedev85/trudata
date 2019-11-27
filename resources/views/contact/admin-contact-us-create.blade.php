@@ -56,6 +56,9 @@
         .why_us_img{
             width:20%;
         }
+        .dimension{
+            color:red;
+        }
     </style>
 </head>
 
@@ -74,7 +77,7 @@
             <div class="side-navigation__link_container">
 
                 <div class="side-navigation__inner_link_container">
-                    <a href="{{ url('/home') }}" class="side-navigation__link side-navigation__link--active">
+                    <a href="{{ url('/admin') }}" class="side-navigation__link side-navigation__link--active">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
                                 <path
@@ -268,10 +271,22 @@
                         <div class="header__log_container">
 
                             <p class="header__log-text">
-                                LOG OUT
+                                {{-- LOG OUT
                                 <span class="icon icon--logout">
                                     <img src="../assets/images/log_out.svg" height="20" alt="">
-                                </span>
+                                </span> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                  </a>
+                                  <span class="icon icon--logout">
+                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                    </span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                   
+                                </form>
                             </p>
 
                         </div>
@@ -290,6 +305,12 @@
 
           
                 <div class="main-content__inner_wrapper">
+                        <div class="form__header--list1">
+                                <p class="">
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                </p>
+                             
+                            </div>
 
                     <form id="form-submit" method="post" action="{{url('/contact-us-update-post/'.$findContact->id)}}" enctype="multipart/form-data">
                         @csrf
@@ -299,7 +320,7 @@
                             <input  class="input" placeholder="title" name="hero-bg-text" value="{{$findContact->hero_bg_text}}">
                                 <input type="text" name="hero_bg_small" value="{{$findContact->hero_bg_small}}">
                                 <input type="file" name="hero_bg">
-                                <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1919px Height - 494px</span> 
+                                <div class="container custom__edit--img-inner"><span class="span__text--container dimension">Width - 1918px Height - 490px</span> 
                                 <img src="{{url('storage/'.$findContact->hero_bg_img)}}" height="100">
                                 </div>
                             </div>

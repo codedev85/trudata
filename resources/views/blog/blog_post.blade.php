@@ -15,11 +15,24 @@
     <link rel="stylesheet" href="vendors/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="vendors/css/owl.carousel.min.css">
     <style>
-        @import url(resources/css/styles.css);
+        @import url(../resources/css/styles.css);
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <title>Blog Tru-Data</title>
+    <style>
+.blog__banner_container {
+    background: url({{url('storage/'.$blogBanner[0]->banner)}});
+}
+.blog__banner_container {
+    width: 100%;
+    position: relative;
+    /* background: url('storage/'.{{$blogBanner[0]->banner}}); */
+    background-position: top left;
+    height: 40vh;
+    background-repeat: no-repeat;
+}
+   </style>
 </head>
 
 <body>
@@ -28,60 +41,34 @@
 
         <nav class="why__header_navigation">
 
-            <div class="row why__header_inner_nav">
+           
 
-                    <div class="header__menu_btn menu__icon header__menu_btn--resp">
-                            <img src="resources/images/R.svg" alt="">
-                        </div>
+                    {{-- <div class="header__menu_btn menu__icon header__menu_btn--resp">
+                            <img src="../resources/images/R.svg" alt="">
+                        </div> --}}
 
-                <div class="why__header_menu_links">
+        
+                    @include('partials.nav')
 
-                    <a href="index.html" class="why__header_link">
-                        Home
-                    </a>
-                    <a href="about.html" class="why__header_link">
-                        About
-                    </a>
-                    <a href="why_tru.html" class="why__header_link">
-                        Why tru-Data
-                    </a>
-                    <a href="blog.html" class="why__header_link why__header_link--active">
-                        Blog
-                    </a>
-                    <a href="contact.html" class="why__header_link">
-                        Contact
-                    </a>
 
-                </div>
-
-                <div class="Why__header__links">
-
-                    <a href="" class="header_link">
-                        Log In
-                    </a>
-
-                    <a href="" class="header_link header_link--bordered">
-                        GET STARTED
-                    </a>
-
-                </div>
-
-            </div>
+         
 
         </nav>
 
         <div class="why__hero_text why__hero_text--spaced">
             <h2 class="why__hero_title">
-                tru-DATA BLOG
+                {{-- tru-DATA BLOG --}}
+                {{$blogBanner[0]->header_one}}
             </h2>
             <p class="why__hero_sub">
-                Everything you need to talk about tru-DATA.
+                {{$blogBanner[0]->header_two}}
+                {{-- Everything you need to talk about tru-DATA. --}}
             </p>
         </div>
 
-        <div class="blog__hero_container">
+        <div class="blog__banner_container">
 
-            <!-- <img src="resources/images/blog_post.jpg" alt=""> -->
+            {{-- <img src="{{url('storage/'.$blogBanner[0]->banner)}}" alt="">  --}}
 
         </div>
 
@@ -93,50 +80,43 @@
 
             <div class="blog__content_container_img">
 
-                <img src="resources/images/post_head_img.jpg" alt="">
+                <img src="{{url('storage/'.$blogPost->thumbnail)}}" alt="">
 
             </div>
 
             <h2 class="blog__content_title">
-                Tripple Gee eyes growth with new anti-counterfeiting solution
+                {{$blogPost->title}}
+                {{-- Tripple Gee eyes growth with new anti-counterfeiting solution --}}
             </h2>
 
-            <span class="blog_content_time_stamp"> Sept 16</span>
+            <span class="blog_content_time_stamp"> {{$blogPost->created_at->format('M d')}}</span>
             <img src="resources/images/user__black.svg" alt="">
-            <span class="blog_content_ref">Written by <span class="blog_content_author">eni doe</span></span>
+            <span class="blog_content_ref">Written by <span class="blog_content_author">{{$blogPost->user['name']}}</span></span>
 
             <div class="blog__content_read">
                 <p class="blog__content_read_inner">
-                        Tripple Gee & Company Plc will this week launch an anti-counterfeiting solution aimed at boosting the business of the security printing company.<br>
-                        The application, known as tru-Data, is designed to protect true identity of sensitive documents and prevent counterfeiting. It will be unveiled at the fourth ID4Africa Exhibition in Abuja between April 24 and 26.<br>
-                        Tripple Gee & Company Plc Vice Chairman, Chief Gbade Giwa described the product as a revolutionary product needed to fight identity theft and counterfeiting of sensitive documents.<br>
-                        According to him, with the new solution, fraudulent attacks can easily be detected when the  encryption of the critical data of the document is decrypted using the app, which is freely available on the Google Playstore, to confirm the authenticity of the document.<br>
-                        “What is more, the picture of the original owner of the document can also be encrypted making ID theft absolutely impossible. The encryption could be on documents such as certificates from tertiary institutions, birth certificates, Corporate Affairs Commission (CAC) Certificate, Certificate of Occupancy (C of O), ID cards among others,” Giwa said.<br><br>
-                        
-                        He noted that the app, which is powered by HD Barcode Technology, is the first of series of products Tripple Gee plans to launch into the Nigerian marketplace.
-                        <br><br>
-                        “Tru-Data has many benefits as it can capture images and longer texts-172 times more than normal QR code, and ZIP files. It makes quick verification of documents possible and eliminates counterfeit of products in circulation. You do not need internet or data connection to verify a document.  Verify-on-the Go, anytime and anywhere. It is good for identifying original Fast Moving Consumer Goods (FMCG) products. It is a must-have for organisation which wants brand protection and anti-counterfeiting.  We highly recommend it to tertiary institutions, human resources managers, government agencies and private organisations,” Giwa said.
+                    {{$blogPost->content}}     
                 </p>
             </div>
 
             <div class="blog__comment_container">
                 <div class="blog__comment_details">
                     <div class="count__comment">
-                        <p class="count_comment_inner">
+                        {{-- <p class="count_comment_inner">
                             0 Comment
-                        </p>
+                        </p> --}}
                     </div>
 
                     <div class="share__comment_container">
                         
                         <a href="">
-                            <img src="resources/images/whatsapp-logo.svg" alt="">
+                            <img src="../resources/images/whatsapp-logo.svg" alt="">
                         </a> 
                         <a href="">
-                            <img src="resources/images/twitter__facebook.png" alt="">
+                            <img src="../resources/images/twitter__facebook.png" alt="">
                         </a> 
                         <a href="">
-                            <img src="resources/images/facebook__gold.svg" alt="">
+                            <img src="../resources/images/facebook__gold.svg" alt="">
                         </a> 
 
                     </div>
@@ -227,160 +207,182 @@
     
     </section>
 
-    <footer class="footer">
+  
+<section class="footer">
+    <div class="footer__container row ">
+    
+            <div class="footer__item_flex_container">
 
-            <div class="footer__container row">
-    
-                <div class="footer__item_flex_container">
-    
-                    <div class="footer__inner_item">
-                        <div class="img__logo_footer_container">
-                            <img src="resources/images/tru-DATA.fw.png" alt="">
-                        </div>
-    
-                        <span class="footer__text">
-                            tru-DATA is Nigeria’s first Automated True Identity Verification Platform that ensures that
-                            encrypted documents can NEVER be altered in a lifetime and does not require Internet Data on the
-                            mobile application to verify the encrypted document.
-                        </span>
-    
-    
-    
+                <div class="footer__inner_item">
+                    <div class="img__logo_footer_container">
+                        <img src="resources/images/tru-DATA.fw.png" alt="">
                     </div>
-    
-                    <div class="footer__inner_item">
-    
-                        <div class="img__logo_footer_container">
-                            <h3 class="footer__inner_item_title">
-                                COMPANY
-                            </h3>
-                        </div>
-    
-                        <a href="about.html" class="footer__text">
-                            About
-                        </a>
-                        <a href="why_tru.html" class="footer__text">
-                            Why tru-Data
-                        </a>
-                        <a href="" class="footer__text">
-                            How It Works
-                        </a>
-                        <a href="blog.html" class="footer__text">
-                            Blog
-                        </a>
-                        <a href="faq.html" class="footer__text">
-                            FAQS
-                        </a>
-    
-                    </div>
-    
-                    <div class="footer__inner_item">
-    
-                        <div class="img__logo_footer_container">
-                            <h3 class="footer__inner_item_title">
-                                PRODUCTS
-                            </h3>
-                        </div>
-    
-                        <a href="" class="footer__text">
-                            Features
-                        </a>
-                        <a href="" class="footer__text">
-                            Desktop App
-                        </a>
-                        <a href="" class="footer__text">
-                            Mobile App
-                        </a>
-    
-                    </div>
-    
-                    <div class="footer__inner_item">
-                        <div class="img__logo_footer_container">
-                            <h3 class="footer__inner_item_title">
-                                LEGAL
-                            </h3>
-                        </div>
-    
-                        <a href="terms.html" class="footer__text">
-                            Terms of Service
-                        </a>
-                        <a href="" class="footer__text">
-                            Privacy Policy
-                        </a>
-                        <a href="" class="footer__text">
-                            Mobile App
-                        </a>
-    
-                    </div>
-    
-                    <div class="footer__inner_item">
-    
-                        <div class="img__logo_footer_container">
-                            <h3 class="footer__inner_item_title footer__inner_item_title--centered">
-                                CONNECT WITH US
-                            </h3>
-                        </div>
-    
-                        <div class="footer__social_container">
-                            <a href="" class="footer__social_link_img">
-                                <img src="resources/images/facebook__footer.svg" alt="" class="footer__social_img">
-                            </a>
-                            <a href="" class="footer__social_link_img">
-                                <img src="resources/images/twitter_footer.svg" alt="" class="footer__social_img">
-                            </a>
-                            <a href="" class="footer__social_link_img">
-                                <img src="resources/images/inst__footer.svg" alt="" class="footer__social_img">
-                            </a>
-                            <a href="" class="footer__social_link_img">
-                                <img src="resources/images/linkedin__footer.svg" alt="" class="footer__social_img">
-                            </a>
-                            <a href="" class="footer__social_link_img">
-                                <img src="resources/images/youtube__footer.svg" alt="" class="footer__social_img">
-                            </a>
-                        </div>
-    
-                        <span class="footer__text footer__text--center">
-                            info@tru-data.com.ng<br>
-                            +234 8055190713
-                        </span>
-    
-                    </div>
-    
+
+                    <span class="footer__text">
+                        {{-- <span style="text-transform: lowercase">tru-</span><span style="text-transform: uppercase">DATA</span> is Nigeria's first Automated True Identity Verification Platform that ensures that
+                        encrypted documents can NEVER be altered in a lifetime and does not require Internet Data on the
+                        mobile application to verify the encrypted document. --}}
+                        {{$footer[0]->trudata}}
+                    </span>
+
+
+
                 </div>
-    
-                <div class="footer__misc_content">
-    
+
+                <div class="footer__inner_item">
+
+                    <div class="img__logo_footer_container">
+                        <h3 class="footer__inner_item_title">
+                            COMPANY
+                        </h3>
+                    </div>
+                  <?php $company = json_decode($footer[0]->company); ?>
+                    <a href="{{ url('/about-us/') }}" class="footer__text">
+                        {{-- About --}}
+                        {{$company[0]}}
+                    </a>
+                    <a href="{{ url('/why-tru-data/') }}" class="footer__text">
+                        {{$company[1]}}
+                        {{-- Why <span style="text-transform: lowercase">tru-</span><span style="text-transform: uppercase">DATA</span> --}}
+                    </a>
+                    <a href="" class="footer__text">
+                        {{-- How It Works --}}
+                        {{$company[2]}}
+                    </a>
+                    <a href="{{url('/blog')}}" class="footer__text">
+                        {{-- Blog --}}
+                        {{$company[3]}}
+                    </a>
+                    <a href="{{url('/faq/')}}" class="footer__text">
+                        {{-- FAQS --}}
+                        {{$company[4]}}
+                    </a>
+
+                </div>
+
+                <div class="footer__inner_item">
+
+                    <div class="img__logo_footer_container">
+                        <h3 class="footer__inner_item_title">
+                            PRODUCTS
+                        </h3>
+                    </div>
+             <?php $product =  json_decode($footer[0]->product); ?>
+                    <a href="" class="footer__text">
+                        {{-- Features --}}
+                        {{$product[0]}}
+                    </a>
+                    <a href="" class="footer__text">
+                        {{-- Desktop App --}}
+                        {{$product[1]}}
+                    </a>
+                    <a href="" class="footer__text">
+                        {{-- Mobile App --}}
+                        {{$product[2]}}
+                    </a>
+
+                </div>
+
+                <div class="footer__inner_item">
+                    <div class="img__logo_footer_container">
+                        <h3 class="footer__inner_item_title">
+                            LEGAL
+                        </h3>
+                    </div>
+                  
+                    <?php $legal =  json_decode($footer[0]->legal);?>
+
+                    <a href="{{url('/terms')}}" class="footer__text">
+                        {{-- Terms of Service --}}
+                        {{$legal[0]}}
+                    </a>
+                    <a href="{{url('/terms')}}" class="footer__text">
+                        {{-- Privacy Policy --}}
+                        {{$legal[1]}}
+                    </a>
+                    <a href="" class="footer__text">
+                        {{-- Mobile App --}}
+                        {{$legal[2]}}
+                    </a>
+
+                </div>
+
+                <div class="footer__inner_item">
+
+                    <div class="img__logo_footer_container">
+                        <h3 class="footer__inner_item_title footer__inner_item_title--centered">
+                            CONNECT WITH US
+                        </h3>
+                    </div>
+                    <?php 
+                     
+                     $socialDecode = json_decode($socials[0]->name);
+                    //  dd($socialDecode[0]);
+
+                     ?>
+
+                    <div class="footer__social_container">
+                        <a href="https://www.facebook.com/.{{$socialDecode[0]}}" target="_blank" class="footer__social_link_img">
+                            <img src="../resources/images/facebook__footer.svg" alt="" class="footer__social_img">
+                        </a>
+                        <a href="https://twitter.com/{{$socialDecode[3]}}" class="footer__social_link_img" target="_blank">
+                            <img src="../resources/images/twitter_footer.svg" alt="" class="footer__social_img">
+                        </a>
+                        <a href="" class="footer__social_link_img">
+                            <img src="../resources/images/inst__footer.svg" alt="" class="footer__social_img">
+                        </a>
+                    <a href="https://www.linkedin.com/company/{{$socialDecode[2]}}" target="_blank"
+                            class="footer__social_link_img">
+                            <img src="../resources/images/linkedin__footer.svg" alt="" class="footer__social_img">
+                        </a>
+                        <a href="" class="footer__social_link_img" target="_blank">
+                            <img src="../resources/images/youtube__footer.svg" alt="" class="footer__social_img">
+                        </a>
+                    </div>
+
                     <span class="footer__text footer__text--center">
-                        you are always welcome to us at our office!.
-                    <br><br>
-    
-                    62, old yaba road , lagos Nigeria.
+                        <span style="text-transform: lowercase">{{$footer[0]->connectEmail}}</span><br>
+                        {{-- +234 8055190713 --}}
+                        {{$footer[0]->connectAddress}}
                     </span>
-    
-                </div>
-    
-                <div class="footer__under_content">
-    
-                    <span class="footer__text footer__text--small">
-                        © 2019 tru-DATA | Disclosures <br><br>
-    
-                        tru-DATA is a property of TrippleGee & Co. PLC. , a company duly registered with the Corporate
-                        Affairs Commission, Nigeria with RC Number: 1000002. tru-DATA is the platform implemented by
-                        TrippleGee & co. PLC. for its members. tru-DATA, and CCooperative Multipurpose Society Limited are
-                        legal entities in Nigeria. <br>
-                        Our investment professionals invest savers funds in financial instruments and manage the investments
-                        to ensure optimum return. To facilitate security of savers funds, assets are held by Meristem
-                        Trustees, a company registered with the Security and Exchange Commission (SEC) on behalf of savers.
-                        These assets are marked to market periodically to ensure savers' investments are protected.
-    
-                    </span>
-    
-                </div>
-    
-            </div>
-    
-    </footer>
 
+                </div>
+
+            </div>
+
+            <div class="footer__misc_content">
+
+                <span class="footer__text footer__text--center">
+                    {{$footer[0]->welcome}}
+                    {{-- you are always welcome to us at our office!. --}}
+                    <br><br>
+                    {{$footer[0]->coy_address}}
+                    {{-- 62, old yaba road , lagos Nigeria. --}}
+                </span>
+
+            </div>
+
+            <div class="footer__under_content">
+
+                <span class="footer__text footer__text--small">
+                    &copy; {{ now()->year }}  <span style="text-transform: lowercase">tru-</span><span style="text-transform: uppercase">DATA</span> | Disclosures <br><br>
+                    {{$footer[0]->copyright}}
+
+                    {{-- <span style="text-transform: lowercase">tru-</span><span style="text-transform: uppercase">DATA</span> is a property of TrippleGee & Co. PLC. , a company duly registered with the Corporate
+                    Affairs Commission, Nigeria with RC Number: 1000002. <span style="text-transform: lowercase">tru-</span><span style="text-transform: uppercase">DATA</span> is the platform implemented by
+                    TrippleGee & co. PLC. for its members. <span style="text-transform: lowercase">tru-</span><span style="text-transform: uppercase">DATA</span>, and CCooperative Multipurpose Society Limited are
+                    legal entities in Nigeria. <br>
+                    Our investment professionals invest savers funds in financial instruments and manage the investments
+                    to ensure optimum return. To facilitate security of savers funds, assets are held by Meristem
+                    Trustees, a company registered with the Security and Exchange Commission (SEC) on behalf of savers.
+                    These assets are marked to market periodically to ensure savers' investments are protected. --}}
+
+                </span>
+
+            </div>
+            {{-- background: #23303D; --}}
+        </div>
+    </section>
     <div class="nav_menu__resp">
             <nav class="resp_menu">
                 <div class="resp_menu__logo">

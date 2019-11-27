@@ -20,8 +20,34 @@
     <style>
   .edit-action-button{
     width: 85%;
-  }
+     }
+    .views{
+        background: green;
+        color:white;
+        padding:8px;
+        width:5px;
+        border-radius:30%;
+    }
 
+    .no-views{
+    background: brown;
+    color:white;
+    padding:8px;
+    width:5px;
+    border-radius:30%;
+     }
+     .pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    z-index: 2;
+    color: grey;
+    cursor: default;
+    background-color: transparent;
+    border-color: grey;
+}
     </style>
 </head>
 
@@ -40,7 +66,7 @@
             <div class="side-navigation__link_container">
 
                 <div class="side-navigation__inner_link_container">
-                    <a href="{{url('/home')}}" class="side-navigation__link">
+                    <a href="{{url('/admin')}}" class="side-navigation__link">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
                                 <path
@@ -114,10 +140,22 @@
                         <div class="header__log_container">
 
                             <p class="header__log-text">
-                                LOG OUT
+                                {{-- LOG OUT
                                 <span class="icon icon--logout">
                                     <img src="../assets/images/log_out.svg" height="20" alt="">
-                                </span>
+                                </span> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                  </a>
+                                  <span class="icon icon--logout">
+                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                    </span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                   
+                                </form>
                             </p>
 
                         </div>
@@ -135,9 +173,12 @@
 
                 <div class="manage-account">
 
-                
-
+                    
                     <div class="manage-account__tool-bar">
+                            <a href="{{url('/edit-blog-banner/'.$blogBanner[0]->id)}}" class="btn manage-account__btn btn--create btn--medium">
+                                <img src="../assets/images/plus_.svg" alt="">
+                                &nbsp;&nbsp;Update Blog Banner
+                            </a>
                    
                         <a href="{{url('/create-blog/')}}" class="btn manage-account__btn btn--create btn--medium">
                             <img src="../assets/images/plus_.svg" alt="">
@@ -145,6 +186,8 @@
                         </a>
                     
                     </div>
+
+               
 
                  
 
@@ -158,14 +201,19 @@
 
                                 <div class="manage-account_user-list-item-header">
 
-                                    <h3
+                                    {{-- <h3
                                         class="manage-account_user-list-title main-content__text main-content__text--bold">
                                         STATUS
-                                    </h3>
+                                    </h3> --}}
                                     <h3
                                         class="manage-account_user-list-title main-content__text main-content__text--bold">
-                                       Title
+                                       Title -Category
                                     </h3>
+                                 
+                                    <h3
+                                    class="manage-account_user-list-title main-content__text main-content__text--bold">
+                                   Views
+                                   </h3>
                                 
                                     <h3
                                         class="manage-account_user-list-title main-content__text main-content__text--bold">
@@ -184,12 +232,23 @@
            @foreach($blogs as $blog)
                                <div class="manage-account_user-list-item">
 
-                                    <p class="manage-account_user-list main-content__text main-content__text--small">
+                                    {{-- <p class="manage-account_user-list main-content__text main-content__text--small">
                                         <span class="manage-account_status-on"></span>
-                                    </p>
+                                    </p> --}}
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
-                                       {{$blog->title}}
+                                       {{str_limit($blog->title ,'30', '...' )}} - <small>{{$blog->category['name']}}</small>
                                     </p>
+                                    @if($blog->clicks != NULL)
+                                    <p class="manage-account_user-list main-content__text main-content__text--small">
+                                       <span class="views"> {{$blog->clicks}} Views</span>
+                                     </p>
+                                     @else
+                                       
+                                       <p class="manage-account_user-list main-content__text main-content__text--small">
+                                         <span class="no-views">   0 Views </span>
+                                         </p>
+                                     @endif
+                                  
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
                                        {{$blog->user['name']}} - (<small>{{$blog->user['email']}}</small>)
                                     </p>
@@ -245,12 +304,13 @@
                             <div class="page__pagination">
 
                                 <div class="page__pagination_links">
+                                    {{$blogs->links()}}
 
-                                    <a href="" class="page__pagination_link">Previous</a>
+                                    {{-- <a href="" class="page__pagination_link">Previous</a>
                                     <a href="" class="page__pagination_link page__pagination_link--active">1</a>
                                     <a href="" class="page__pagination_link">2</a>
                                     <a href="" class="page__pagination_link">3</a>
-                                    <a href="" class="page__pagination_link">Next</a>
+                                    <a href="" class="page__pagination_link">Next</a> --}}
 
                                 </div>
 

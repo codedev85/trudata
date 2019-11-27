@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Roboto:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link
         href="https://fonts.googleapis.com/css?family=Montserrat:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -18,7 +19,30 @@
         @import url(resources/css/styles.css);
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <style>
 
+        .blog__hero_container {
+            width: 100%;
+            position: relative;
+            background: url({{url('storage/'.$blogbanner->banner)}});
+            /* url(../resources/images/blog__hero.jpg); */
+            background-position: top left;
+            height: 40vh;
+            background-repeat: no-repeat;
+        }
+        .pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    z-index: 2;
+    color: grey;
+    cursor: default;
+    background-color: transparent;
+    border-color: grey;
+}
+        </style>
     <title>Blog Tru-Data</title>
 </head>
 
@@ -34,10 +58,12 @@
 
         <div class="why__hero_text why__hero_text--spaced">
             <h2 class="why__hero_title">
-                tru-DATA BLOG
+                {{-- tru-DATA BLOG --}}
+                {{$blogbanner->header_one}}
             </h2>
             <p class="why__hero_sub">
-                Everything you need to talk about <span style="white-space:nowrap">tru-DATA.</span>
+                {{$blogbanner->header_two}}
+                {{-- Everything you need to talk about <span style="white-space:nowrap">tru-DATA.</span> --}}
             </p>
         </div>
 
@@ -66,8 +92,7 @@
             </div>
 
             <div class="main__blog_list_container">
-
-
+           
 
                 <div class="main__blog_container">
 
@@ -81,35 +106,44 @@
                             </h1>
 
                             <div class="blog__list_section">
+                            @foreach($featuredBlog as $blog)
 
-                                <a href="blog_post.html" class="blog__item_card">
+                            <?php
+                            $wordCount = str_word_count($blog->content);
+                            $wordCountInMinute = floor($wordCount/200);
+                            ?>
+                                <a href="{{url('/blog/'.$blog->id)}}" class="blog__item_card">
 
                                     <div class="blog__item_card_img_container">
 
-                                        <img src="resources/images/blog__list_img_one.jpg" alt="" srcset="">
+                                        <img src="{{url('storage/'.$blog->thumbnail)}}" alt="" srcset="">
 
                                     </div>
-
+                             
                                     <div class="blog__item_card_details">
 
                                         <h6 class="blog__item_card_title">
-                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
+                                            {{str_limit($blog->title,'40','...')}}
+                                            {{-- How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee --}}
                                         </h6>
 
                                         <p class="blog__post_time__stamp">
-                                            September 16, 2016
+                                            {{-- September 16, 2016 --}}
+                                            {{$blog->created_at->format('F  d Y')}}
 
                                             <span class="blog__post_time__stamp--time_read">
-                                                3 min read
+                                                {{-- 3 min read --}}
+                                                {{ $wordCountInMinute}} min read
                                             </span>
                                         </p>
 
                                         <p class="blog__post_card_main_read">
-                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
+                                            {{str_limit($blog->content, '250' , ' ...')}}
+                                            {{-- Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
                                             licensed
                                             security printing firm, and a quoted company on the Nigerian Stock
                                             Exchange,NSE,Chief
-                                            Gbade Giwa, in this interview...
+                                            Gbade Giwa, in this interview... --}}
                                         </p>
 
                                         <div class="blog__card_footer_container">
@@ -120,7 +154,9 @@
                                             </div>
 
                                             <div class="blog__card_social_icon">
+                                                {{-- <a href="{{url('/twitter')}}"> --}}
                                                 <img src="resources/images/line-twitter.svg" alt="">
+                                                {{-- </a> --}}
                                                 <img src="resources/images/line-facebook.svg" alt="">
                                             </div>
                                         </div>
@@ -128,7 +164,8 @@
                                     </div>
 
                                 </a>
-
+                            @endforeach
+{{-- 
                                 <a href="blog_post.html" class="blog__item_card">
 
                                     <div class="blog__item_card_img_container">
@@ -225,7 +262,7 @@
 
 
 
-                                </a>
+                                </a> --}}
 
 
                             </div>
@@ -266,35 +303,43 @@
                             </h1>
 
                             <div class="blog__list_section">
-
-                                <a href="" class="blog__item_card">
+                        @foreach($allBlog as $blog)
+                                  <?php
+                                  $wordCount = str_word_count($blog->content);
+                                  $wordCountInMinute = floor($wordCount/200);
+                                  ?>
+                                <a href="{{url('/blog/'.$blog->id)}}" class="blog__item_card">
 
                                     <div class="blog__item_card_img_container">
 
-                                        <img src="resources/images/blog__list_img_one.jpg" alt="" srcset="">
+                                        <img src="{{url('storage/'.$blog->thumbnail)}}" alt="" srcset="">
 
                                     </div>
 
                                     <div class="blog__item_card_details">
 
                                         <h6 class="blog__item_card_title">
-                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
+                                            {{str_limit($blog->title , '40', '...')}}
+                                            {{-- How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee --}}
                                         </h6>
 
                                         <p class="blog__post_time__stamp">
-                                            September 16, 2016
+                                            {{-- September 16, 2016 --}}
+                                            {{$blog->created_at->format('F d Y')}}
 
                                             <span class="blog__post_time__stamp--time_read">
-                                                3 min read
+                                                {{-- 3 min read --}}
+                                                {{$wordCountInMinute}} Min read
                                             </span>
                                         </p>
 
                                         <p class="blog__post_card_main_read">
-                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
+                                            {{str_limit($blog->content, '250' , '..')}}
+                                            {{-- Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
                                             licensed
                                             security printing firm, and a quoted company on the Nigerian Stock
                                             Exchange,NSE,Chief
-                                            Gbade Giwa, in this interview...
+                                            Gbade Giwa, in this interview... --}}
                                         </p>
 
                                         <div class="blog__card_footer_container">
@@ -313,153 +358,9 @@
                                     </div>
 
                                 </a>
+                                @endforeach
 
-                                <a href="" class="blog__item_card">
-
-                                    <div class="blog__item_card_img_container">
-
-                                        <img src="resources/images/list__image.jpg" alt="" srcset="">
-
-                                    </div>
-
-                                    <div class="blog__item_card_details">
-
-                                        <h6 class="blog__item_card_title">
-                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
-                                        </h6>
-
-                                        <p class="blog__post_time__stamp">
-                                            September 16, 2016
-
-                                            <span class="blog__post_time__stamp--time_read">
-                                                3 min read
-                                            </span>
-                                        </p>
-
-                                        <p class="blog__post_card_main_read">
-                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
-                                            licensed
-                                            security printing firm, and a quoted company on the Nigerian Stock
-                                            Exchange,NSE,Chief
-                                            Gbade Giwa, in this interview...
-                                        </p>
-
-                                        <div class="blog__card_footer_container">
-                                            <div class="blog__read_more_container">
-                                                <span class="read__more_btn">
-                                                    Read More
-                                                </span>
-                                            </div>
-
-                                            <div class="blog__card_social_icon">
-                                                <img src="resources/images/line-twitter.svg" alt="">
-                                                <img src="resources/images/line-facebook.svg" alt="">
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-                                </a>
-
-                                <a href="" class="blog__item_card">
-
-                                    <div class="blog__item_card_img_container">
-
-                                        <img src="resources/images/list_img.jpg" alt="" srcset="">
-
-                                    </div>
-
-                                    <div class="blog__item_card_details">
-
-                                        <h6 class="blog__item_card_title">
-                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
-                                        </h6>
-
-                                        <p class="blog__post_time__stamp">
-                                            September 16, 2016
-
-                                            <span class="blog__post_time__stamp--time_read">
-                                                3 min read
-                                            </span>
-                                        </p>
-
-                                        <p class="blog__post_card_main_read">
-                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
-                                            licensed
-                                            security printing firm, and a quoted company on the Nigerian Stock
-                                            Exchange,NSE,Chief
-                                            Gbade Giwa, in this interview...
-                                        </p>
-
-                                        <div class="blog__card_footer_container">
-                                            <div class="blog__read_more_container">
-                                                <span class="read__more_btn">
-                                                    Read More
-                                                </span>
-                                            </div>
-
-                                            <div class="blog__card_social_icon">
-                                                <img src="resources/images/line-twitter.svg" alt="">
-                                                <img src="resources/images/line-facebook.svg" alt="">
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-                                </a>
-
-                                <a href="" class="blog__item_card">
-
-                                    <div class="blog__item_card_img_container">
-
-                                        <img src="resources/images/blog__list_img_one.jpg" alt="" srcset="">
-
-                                    </div>
-
-                                    <div class="blog__item_card_details">
-
-                                        <h6 class="blog__item_card_title">
-                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
-                                        </h6>
-
-                                        <p class="blog__post_time__stamp">
-                                            September 16, 2016
-
-                                            <span class="blog__post_time__stamp--time_read">
-                                                3 min read
-                                            </span>
-                                        </p>
-
-                                        <p class="blog__post_card_main_read">
-                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
-                                            licensed
-                                            security printing firm, and a quoted company on the Nigerian Stock
-                                            Exchange,NSE,Chief
-                                            Gbade Giwa, in this interview...
-                                        </p>
-
-                                        <div class="blog__card_footer_container">
-                                            <div class="blog__read_more_container">
-                                                <span class="read__more_btn">
-                                                    Read More
-                                                </span>
-                                            </div>
-
-                                            <div class="blog__card_social_icon">
-                                                <img src="resources/images/line-twitter.svg" alt="">
-                                                <img src="resources/images/line-facebook.svg" alt="">
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </a>
-
-                                <a href="" class="blog__item_card">
+                                {{-- <a href="" class="blog__item_card">
 
                                     <div class="blog__item_card_img_container">
 
@@ -846,13 +747,159 @@
 
 
                                 </a>
+
+                                <a href="" class="blog__item_card">
+
+                                    <div class="blog__item_card_img_container">
+
+                                        <img src="resources/images/blog__list_img_one.jpg" alt="" srcset="">
+
+                                    </div>
+
+                                    <div class="blog__item_card_details">
+
+                                        <h6 class="blog__item_card_title">
+                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
+                                        </h6>
+
+                                        <p class="blog__post_time__stamp">
+                                            September 16, 2016
+
+                                            <span class="blog__post_time__stamp--time_read">
+                                                3 min read
+                                            </span>
+                                        </p>
+
+                                        <p class="blog__post_card_main_read">
+                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
+                                            licensed
+                                            security printing firm, and a quoted company on the Nigerian Stock
+                                            Exchange,NSE,Chief
+                                            Gbade Giwa, in this interview...
+                                        </p>
+
+                                        <div class="blog__card_footer_container">
+                                            <div class="blog__read_more_container">
+                                                <span class="read__more_btn">
+                                                    Read More
+                                                </span>
+                                            </div>
+
+                                            <div class="blog__card_social_icon">
+                                                <img src="resources/images/line-twitter.svg" alt="">
+                                                <img src="resources/images/line-facebook.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </a>
+
+                                <a href="" class="blog__item_card">
+
+                                    <div class="blog__item_card_img_container">
+
+                                        <img src="resources/images/list__image.jpg" alt="" srcset="">
+
+                                    </div>
+
+                                    <div class="blog__item_card_details">
+
+                                        <h6 class="blog__item_card_title">
+                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
+                                        </h6>
+
+                                        <p class="blog__post_time__stamp">
+                                            September 16, 2016
+
+                                            <span class="blog__post_time__stamp--time_read">
+                                                3 min read
+                                            </span>
+                                        </p>
+
+                                        <p class="blog__post_card_main_read">
+                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
+                                            licensed
+                                            security printing firm, and a quoted company on the Nigerian Stock
+                                            Exchange,NSE,Chief
+                                            Gbade Giwa, in this interview...
+                                        </p>
+
+                                        <div class="blog__card_footer_container">
+                                            <div class="blog__read_more_container">
+                                                <span class="read__more_btn">
+                                                    Read More
+                                                </span>
+                                            </div>
+
+                                            <div class="blog__card_social_icon">
+                                                <img src="resources/images/line-twitter.svg" alt="">
+                                                <img src="resources/images/line-facebook.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </a>
+
+                                <a href="" class="blog__item_card">
+
+                                    <div class="blog__item_card_img_container">
+
+                                        <img src="resources/images/list_img.jpg" alt="" srcset="">
+
+                                    </div>
+
+                                    <div class="blog__item_card_details">
+
+                                        <h6 class="blog__item_card_title">
+                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
+                                        </h6>
+
+                                        <p class="blog__post_time__stamp">
+                                            September 16, 2016
+
+                                            <span class="blog__post_time__stamp--time_read">
+                                                3 min read
+                                            </span>
+                                        </p>
+
+                                        <p class="blog__post_card_main_read">
+                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
+                                            licensed
+                                            security printing firm, and a quoted company on the Nigerian Stock
+                                            Exchange,NSE,Chief
+                                            Gbade Giwa, in this interview...
+                                        </p>
+
+                                        <div class="blog__card_footer_container">
+                                            <div class="blog__read_more_container">
+                                                <span class="read__more_btn">
+                                                    Read More
+                                                </span>
+                                            </div>
+
+                                            <div class="blog__card_social_icon">
+                                                <img src="resources/images/line-twitter.svg" alt="">
+                                                <img src="resources/images/line-facebook.svg" alt="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </a> --}}
 
                             </div>
 
                         </div>
 
                         <div class="page__pagination">
-                            <a href="#" class="pagination__item">
+                            {{$allBlog->links()}}
+                            {{-- <a href="#" class="pagination__item">
                                 &lt;
                             </a>
                             <a href="#" class="pagination__item pagination__item--active">
@@ -881,7 +928,7 @@
                             </a>
                             <a href="#" class="pagination__item">
                                 &gt;
-                            </a>
+                            </a> --}}
                         </div>
 
                     </div>
@@ -918,8 +965,8 @@
                                 </h2>
 
                                 <div class="popular__post_tab_container">
-                                    <a href="" class="popular__post_button popular__post_button--active">
-                                        Week
+                                    <a href="{{url('/blog-week')}}" class="popular__post_button popular__post_button--active"> 
+                                                Week  
                                     </a>
                                     <a href="" class="popular__post_button">
                                         Month
@@ -932,7 +979,7 @@
                             <div class="popular__list_container">
                                 <br>
                                     <div class="week__popular_container show__tab">
-
+{{-- 
                                             <div class="post__item_container">
                                                 <a href="#"></a>
                                                 <img src="resources/images/rear__bg - Copy.jpg" alt="">
@@ -941,27 +988,33 @@
                                                     Tripple Gee Launches <span style="white-space:nowrap">tru-DATA</span> Moblie
                                                     App, Desktop App and Website......
                                                 </p>
-                                            </div>
-            
+                                            </div> --}}
+                                           @foreach($blogPostForAWeek as $key => $blogWeek)
                                             <div class="post__item_container">
-                                                <a href="#"></a>
+                                                <a href="{{url('/blog/'.$blogWeek->id)}}">
                                                 <div class="post__thumbnail_wrapper">
-                                                    <img src="resources/images/thumbnail_one.jpg" class="post__thumbnail" alt="">
+                                                    <img src="{{url('storage/'.$blogWeek->blog_img)}}" class="post__thumbnail" alt="">
                                                 </div>
+                                            </a>
             
                                                 <div class="post__text_content">
                                                     <h2 class="post__title">
-                                                        PHOTOGRAPHY
+                                                        {{-- PHOTOGRAPHY --}}
+                                                        {{strtoupper($blogWeek->title)}}
                                                     </h2>
                                                     <p class="post__main_text">
-                                                        Beauty and Power of the Ocean through...
+                                                            <?php echo Ucfirst(str_limit($blogWeek->content, '20','...'));?>
+
+                                                       
+                                                        {{-- Beauty and Power of the Ocean through... --}}
                                                     </p>
-                                                    <span class="post__number">2</span>
+                                                    <span class="post__number">{{$key+1}}</span>
                                                 </div>
             
                                             </div>
+                                            @endforeach
             
-                                            <div class="post__item_container">
+                                            {{-- <div class="post__item_container">
                                                 <a href="#"></a>
                                                 <div class="post__thumbnail_wrapper">
                                                     <img src="resources/images/thumbnail_two.png" class="post__thumbnail" alt="">
@@ -1049,7 +1102,7 @@
                                                     <span class="post__number">7</span>
                                                 </div>
             
-                                            </div>
+                                            </div> --}}
             
                                             <div class="loading__more">
                                                 <img src="resources/images/loadinfo.net.gif" alt="">
@@ -1064,8 +1117,8 @@
                             <div class="popular__list_container">
                                 <br>
                                     <div class="month__popular_container">
-
-                                            <div class="post__item_container">
+                                  
+                                            {{-- <div class="post__item_container">
                                                 <a href="#"></a>
                                                 <img src="resources/images/rear__bg - Copy.jpg" alt="">
                                                 <span class="post__number">i</span>
@@ -1073,27 +1126,32 @@
                                                     Tripple Gee Launches <span style="white-space:nowrap">tru-DATA</span> Moblie
                                                     App, Desktop App and Website......
                                                 </p>
-                                            </div>
-            
+                                            </div> --}}
+                                         @foreach($blogPostForAMonth as $key => $blogMonth)
+                                       
                                             <div class="post__item_container">
-                                                <a href="#"></a>
+                                              <a href="{{url('/blog/'.$blogWeek->id)}}">
                                                 <div class="post__thumbnail_wrapper">
-                                                    <img src="resources/images/thumbnail_one.jpg" class="post__thumbnail" alt="">
+                                                    <img src="{{url('storage/'.$blogMonth->blog_img)}}" class="post__thumbnail" alt="">
                                                 </div>
+                                            </a>
             
                                                 <div class="post__text_content">
                                                     <h2 class="post__title">
-                                                        PHOTOGRAPHY
+                                                        {{$blogMonth->title}}
+                                                        {{-- PHOTOGRAPHY --}}
                                                     </h2>
                                                     <p class="post__main_text">
-                                                        Beauty and Power of the Ocean through...
+
+                                                            <?php echo Ucfirst(str_limit($blogMonth->content, '20','...'));?>
+                                                        {{-- Beauty and Power of the Ocean through... --}}
                                                     </p>
-                                                    <span class="post__number">2</span>
+                                                    <span class="post__number">{{$key +1 }}</span>
                                                 </div>
             
                                             </div>
-            
-                                            <div class="post__item_container">
+                                          @endforeach
+                                            {{-- <div class="post__item_container">
                                                 <a href="#"></a>
                                                 <div class="post__thumbnail_wrapper">
                                                     <img src="resources/images/thumbnail_two.png" class="post__thumbnail" alt="">
@@ -1181,7 +1239,7 @@
                                                     <span class="post__number">7</span>
                                                 </div>
             
-                                            </div>
+                                            </div> --}}
             
                                             <div class="loading__more">
                                                 <img src="resources/images/loadinfo.net.gif" alt="">
@@ -1295,7 +1353,7 @@
     
     <footer class="footer">
 
-            <div class="footer__container row">
+            {{-- <div class="footer__container row">
     
                 <div class="footer__item_flex_container">
     
@@ -1443,17 +1501,23 @@
     
                 </div>
     
-            </div>
+            </div> --}}
+            @include('partials.footer')
     
     </footer>
+<?php 
 
+$menu = json_decode($menu->menu);
+
+
+?>
     <div class="nav_menu__resp">
             <nav class="resp_menu">
                 <div class="resp_menu__logo">
                     <img src="resources/images/icon_logo__white.png" alt="">
                 </div>
                 <img src="resources/images/close__btn.svg" class="menu__close" width="18px" alt="">
-                <a href="index.html" class="resp_menu__link">
+                <a href="{{url('/')}}" class="resp_menu__link">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                         id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 460.298 460.297"
                         style="enable-background:new 0 0 460.298 460.297;" xml:space="preserve">
@@ -1472,12 +1536,11 @@
                             </g>
                         </g>
                     </svg>
-                    Home
+                    {{Ucfirst($menu[0])}}
                 </a>
     
-                <a href="about.html" class="resp_menu__link">
-                    <?xml version="1.0"?>
-                    <?xml version="1.0"?>
+                <a href="{{url('/about-us/')}}" class="resp_menu__link">
+                  
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
                     viewBox="0 0 502.643 502.643" style="enable-background:new 0 0 502.643 502.643;" xml:space="preserve" width="20px"
                     height="20px">
@@ -1531,7 +1594,7 @@
                     </g>
                 </svg>
     
-                    About Us
+                {{Ucfirst($menu[1])}}
     
     
     
@@ -1540,7 +1603,7 @@
             
     
                 <a href="why_tru.html" class="resp_menu__link  Subscribe resp_menu_drp__js">
-                        <?xml version="1.0"?>
+                        
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 912.1 912.1" style="enable-background:new 0 0 912.1 912.1;" xml:space="preserve" class=""><g><g>
                             <g>
                                 <path d="M504.607,574.9c102.8,0,186.4-83.601,186.4-186.4s-83.601-186.4-186.4-186.4c-102.799,0-186.4,83.6-186.4,186.4    S401.808,574.9,504.607,574.9z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
@@ -1553,19 +1616,19 @@
                         </g></g> </svg>
                         
     
-                    Why tru-Data
+                        {{Ucfirst($menu[2])}}
                 </a>
 
-                <a href="blog.html" class="resp_menu__link resp_menu__link--active">
-                        <?xml version="1.0"?>
+                {{-- <a href="blog.html" class="resp_menu__link resp_menu__link--active">
+                       
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.00095 512" width="20px" height="20px" class=""><g><path d="m255 202c11.046875 0 20 8.953125 20 20s-8.953125 20-20 20-20-8.953125-20-20 8.953125-20 20-20zm70 20c0 11.046875 8.953125 20 20 20s20-8.953125 20-20-8.953125-20-20-20-20 8.953125-20 20zm-180 0c0 11.046875 8.953125 20 20 20s20-8.953125 20-20-8.953125-20-20-20-20 8.953125-20 20zm349.414062 187.5625c23.40625 23.40625 23.40625 61.46875.011719 84.863281-11.695312 11.695313-27.0625 17.546875-42.425781 17.546875s-30.730469-5.851562-42.425781-17.546875l-109.789063-109.542969c-2.332031-2.328124-4.050781-5.191406-5.007812-8.347656l-23.914063-78.722656c-2.121093-6.980469-.273437-14.558594 4.820313-19.78125 5.09375-5.21875 12.625-7.25 19.65625-5.304688l80.722656 22.359376c3.324219.921874 6.351562 2.683593 8.792969 5.121093zm-162.824218-49.453125 74.089844 73.925781 28.289062-28.289062-73.652344-73.511719-40.609375-11.25zm134.550781 77.75-3.859375-3.855469-28.285156 28.285156 3.847656 3.835938c7.8125 7.816406 20.5 7.816406 28.296875.015625 7.800781-7.796875 7.800781-20.484375 0-28.28125zm-199.015625-23.40625c-3.695312.160156-7.4375.242187-11.125.242187-32.160156 0-63.121094-5.988281-92.019531-17.796874-4.921875-2.007813-10.445313-1.976563-15.34375.089843l-91.066407 38.441407 30.683594-72.683594c3-7.105469 1.644532-15.308594-3.488281-21.074219-29.285156-32.898437-44.765625-72.261719-44.765625-113.824219 0-103.578125 96.898438-187.847656 216-187.847656s216 84.269531 216 187.847656c0 24.5625-6.03125 49.222656-17.929688 73.289063-4.894531 9.902343-.835937 21.898437 9.066407 26.792969 9.902343 4.894531 21.898437.835937 26.792969-9.066407 14.644531-29.628906 22.070312-60.25 22.070312-91.015625 0-125.636718-114.839844-227.847656-256-227.847656-141.15625 0-256 102.210938-256 227.847656 0 47.421875 16.078125 92.332032 46.636719 130.632813l-45.0625 106.742187c-3.164063 7.496094-1.46875 16.164063 4.285156 21.917969 3.828125 3.828125 8.941406 5.859375 14.144531 5.859375 2.621094 0 5.265625-.515625 7.773438-1.574219l128.929687-54.425781c31.445313 11.746094 64.808594 17.695312 99.292969 17.695312 4.265625 0 8.597656-.097656 12.875-.28125 11.035156-.484374 19.589844-9.820312 19.105469-20.855468-.480469-11.035156-9.835938-19.617188-20.855469-19.105469zm0 0" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/></g> </svg>
 
     
                     Blog
-                </a>
+                </a> --}}
 
-                <a href="contact.html" class="resp_menu__link">
-                        <?xml version="1.0"?>
+                <a href="{{url('/contact-us/')}}" class="resp_menu__link">
+                       
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 511.882 511.882" style="enable-background:new 0 0 511.882 511.882;" xml:space="preserve" width="20px" height="20px" class=""><g><g>
                             <g>
                                 <g>
@@ -1575,7 +1638,7 @@
                             </g>
                         </g></g> </svg>
                         
-                    Contact
+                        {{Ucfirst($menu[3])}}
                 </a>
     
                
