@@ -195,7 +195,7 @@
                     
                         <div class="form__header--list1">
                                 <p class="">
-                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/pages')}}">Back</a></span>
                                 </p>
                              
                             </div>
@@ -209,6 +209,7 @@
                                 <input  class="input" placeholder="fullname" name="fullname" value="">
                                 <input type="email" placeholder="title" name="title" value=""/>
                                 <input type="file" name="img" value="">
+                                <span class="dimension"> width = 424px - height = 425px</span>
                            </div>
                         </div>
                     </div>

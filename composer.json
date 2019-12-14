@@ -17,6 +17,7 @@
         "laravel/tinker": "^1.0",
         "nesbot/carbon": "^2.25",
         "snowfire/beautymail": "dev-master",
+        "spatie/laravel-newsletter": "^4.2",
         "unisharp/laravel-ckeditor": "^4.7"
     },
     "require-dev": {

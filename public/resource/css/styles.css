@@ -4528,7 +4528,7 @@ form input {
     font-size: 17px;
     line-height: 31px;
     text-align: justify;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
 }
 
 .center__Container input::placeholder {

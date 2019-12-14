@@ -18,17 +18,19 @@
         @import url(resources/css/styles.css);
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <style>
-        .terms__hero_container {
+
+
+<style>
+        .terms__hero_container  {
             width: 100%;
             position: relative;
-            background: url(../resources/images/faq.jpg);
+            background:  url({{url('storage/'.$termBg->hero_bg)}}) ;
             background-position: left left;
             background-size: cover;
             height: 45vh;
         }
 
-
+ /* //url(../resources/images/why__hero_img.jpg) */
    </style>
 
     <title>Blog Tru-Data</title>
@@ -45,7 +47,7 @@
             <div class="row why__header_inner_nav">
 
                 <div class="header__menu_btn header__menu_btn--resp">
-                    <img src="resources/images/R.svg" alt="">
+                    <img src="../resources/images/R.svg" alt="">
                 </div>
 
                 <div class="why__header_menu_links">

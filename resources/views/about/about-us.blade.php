@@ -242,6 +242,7 @@
                 <div class="stacked_img_outer_container">
 
                     <div class="stack__outer">
+                 @if(!empty($teams[0]))
                         <div class="stack__pop_up">
                             <h2 class="team_card__pop_name">
                                 {{$teams[0]->name}}
@@ -262,9 +263,9 @@
                                 meets everyday.
                             </p>
                         </div> 
-                        
+                 @endif         
                         <div class="stacked_img_container">
-
+                @if(!empty($teams[1]))
                             <div class="stacked__img_overlay">
 
                                 <span class="more_icon">
@@ -272,18 +273,20 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Bayo Onile-Ere
-                                  
+                                    {{-- Bayo Onile-Ere --}}
+                                    {{$teams[1]->name}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    Product Manager
+                                    {{-- Product Manager --}}
+                                    {{$teams[1]->title}}
                                 </div>
 
                             </div>
                             <div class="stacked__img_inner_container">
-                                <img src="resources/images/stack_one.png" alt="">
+                                <img src="{{url('storage/'.$teams[1]->img)}}" alt="">
                             </div>
+                @endif
                         </div>
                     </div>
 
@@ -308,6 +311,7 @@
                                 meets everyday.
                             </p>
                         </div> -->
+                        @if(!empty($teams[2]))
                         <div class="stacked_img_container">
                             <div class="stacked__img_overlay">
 
@@ -316,20 +320,20 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Emamode Igugu
+                                  {{$teams[2]->name}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    Graphic Designer
+                                  {{$teams[2]->name}}
                                 </div>
 
                             </div>
                             <div class="stacked__img_inner_container">
-                                <img src="resources/images/286.jpg" alt="">
+                                <img src="{{url('storage/'.$teams[2]->img)}}" alt="">
                             </div>
                         </div>
                     </div>
-
+@endif
                     <div class="stack__outer">
 
                         <!-- <div class="stack__pop_up">
@@ -351,6 +355,7 @@
                                 meets everyday.
                             </p>
                         </div> -->
+                        @if(!empty($teams[3]))
                         <div class="stacked_img_container">
                             <div class="stacked__img_overlay">
 
@@ -359,18 +364,19 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Erikitola Kanyinsola
+                                    {{$teams[3]->name}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    Digital Marketer
+                                {{$teams[3]->title}}
                                 </div>
 
                             </div>
                             <div class="stacked__img_inner_container">
-                                <img src="resources/images/oyin.jpeg" alt="">
+                                <img src="{{url('storage/'.$teams[3]->img)}}" alt="">
                             </div>
                         </div>
+                        @endif
                     </div>
 
 
@@ -403,6 +409,7 @@
                             </p>
                         </div> -->
                         <div class="stacked_img_container">
+                         @if(!empty($teams[4]))
                             <div class="stacked__img_overlay">
 
                                 <span class="more_icon">
@@ -410,11 +417,11 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Esther Adekunle
+                                 {{$teams[4]->name}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    Receptionist
+                                   {{$teams[4]->title}}
                                 </div>
 
                             </div>
@@ -425,17 +432,18 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Joseph Ashagbon
+                                    {{$teams[4]->name}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    Office Assistant
+                                    {{$teams[4]->title}}
                                 </div>
 
                             </div>
                             <div class="stacked__img_inner_container">
-                                <img src="resources/images/stack_four.png" alt="">
+                                <img src="{{url('storage/'.$teams[4]->img)}}" alt="">
                             </div>
+                            @endif
                         </div>
                     </div>
 
@@ -460,7 +468,7 @@
                             </p>
                         </div> -->
                         <div class="stacked_img_container">
-
+                         @if(!empty($teams[5]))
                             <div class="stacked__img_overlay">
 
                                 <span class="more_icon">
@@ -468,17 +476,18 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Tobi Peter
+                                    {{$teams[5]->title}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    back-end developer
+                                    {{$teams[5]->title}}
                                 </div>
 
                             </div>
                             <div class="stacked__img_inner_container">
-                                <img src="resources/images/stack_five.png" alt="">
+                                <img src="{{url('storage/'.$teams[5]->img)}}" alt="">
                             </div>
+                         @endif
                         </div>
                     </div>
 
@@ -503,6 +512,7 @@
                             </p>
                         </div> -->
                         <div class="stacked_img_container">
+                                @if(!empty($teams[6]))
                             <div class="stacked__img_overlay">
 
                                 <span class="more_icon">
@@ -510,17 +520,18 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Tobi Peter
+                                   {{$teams[6]->name}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    back-end developer
+                                   {{$teams[6]->title}}
                                 </div>
 
                             </div>
                             <div class="stacked__img_inner_container">
-                                <img src="resources/images/stack_six.png" alt="">
+                                <img src="{{url('storage/'.$teams[6]->img)}}" alt="">
                             </div>
+                            @endif
                         </div>
                     </div>
 
@@ -552,6 +563,7 @@
                             </p>
                         </div> -->
                         <div class="stacked_img_container">
+                                @if(!empty($teams[7]))
                             <div class="stacked__img_overlay">
 
                                 <span class="more_icon">
@@ -559,17 +571,18 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Tobi Peter
+                                  {{$teams[7]->name}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    back-end developer
+                                    {{$teams[7]->title}}
                                 </div>
 
                             </div>
                             <div class="stacked__img_inner_container">
-                                <img src="resources/images/stack_seven.png" alt="">
+                                <img src="{{url('storage/'.$teams[7]->img)}}" alt="">
                             </div>
+                            @endif
                         </div>
                     </div>
 
@@ -596,6 +609,7 @@
                         </div> -->
 
                         <div class="stacked_img_container">
+                                @if(!empty($teams[8]))
                             <div class="stacked__img_overlay">
 
                                 <span class="more_icon">
@@ -603,17 +617,18 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Tobi Peter
+                                   {{$teams[8]->name}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    back-end developer
+                                  {{$teams[8]->title}}
                                 </div>
 
                             </div>
                             <div class="stacked__img_inner_container">
-                                <img src="resources/images/stack_eight.png" alt="">
+                                <img src="{{url('storage/'.$teams[8]->img)}}" alt="">
                             </div>
+                            @endif
                         </div>
                     </div>
 
@@ -639,6 +654,7 @@
                         </div> -->
 
                         <div class="stacked_img_container">
+                                @if(!empty($teams[9]))
                             <div class="stacked__img_overlay">
 
                                 <span class="more_icon">
@@ -646,17 +662,18 @@
                                 </span>
 
                                 <p class="stacked__name">
-                                    Tobi Peter
+                                 {{$teams[9]->name}}
                                 </p>
 
                                 <div class="stacked__name_tag">
-                                    back-end developer
+                                    {{$teams[9]->title}}
                                 </div>
 
                             </div>
                             <div class="stacked__img_inner_container">
-                                <img src="resources/images/stack_eight.png" alt="">
+                                <img src="{{url('storage/'.$teams[9]->img)}}" alt="">
                             </div>
+                            @endif
                         </div>
                     </div>
 
@@ -704,10 +721,10 @@
                     STAY UPDATED WITH US
                 </h2>
 
-                <div class="info__input_container">
-                    <input type="" class="info__email_input">
+                <form action="{{url('/news-letter/')}}" class="info__input_container">
+                    <input type="" name="email" class="info__email_input">
                     <input type="submit" value="SUSCRIBE" class="info__submit">
-                </div>
+                </form>
 
                 <div class="info__main_content_container">
 
@@ -719,7 +736,7 @@
                         Our associates are on standby and looking forward to sharing more.
                     </p>
 
-                    <a href="" class="home__btn contact__btn">
+                    <a href="{{url('/contact-us')}}" class="home__btn contact__btn">
                         CONTACT US
                     </a>
 

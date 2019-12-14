@@ -48,6 +48,12 @@
     background-color: transparent;
     border-color: grey;
 }
+.dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 
@@ -172,7 +178,7 @@
             <div class="main-content__container">
 
                 <div class="manage-account">
-
+                
                     
                     <div class="manage-account__tool-bar">
                             <a href="{{url('/edit-blog-banner/'.$blogBanner[0]->id)}}" class="btn manage-account__btn btn--create btn--medium">
@@ -191,7 +197,13 @@
 
                  
 
-            
+                    <div class="form__header--list1">
+                        <br><br>
+                        <p class="">
+                          &nbsp; &nbsp;  <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/admin') }}">Back</a></span>
+                        </p>
+                     
+                    </div>
 
                     <div class="manage-account__body">
 
@@ -269,7 +281,7 @@
                                             EDIT
                                         </a>
                                         @IF($blog->publish == 0)
-                                                &nbsp;&nbsp;&nbsp; <a href="{{url('/publish/'.$blog->id)}}" class="btn btn--danger">
+                                                &nbsp;&nbsp;&nbsp; <a href="{{url('/publish-article/'.$blog->id)}}" class="btn btn--danger">
                                                 PUBLISH
                                                 </a>
                                        @else 

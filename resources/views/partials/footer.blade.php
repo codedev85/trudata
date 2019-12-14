@@ -117,14 +117,14 @@
                             <a href="https://twitter.com/{{$socialDecode[3]}}" class="footer__social_link_img" target="_blank">
                                 <img src="resources/images/twitter_footer.svg" alt="" class="footer__social_img">
                             </a>
-                            <a href="" class="footer__social_link_img">
+                            <a href="https://www.instagram.com//{{$socialDecode[1]}}" class="footer__social_link_img">
                                 <img src="resources/images/inst__footer.svg" alt="" class="footer__social_img">
                             </a>
-                        <a href="https://www.linkedin.com/company/{{$socialDecode[2]}}" target="_blank"
+                        <a href="https://www.linkedin.com/in/{{$socialDecode[2]}}" target="_blank"
                                 class="footer__social_link_img">
                                 <img src="resources/images/linkedin__footer.svg" alt="" class="footer__social_img">
                             </a>
-                            <a href="" class="footer__social_link_img" target="_blank">
+                            <a href="https://www.youtube.com/channel/{{$socialDecode[4]}}" class="footer__social_link_img" target="_blank">
                                 <img src="resources/images/youtube__footer.svg" alt="" class="footer__social_img">
                             </a>
                         </div>

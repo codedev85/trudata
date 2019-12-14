@@ -59,6 +59,17 @@
         .dimension{
             color:red;
         }
+        .main-content {
+            margin-left: 15%;
+            width: 85%;
+            background: #f7f7ff;
+        }
+        .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
      <style>
             @import url(resources/css/styles.css);
@@ -284,7 +295,7 @@
                                 {{ __('Logout') }}
                                   </a>
                                   <span class="icon icon--logout">
-                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                      &nbsp;  <img src="../assets/images/log_out.svg" height="20" alt="">
                                     </span>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -310,7 +321,7 @@
                 <div class="main-content__inner_wrapper"> --}}
                         <div class="form__header--list1">
                                 <p class="">
-                                  &nbsp; &nbsp;  <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                  &nbsp; &nbsp;  <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/admin') }}">Back</a></span>
                                 </p>
                              
                             </div>

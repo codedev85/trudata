@@ -37,6 +37,12 @@
         .copyright{
             height: 284px;
         }
+        .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 
@@ -287,10 +293,19 @@
                         <div class="header__log_container">
 
                             <p class="header__log-text">
-                                LOG OUT
-                                <span class="icon icon--logout">
-                                    <img src="../assets/images/log_out.svg" height="20" alt="">
-                                </span>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                  </a>
+                                  <span class="icon icon--logout">
+                                      &nbsp;  <img src="../assets/images/log_out.svg" height="20" alt="">
+                                    </span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                   
+                                </form>
+                             
                             </p>
 
                         </div>
@@ -312,7 +327,7 @@
                         {{-- admin-homepage-update/{id} --}}
                         <div class="form__header--list1">
                                 <p class="">
-                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/pages')}}">Back</a></span>
                                 </p>
                              
                             </div>

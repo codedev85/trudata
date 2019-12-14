@@ -74,23 +74,32 @@ class RoleController extends Controller
     public function postUpdateUser(Request $request,$id){
 
       
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $role = $request->input('role');
+                $name = $request->input('name');
+                $email = $request->input('email');
+                $password = $request->input('password');
+                $c_password = $request->input('c_password');
+                $role = $request->input('role');
+           
+                if($password == $c_password){
+            
+                    User::where('id',$id)->update([
+                        'name' => $name,
+                        'email' => $email,
+                        'password' => Hash::make($password),
+                        'role_id'  => $role,
+                    ]);
+                    flash('User updated Successfully')->success();
+                    return back();
+            }else{
 
-        User::where('id',$id)->update([
-            'name' => $name,
-            'email' => $email,
-            'password' => Hash::make($password),
-            'role_id'  => $role,
-        ]);
-        flash('User updated Successfully')->success();
-        return back();
+                flash('The password does not match!!')->error();
+                return back();
+            }
     }
 
     public function allAdmin(){
-        $admins = User::paginate(5);
+        $admins = User::where('role_id', 2)->orwhere('role_id',3)->paginate(5);
+        
 
         return view('admin.all-admin')->with('admins',$admins);
     }
@@ -114,7 +123,10 @@ class RoleController extends Controller
 
 
     public function postAdmin(Request $request){
-       
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+           ]);
         $name = $request->input('name');
         $this->email = $request->input('email');
         $this->password = $request->input('password');
@@ -131,8 +143,8 @@ class RoleController extends Controller
         Mail::send(['text/html'=> $this->randStrPassword ],['name'=>'$artsttsts'], function($message){
     
             // 'Your login credential is <br><a>'.$this->email .'</a><br><a>'.$this->randStrPassword. '</a>'
-             $message->to($this->email,'Password')->subject('Login Credentials' )->setBody( 'Your login credential is '.$this->email .'password '.$this->randStrPassword);
-             $message->from('trudata@gmail.com',$this->email);
+             $message->to($this->email,'Password')->subject('Login Credentials' )->setBody( 'Your login credential is '.$this->email .' password  ' .$this->randStrPassword);
+             $message->from('trudatasevices@gmail.com',$this->email);
 
            });
 
@@ -248,7 +260,7 @@ class RoleController extends Controller
 
            });
         }
-     
+        flash('Mail sent to all Admin Successfully !!! ')->success();
            return back();
 
     }

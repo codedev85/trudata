@@ -529,37 +529,12 @@
                         <img src="{{url('storage/'.$partner->partner_img)}}" alt="" class="partner__img">
                     </div>
                     @endforeach
-                {{-- <div class="slider__self-container">
-
-                    <img src="resources/images/trippleGee.png" alt="" class="partner__img">
-                </div> --}}
-                <!-- uncheck later -->
-                {{-- <div class="slider__self-container">
-                    <img src="resources/images/kjkNEWLOGO1.png" alt=""
-                        class="partner__img">
-                </div>
-                <div class="slider__self-container">
-
-                    <img src="resources/images/3rie.jpeg" alt="" class="partner__img">
-                </div> --}}
-                <!-- end of partners image -->
-                <!-- <div class="slider__self-container">
-                    <img src="resources/images/hi-res-transparent-background-web1.png" alt="" class="partner__img">
-                </div>
-                <div class="slider__self-container">
-
-                    <img src="resources/images/zenith.png" alt="" class="partner__img">
-                </div>
-                <div class="slider__self-container">
-                    <img src="resources/images/chevron-1-logo-png-transparent.png" alt="" class="partner__img">
-                </div> -->
+          
             </div>
 
 
             <div class="sign_up_container">
-                <!-- <a href="" class="home__btn home__btn--colored">
-                    SIGN UP NOW
-                </a> -->
+           
             </div>
 
 
@@ -581,10 +556,10 @@
                     STAY UPDATED WITH US
                 </h2>
 
-                <div class="info__input_container">
-                    <input type="" class="info__email_input">
+                <form action="{{url('/news-letter/')}}" class="info__input_container">
+                    <input type=""  name="email" class="info__email_input">
                     <input type="submit" value="SUSCRIBE" class="info__submit">
-                </div>
+                </form>
 
                 <div class="info__main_content_container">
 
@@ -597,7 +572,7 @@
                         to sharing more.
                     </p>
 
-                    <a href="contact.html" class="home__btn contact__btn">
+                    <a href="{{url('/contact-us')}}" class="home__btn contact__btn">
                         CONTACT US
                     </a>
 
@@ -606,13 +581,13 @@
                         <div class="info__inner_contact_container">
                             <img src="resources/images/phone.svg" alt="" class="info_inner_icon">
                             <span class="info_inner_text">
-                                +234-8055190715
+                               {{$contact->contact_number}}
                             </span>
                         </div>
                         <div class="info__inner_contact_container">
                             <img src="resources/images/mail.svg" alt="" class="info_inner_icon">
                             <span class="info_inner_text">
-                                info@trudata.com
+                                {{$contact->contact_email}}
                             </span>
                         </div>
 
@@ -625,7 +600,7 @@
             <div class="map__container">
                 <div class="mapouter">
                     <div class="gmap_canvas"><iframe width="100%" height="100%" id="gmap_canvas"
-                            src="https://maps.google.com/maps?q=62%20old%20yaba%20road&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            src="{{$contact->embed_url}}"
                             frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Werbung: <a
                             href="https://www.jetzt-drucken-lassen.de">jetzt-drucken-lassen.de</a></div>
                     <style>

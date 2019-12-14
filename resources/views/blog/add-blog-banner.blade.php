@@ -53,6 +53,12 @@
         .banner_dimension {
           color: red;
       }
+      .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 
@@ -188,7 +194,7 @@
                                 {{ __('Logout') }}
                                   </a>
                                   <span class="icon icon--logout">
-                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                      &nbsp;  <img src="../assets/images/log_out.svg" height="20" alt="">
                                     </span>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -208,6 +214,13 @@
   <br><br><br><br><br>
   @include('flash::message')
   <br><br>
+  <div class="form__header--list1">
+        <br><br>
+        <p class="">
+          &nbsp; &nbsp;  <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/all-blogs') }}">Back</a></span>
+        </p>
+     
+    </div>
             <div class="main-content__container">
 
                 <div class="main-content__inner_wrapper">
@@ -221,7 +234,7 @@
                                <input   class="input"  name="header_one" value="{{$EditBanner->header_one}}">
                                <input   class="input"  name="header_two" value="{{$EditBanner->header_two}}">
                                 <input  type="file" class="input"  name="banner" value="">
-                                <span class="banner_dimension">width = 1916px , height = 467px</span>
+                                <span class="banner_dimension">width = 1916px , height = 535px</span>
                                 <img src="{{url('storage/'.$EditBanner->banner)}}" height="100" width="900">
                                 {{-- <input type="file" name="img" value="">
                                 <textarea class="text-area" name="blog_main"></textarea> --}}

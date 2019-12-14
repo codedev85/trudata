@@ -33,7 +33,7 @@ class NewMailController extends Controller
              //dd($this->email);
             // dd($this->subject);
          
-              $message->to('zaccheausolawuyi@gmail.com','Trudata')->subject($this->subject) ->setBody($this->data['body']);
+              $message->to('trudataservices@gmail.com','Trudata')->subject($this->subject) ->setBody($this->data['body']);
               $message->from($this->email,$this->email);
     //   dd($message);
             });
@@ -54,7 +54,7 @@ class NewMailController extends Controller
           // dd($this->subject);
         
             $message->to($this->email,'to ola')->subject($this->subject);
-            $message->from('zaccheausolawuyi@gmail.com','Tworeport');
+            $message->from('jumoke@kjk.com.ng','Tworeport');
     //   dd($message);
           });
        

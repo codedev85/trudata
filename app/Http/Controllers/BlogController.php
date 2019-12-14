@@ -14,6 +14,7 @@ Use App\BlogBanner;
 use Carbon\Carbon;
 use App\Social;
 use App\Menu;
+use App\Contact;
 
 class BlogController extends Controller
 {
@@ -23,16 +24,20 @@ class BlogController extends Controller
 
         $blogbanner = BlogBanner::orderBy('created_at','DESC')->first();
         $footer = Footer::all();
+        $contact =Contact::orderBy('created_at','DESC')->first();
+        
 
         $featuredBlog = Blog::where('featured_article',1)->where('publish',1)->orderBy('created_at','DESC')->limit(3)->get();
       
         $allBlog      = Blog::where('publish',1)->orderBy('created_at','DESC')->paginate(12);
         $socials = Social::all();
         $menu = Menu::orderBy('created_at','DESC')->first();
-
+    //    $max_query = Blog::orderBy('created_at','DESC')->pluck('clicks');
+    //    dd($max_query);
            //to check for a week
        $blogPostForAWeek = Blog::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->limit(7)->orderBy('created_at','DESC')->get();
-    // dd($blogPostForAWeek);
+
+    //   dd($blogPostForAWeek);
        
        //to check for one month
        $blogPostForAMonth = Blog::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->limit(7)->orderBy('created_at','DESC')->get();
@@ -43,6 +48,7 @@ class BlogController extends Controller
         return view('blog.blog')->with('footer',$footer)->with('allBlog',$allBlog)->with('featuredBlog', $featuredBlog)
                                 ->with('blogbanner',$blogbanner)->with('menu',$menu)->with('socials',$socials)
                                 ->with('blogPostForAWeek' , $blogPostForAWeek)
+                                ->with('contact',$contact)
                                 ->with('blogPostForAMonth', $blogPostForAMonth);
     }
     //get all blogs 
@@ -204,7 +210,7 @@ class BlogController extends Controller
         if($request->hasFile('img')){
 
             $this->validate($request, [
-                //   'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
+                  'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=380,min_height=268',
                ]);
             
    
@@ -319,7 +325,7 @@ class BlogController extends Controller
         if($request->hasFile('banner')){
 
             $this->validate($request, [
-              'banner' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1916,min-height=467',
+              'banner' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=1916,min_height=467',
                ]);
             
    
@@ -373,7 +379,7 @@ class BlogController extends Controller
             if($request->hasFile('banner')){
 
                 $this->validate($request, [
-                  'banner' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1920,height=535',
+                  'banner' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=1920,min_height=535',
                    ]);
                 
        

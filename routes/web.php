@@ -33,13 +33,15 @@ Route::get('/terms','TermController@getTerms');
 //show blog
 Route::get('/blog/{id}','BlogController@showBlog');
 Route::any('/search','FaqController@search');
-
+Route::get('/news-letter/','TruDataController@subscribe');
 // Route::get('/twitter', function()
 // {
 // 	return Share::load('http://www.twitter.com', 'twitter')->twitter();
 // });
 
 
+//contact us 
+Route::post('/send','NewMailController@send');
 
 
 Route::middleware(['auth','admin'])->group(function () {
@@ -101,6 +103,8 @@ Route::get('/teams/','AboutController@teamIndex');
 Route::get('/teams-create/','AboutController@createTeam');
 
 Route::post('/post-team/','AboutController@postTeam');
+Route::get('/team-edit/{id}','AboutController@editTeam');
+Route::post('/update-team/{id}','AboutController@updateTeam');
 
 Route::get('/remove/team/{id}','AboutController@removeTeam');
 Route::get('/approve/team/{id}','AboutController@approveTeam');
@@ -144,7 +148,7 @@ Route::get('/blog-edit/{id}', 'BlogController@editBlog');
 Route::post('/update-blog-post/{id}','BlogController@updateBlog');
 
 //to publish the blog and unpublish
-Route::get('/publish/{id}','BlogController@publish');
+Route::get('/publish-article/{id}','BlogController@publish');
 
 Route::get('/unpublish-article/{id}','BlogController@unpublish');
 
@@ -240,8 +244,6 @@ Route::post('/menu-post/','MenuController@postMenu');
 Route::post('/menu-update/{id}','MenuController@updateMenu');
 
 
-//contact us 
-Route::post('/send','NewMailController@send');
 
 });
 

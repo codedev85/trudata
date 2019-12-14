@@ -15,8 +15,9 @@ class TermController extends Controller
     public function getTerms(){
         
         $term = Term::all();
-
-        return view('terms.term')->with('term',$term);
+       $termBg =  TermBanner::orderBy('created_at','DESC')->first();
+    
+        return view('terms.term')->with('term',$term)->with('termBg',$termBg);
 
     }
 
@@ -148,12 +149,14 @@ class TermController extends Controller
  
      public function updateTermBanner(Request $request , $id){
         if($request->hasFile('term_banner')){
-
+              $this->validate($request, [
+                    'term_banner' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=1920,min_height=466',
+                   ]);
             $hero_image =  $request->file('term_banner');
      
              $ext = $hero_image->getClientOriginalExtension();
              $image_resize = Image::make($hero_image->getRealPath());
-             $resize = Image::make($image_resize)->fit(1272, 375)->encode($ext);
+             $resize = Image::make($image_resize)->fit(1920, 466)->encode($ext);
              $hash = md5($resize->__toString());
              $path = "{$hash}.$ext";
              $url = 'Faq/'.$path;

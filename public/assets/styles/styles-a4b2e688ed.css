@@ -526,7 +526,8 @@ input:focus {
 .main-content__card_container {
     margin-bottom: 22px;
     display: -ms-flexbox;
-    display: flex
+    display: flex;
+    justify-content: space-around;
 }
 
 .main-content__icon-container {
@@ -557,12 +558,16 @@ input:focus {
 
 .main-content__card {
     background: #fff;
-    height: 179px;
-    width: 25%;
-    display: inline-block;
+    padding: 17px;
+    height: 200px;
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
     border-radius: 4px;
-    border-left: 4px solid #ff8b02
+    border-left: 4px solid #ff8b02;
 }
 
 .main-content__card--right-space {
@@ -2505,4 +2510,13 @@ a.btn--no-bg:visited {
 
 .tru-main__copy-container {
     padding-top: 120px
+}
+
+img.homepage__img {
+    margin: 16px;
+}
+
+.admin-mail-btn {
+    display: flex;
+    margin-top: 15px;
 }

@@ -56,6 +56,12 @@
         .why_us_img{
             width:20%;
         }
+        .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 

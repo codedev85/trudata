@@ -37,8 +37,11 @@
     border-radius:30%;
      }
      .dropdown-item{
-        color: #ff8b02;
-     }
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 
@@ -168,7 +171,12 @@
                 
 
                     <div class="manage-account__tool-bar">
-                   
+                        <div class="form__header--list1">
+                            <p class="">
+                                <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/admin') }}">Back</a></span>
+                            </p>
+                         
+                        </div>
                         {{-- <a href="{{url('/add-new-role/')}}" class="btn manage-account__btn btn--create btn--medium">
                             <img src="../assets/images/plus_.svg" alt="">
                             &nbsp;&nbsp;Create New Roles
@@ -203,25 +211,48 @@
                                     </h3>
 
                                 </div>
-           @foreach($roles as $role)
+           {{-- @foreach($roles as $role) --}}
                                <div class="manage-account_user-list-item">
 
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
                                         <span class="manage-account_status-on"></span>
                                     </p>
                                     <p class="manage-account_user-list main-content__text main-content__text--small">
-                                       {{$role->name}} 
+                                       {{$roles[1]->name}} 
                                     </p>
                                 
                                     <p class="manage-account_user-list main-content__text main-content__text--small edit-action-button">
                                      
-                                    &nbsp;&nbsp;&nbsp; <a href="{{url('/edit-role/'.$role->id)}}" class="btn btn--danger">
+                                    &nbsp;&nbsp;&nbsp; <a href="{{url('/edit-role/'.$roles[1]->id)}}" class="btn btn--danger">
                                             EDIT
                                         </a>
                                     </p>
 
+                               
+
                                 </div>
-                @endforeach
+
+                                <div class="manage-account_user-list-item">
+
+                                    <p class="manage-account_user-list main-content__text main-content__text--small">
+                                        <span class="manage-account_status-on"></span>
+                                    </p>
+                                    <p class="manage-account_user-list main-content__text main-content__text--small">
+                                       {{$roles[2]->name}} 
+                                    </p>
+                                
+                                    <p class="manage-account_user-list main-content__text main-content__text--small edit-action-button">
+                                     
+                                    &nbsp;&nbsp;&nbsp; <a href="{{url('/edit-role/'.$roles[2]->id)}}" class="btn btn--danger">
+                                            EDIT
+                                        </a>
+                                    </p>
+
+                               
+
+                                </div>
+                 
+                {{-- @endforeach --}}
 
                          
 

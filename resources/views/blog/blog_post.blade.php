@@ -32,6 +32,13 @@
     height: 40vh;
     background-repeat: no-repeat;
 }
+
+.dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
    </style>
 </head>
 
@@ -80,7 +87,7 @@
 
             <div class="blog__content_container_img">
 
-                <img src="{{url('storage/'.$blogPost->thumbnail)}}" alt="">
+                <img src="{{url('storage/'.$blogPost->thumbnail)}}" height="200px" alt="">
 
             </div>
 

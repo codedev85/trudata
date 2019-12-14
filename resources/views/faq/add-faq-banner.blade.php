@@ -39,6 +39,12 @@
         .dimension{
             color:red;
         }
+        .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 
@@ -175,7 +181,7 @@
                                 {{ __('Logout') }}
                                   </a>
                                   <span class="icon icon--logout">
-                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                       &nbsp; <img src="../assets/images/log_out.svg" height="20" alt="">
                                     </span>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -201,7 +207,7 @@
                     
                         <div class="form__header--list1">
                                 <p class="">
-                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/all-faqs') }}">Back</a></span>
                                 </p>
                              
                             </div>
@@ -210,7 +216,7 @@
                     <div class="main__container">
                         <div class="center__container">
                         <div class="center__container--wrapper center__container--third-wrapper faq-wrapper" style="display:flex; align-items:center;justify-content:center;">
-                            <h3>Add Faq Banner</h3>
+                            <h3>Edit Faq Banner</h3>
                             <br>
                             <input type="text" name="header_one" value="{{$faqbanner->header_one}}" />
                             <input type="text" name="header_two" value="{{$faqbanner->header_two}}"/>

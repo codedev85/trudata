@@ -47,7 +47,7 @@ class ContactController extends Controller
           if($request->hasFile('hero_bg')){
               
               $this->validate($request, [
-                  'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1918,min-height=490',
+                  'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=1918,min_height=490',
               ]);
   
               $hero_image = $request->file('hero_bg');
@@ -106,7 +106,7 @@ class ContactController extends Controller
           if($request->hasFile('hero_bg')){
               
               $this->validate($request, [
-                  'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
+                  'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=1272,min_height=375',
               ]);
   
               $hero_image = $request->file('hero_bg');
@@ -156,7 +156,9 @@ class ContactController extends Controller
     public function sendMailToKJK(Request $request){
 
         //dd($request);
-
+//mailchimp account information 
+//Trudata 
+//Trud@t@123
   
             //gmail credentials
             //trudataservices@gmail.com
@@ -166,7 +168,7 @@ class ContactController extends Controller
                 $this->subject = $request->input('subject');
                 $this->data = array('name'=>"Ogbonna Vitalis(sender_name)", "f_name" => Auth::user()->name , "body" => $this->message);
                 Mail::send(['text/html'=>'mails.mail'],['name'=>'$artsttsts'], function($message){
-                $message->to('acebiz1985@gmail.com','KJK COMMUNIVATIONS')->subject($this->subject) ->setBody($this->data['body']);
+                $message->to('jumoke@kjk.com.ng','KJK COMMUNIVATIONS')->subject($this->subject) ->setBody($this->data['body']);
                 $message->from(Auth::user()->email, Auth::user()->email);
       
               });

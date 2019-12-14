@@ -43,6 +43,12 @@
      .dimension{
          color:red;
      }
+     .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 
@@ -303,7 +309,7 @@
                                 {{ __('Logout') }}
                                   </a>
                                   <span class="icon icon--logout">
-                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                      &nbsp;  <img src="../assets/images/log_out.svg" height="20" alt="">
                                     </span>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -330,7 +336,7 @@
                         {{-- admin-homepage-update/{id} --}}
                         <div class="form__header--list1">
                                 <p class="">
-                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/pages')}}">Back</a></span>
                                 </p>
                              
                             </div>
@@ -455,6 +461,7 @@
                                     <input type="file" name="service_img"/>
                                     <input type="hidden" name="trudata_services_db" value="{{$homepage[0]->trudata_services_img}}"/>
                                     <textarea placeholder="text" name="service[]">{{$service[0]}}</textarea>
+                     
                         </div>
                         <div class="values--switchable--container ">
                                   <textarea placeholder="text" name="service[]">{{$service[0]}}</textarea>

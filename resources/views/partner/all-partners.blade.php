@@ -30,7 +30,12 @@
       background-color: transparent;
       border-color: grey;
   }
-  
+  .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
   
       </style>
 </head>
@@ -180,7 +185,7 @@
                             <div class="manage-account_user-list-container">
                                     <div class="form__header--list1">
                                             <p class="">
-                                                <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                                <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/pages') }}">Back</a></span>
                                             </p>
                                          
                                         </div>

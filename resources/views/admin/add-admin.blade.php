@@ -49,6 +49,12 @@
             text-align: justify;
             text-transform: lowercase;
         }
+        .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 
@@ -185,7 +191,7 @@
                                 {{ __('Logout') }}
                                   </a>
                                   <span class="icon icon--logout">
-                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                      &nbsp;  <img src="../assets/images/log_out.svg" height="20" alt="">
                                     </span>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -212,7 +218,7 @@
                     
                         <div class="form__header--list1">
                                 <p class="">
-                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/all-admin') }}">Back</a></span>
                                 </p>
                              
                             </div>
@@ -231,12 +237,13 @@
                             <br>
                                 <input  class="input" placeholder="fullname" name="name" value="">
                                 <input  class="input" placeholder="email" name="email" value="">
-                                <input   type="password" class="input" placeholder="password" name="password" value="">
-                                <input   type="password" class="input" placeholder="confirm password" name="confirm_password" value="">
+                                {{-- <input   type="password" class="input" placeholder="password" name="password" value="">
+                                <input   type="password" class="input" placeholder="confirm password" name="confirm_password" value=""> --}}
                                 <select name="role">
-                                    @foreach($roles as $role)
-                                  <option value="{{$role->id}}">{{$role->name}}</option>
-                                  @endforeach
+                            
+                                  <option value="{{$roles[1]->id}}">{{$roles[1]->name}}</option>
+                                  <option value="{{$roles[2]->id}}">{{$roles[2]->name}}</option>
+              
                                 </select>
                                 {{-- <div class="container custom__edit--img-inner"><span class="span__text--container">Width - 1840px Height - 1236px</span> <img src="../resource/images/featuredimg__tworeport.jpg"></div> --}}
                         </div>

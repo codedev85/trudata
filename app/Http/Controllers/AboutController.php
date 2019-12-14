@@ -20,12 +20,12 @@ class AboutController extends Controller
 
         $about = About::orderBy('created_at','DESC')->first();
         $leaders = Leadership::where('status',1)->get();
-        $teams  = Team::all();
+        $teams  = Team::orderBy('created_at','DESC')->where('status',1)->limit(10)->get();
         $contact = Contact::orderby('created_at','DESC')->first();
         $footer = Footer::all();
         $socials = Social::all();
         $menu = Menu::orderBy('created_at','DESC')->first();
-   
+
         return view('about.about-us')
                                 ->with('about',$about)
                                 ->with('leaders',$leaders)
@@ -56,7 +56,7 @@ class AboutController extends Controller
         if($request->hasFile('hero_bg')){
             
             $this->validate($request, [
-                'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1918,min-height=490',
+                'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=1918,min_height=490',
             ]);
 
            
@@ -101,7 +101,7 @@ class AboutController extends Controller
             //|| $request->hasFile('verify_hero_bg') || $request->hasFile('why_tru_data_hero_bg') || $request->hasFile('contact_hero_bg')
             
             $this->validate($request, [
-                'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1918,min-height=490',
+                'hero_bg' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=1918,min_height=490',
             ]);
 
            
@@ -151,9 +151,12 @@ class AboutController extends Controller
         return view('leadership.admin-leadership-index')->with('leaders',$leaders);
     }
 
+
     public function createLeaderShip(){
         return view('leadership.leadership-create');
     }
+
+
 
    public function postLeadership(Request $request){
        $name   = $request->input('fullname');
@@ -165,14 +168,14 @@ class AboutController extends Controller
 
 
             $this->validate($request, [
-             //   'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
+             'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=640,min_height=640',
             ]);
          
 
             $hero_image = $request->file('img');
             $ext = $hero_image->getClientOriginalExtension();
             $image_resize = Image::make($hero_image->getRealPath());
-            $resize = Image::make($image_resize)->fit(1272, 375)->encode($ext);
+            $resize = Image::make($image_resize)->fit(640, 640)->encode($ext);
             $hash = md5($resize->__toString());
             $path = "{$hash}.$ext";
             $url = 'leadership/'.$path;
@@ -194,6 +197,7 @@ class AboutController extends Controller
    }
 
 
+
    public function editLeadership($id){
 
     $findLeader = Leadership::where('id',$id)->first();
@@ -201,6 +205,7 @@ class AboutController extends Controller
     return view('leadership.leadership-edit')->with('findLeader',$findLeader);
 
    }
+
 
 
 
@@ -216,14 +221,14 @@ class AboutController extends Controller
         
         
                     $this->validate($request, [
-                     //   'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
+                         'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=640,min_height=640',
                     ]);
                  
         
                     $hero_image = $request->file('img');
                     $ext = $hero_image->getClientOriginalExtension();
                     $image_resize = Image::make($hero_image->getRealPath());
-                    $resize = Image::make($image_resize)->fit(429, 418)->encode($ext);
+                    $resize = Image::make($image_resize)->fit(640, 640)->encode($ext);
                     $hash = md5($resize->__toString());
                     $path = "{$hash}.$ext";
                     $url = 'leadership/'.$path;
@@ -296,7 +301,56 @@ class AboutController extends Controller
 
             return view('team.team-create');
 
+        }  
+
+        public function editTeam($id){
+            
+            $team =   Team::where('id',$id)->firstorfail();
+
+            return view('team.team-edit')->with('team',$team);
+
+
         }
+
+
+        public function updateTeam(Request $request ,$id){
+
+            $name = $request->input('fullname');
+          
+            $title = $request->input('title');
+
+            if($request->hasfile('img')){
+              
+                $this->validate($request, [
+                  'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=400,min_height=400',
+                ]);
+
+                $hero_image = $request->file('img');
+                $ext = $hero_image->getClientOriginalExtension();
+                $image_resize = Image::make($hero_image->getRealPath());
+                $resize = Image::make($image_resize)->fit(424, 425)->encode($ext);
+                $hash = md5($resize->__toString());
+                $path = "{$hash}.$ext";
+                $url = 'team/'.$path;
+                Storage::put($url, $resize->__toString());
+
+                Team::where('id',$id)->update([
+                    'name'   => $name,
+                    'title'  => $title,
+                    'img'    => $url,
+                ]);
+            }else{
+
+                Team::where('id',$id)->update([
+                    'name'   => $name,
+                    'title'  => $title,
+                ]);
+
+            }
+            
+            return back();
+        }
+
 
         public function postTeam(Request $request){
             
@@ -307,15 +361,15 @@ class AboutController extends Controller
             if($request->hasfile('img')){
                 
              
-                            $this->validate($request, [
-                             //   'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
-                            ]);
+                            // $this->validate($request, [
+                            //   'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=400,min_height=400',
+                            // ]);
                          
                 
                             $hero_image = $request->file('img');
                             $ext = $hero_image->getClientOriginalExtension();
                             $image_resize = Image::make($hero_image->getRealPath());
-                            $resize = Image::make($image_resize)->fit(1272, 375)->encode($ext);
+                            $resize = Image::make($image_resize)->fit(424, 425)->encode($ext);
                             $hash = md5($resize->__toString());
                             $path = "{$hash}.$ext";
                             $url = 'team/'.$path;
@@ -327,8 +381,14 @@ class AboutController extends Controller
                             $new_leader->save();
                             flash('Created Successfully')->success();
                             return back();
+            }else{
+                flash('Upload unsuccessfully')->success();
+                return back();
             }
+
+      
         }
+
 
 
         public function adminPostHomepageData(Request $request){
@@ -350,7 +410,7 @@ class AboutController extends Controller
     
                
                   $this->validate($request, [
-                    //   'img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=1272,min-height=375',
+                   // 'benefit_image' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=1272,min_height=375',
                    ]);
                 
        
@@ -363,7 +423,10 @@ class AboutController extends Controller
                    $url = 'benefit/'.$path;
                    Storage::put($url, $resize->__toString());
     
-    
+
+                //    $this->validate($request, [
+                //     'service_img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=1272,min_height=375',
+                //    ]);
     
                    $service_image = $request->file('service_img');
                    $ext2 = $service_image->getClientOriginalExtension();

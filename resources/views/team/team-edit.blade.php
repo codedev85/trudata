@@ -33,14 +33,13 @@
         .why_us_img{
             width:20%;
         }
-        .faq-wrapper{
-            height: 338px;
+        .img_rad{
+            border-radius:50%;
+            width:200px;
+            height:200px;
         }
-        .dropdown-item{
-            color: #ff8b02;
-        }
-        .dropdown-item:hover{
-            color: #ff8b02;
+        .dimension{
+            color:red;
         }
     </style>
 </head>
@@ -178,7 +177,7 @@
                                 {{ __('Logout') }}
                                   </a>
                                   <span class="icon icon--logout">
-                                       &nbsp; <img src="../assets/images/log_out.svg" height="20" alt="">
+                                        <img src="../assets/images/log_out.svg" height="20" alt="">
                                     </span>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -204,21 +203,23 @@
                     
                         <div class="form__header--list1">
                                 <p class="">
-                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/all-faqs') }}">Back</a></span>
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/teams')}}">Back</a></span>
                                 </p>
                              
                             </div>
-                    <form id="form-submit" method="post" action="{{url('/post-faq/')}}" enctype="multipart/form-data">
+                    <form id="form-submit" method="post" action="{{url('/update-team/'.$team->id)}}" enctype="multipart/form-data">
                         @csrf
                     <div class="main__container">
                         <div class="center__container">
-                        <div class="center__container--wrapper center__container--third-wrapper faq-wrapper">
-                            <h3>Add New Faq</h3>
+                        <div class="center__container--wrapper center__container--third-wrapper">
+                            <h3>Update Team Member</h3>
+                            <img class="img_rad" src="{{url('storage/'.$team->img)}}"/>
                             <br>
-                                <input  class="input" placeholder="Faq Title" name="title" value="">
-                                <textarea name="faq_desc"></textarea>
-                                {{-- <input type="email" placeholder="title" name="title" value=""/>
-                                <input type="file" name="img" value=""> --}}
+                                <input  class="input" placeholder="fullname" name="fullname" value="{{$team->name}}">
+                                <input type="email" placeholder="title" name="title" value="{{$team->title}}"/>
+                               
+                                <input type="file" name="img" value="">
+                                <span class="dimension"> width = 424px - height = 425px</span>
                            </div>
                         </div>
                     </div>

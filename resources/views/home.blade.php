@@ -59,6 +59,12 @@
         a{
             text-decoration:none;
         }
+        .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 
@@ -378,7 +384,7 @@
                         <div class="main-content__card_container">
 
                             <a  href="{{url('/all-blogs/')}}" class="main-content__card main-content__card--right-space">
-                                <img src="resource/images/solutions__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <img src="resource/images/solutions__tworeport.svg" alt="" class="homepage__img">
                                 <h1 class="main-content__card-title main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
                                     Blog Management
@@ -390,7 +396,7 @@
                             </a>
 
                             <a href="{{url('/roles/')}}" class="main-content__card main-content__card--right-space">
-                                <img src="resource/images/menu__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <img src="resource/images/menu__tworeport.svg" alt="" class="homepage__img ">
                                 <h1 class="main-content__card-title main-content__card-title--danger font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
                                     Roles & Permissions
@@ -402,7 +408,7 @@
                             </a>
 
                             <a href="{{ url('/pages/') }}" class="main-content__card main-content__card--right-space">
-                                <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img ">
                                 <h1
                                     class="main-content__card-title main-content__colored-text main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/orange-naira.png" height="18px" class="orange-naira" alt=""> -->
@@ -426,7 +432,7 @@
                         <div class="main-content__card_container">
                           
                             <a href="{{url('/all-admin/')}}" class="main-content__card main-content__card--right-space">
-                                <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img ">
                                 <h1 class="main-content__card-title main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
                                     Admin Management
@@ -438,7 +444,7 @@
                             </a>
 
                             <a href="{{url('/update-user/'.Auth::user()->id)}}" class="main-content__card main-content__card--right-space">
-                                <img src="resource/images/advisory__tworeport.svg" alt="" class="homepage__img menu_img">
+                                <img src="resource/images/advisory__tworeport.svg" alt="" class="homepage__img ">
                                 <h1 class="main-content__card-title main-content__card-title--danger font_home">
                                     <!-- <img src="../assets/images/black-naira.png" height="16px" class="orange-naira" alt=""> -->
                                     Change Password
@@ -450,7 +456,7 @@
                             </a>
 
                             <a href="{{url('/contact-developer/')}}" class="main-content__card main-content__card--right-space">
-                                    <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img menu_img">
+                                    <img src="resource/images/talent__tworeport.svg" alt="" class="homepage__img ">
                                 <h1
                                     class="main-content__card-title main-content__colored-text main-content__card-title--success font_home">
                                     <!-- <img src="../assets/images/orange-naira.png" height="18px" class="orange-naira" alt=""> -->

@@ -217,10 +217,10 @@
                         STAY UPDATED WITH US
                     </h2>
     
-                    <div class="info__input_container">
-                        <input type="" class="info__email_input">
+                    <form action="{{url('/news-letter/')}}" class="info__input_container">
+                        <input type="" name="email" class="info__email_input">
                         <input type="submit" value="SUSCRIBE" class="info__submit">
-                    </div>
+                    </form>
     
                     <div class="info__main_content_container">
     
@@ -232,7 +232,7 @@
                             Our associates are on standby and looking forward to sharing more.
                         </p>
     
-                        <a href="contact.html" class="home__btn contact__btn">
+                        <a href="{{url('/contact-us')}}" class="home__btn contact__btn">
                             CONTACT US
                         </a>
     

@@ -97,6 +97,7 @@
                 <div class="main__blog_container">
 
 
+                  
 
                     <div class="blog__list_outer_container">
 
@@ -154,9 +155,11 @@
                                             </div>
 
                                             <div class="blog__card_social_icon">
-                                                {{-- <a href="{{url('/twitter')}}"> --}}
+                                                
+                                                {{-- <a href="http://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/blog/{{$blog->id}}"> --}}
                                                 <img src="resources/images/line-twitter.svg" alt="">
                                                 {{-- </a> --}}
+                                                
                                                 <img src="resources/images/line-facebook.svg" alt="">
                                             </div>
                                         </div>
@@ -165,104 +168,7 @@
 
                                 </a>
                             @endforeach
-{{-- 
-                                <a href="blog_post.html" class="blog__item_card">
 
-                                    <div class="blog__item_card_img_container">
-
-                                        <img src="resources/images/list__image.jpg" alt="" srcset="">
-
-                                    </div>
-
-                                    <div class="blog__item_card_details">
-
-                                        <h6 class="blog__item_card_title">
-                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
-                                        </h6>
-
-                                        <p class="blog__post_time__stamp">
-                                            September 16, 2016
-
-                                            <span class="blog__post_time__stamp--time_read">
-                                                3 min read
-                                            </span>
-                                        </p>
-
-                                        <p class="blog__post_card_main_read">
-                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
-                                            licensed
-                                            security printing firm, and a quoted company on the Nigerian Stock
-                                            Exchange,NSE,Chief
-                                            Gbade Giwa, in this interview...
-                                        </p>
-
-                                        <div class="blog__card_footer_container">
-                                            <div class="blog__read_more_container">
-                                                <span class="read__more_btn">
-                                                    Read More
-                                                </span>
-                                            </div>
-
-                                            <div class="blog__card_social_icon">
-                                                <img src="resources/images/line-twitter.svg" alt="">
-                                                <img src="resources/images/line-facebook.svg" alt="">
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-                                </a>
-
-                                <a href="blog_post.html" class="blog__item_card">
-
-                                    <div class="blog__item_card_img_container">
-
-                                        <img src="resources/images/list_img.jpg" alt="" srcset="">
-
-                                    </div>
-
-                                    <div class="blog__item_card_details">
-
-                                        <h6 class="blog__item_card_title">
-                                            How to curtail electronic fraud, identity theft &ndash; CEO, Tripple Gee
-                                        </h6>
-
-                                        <p class="blog__post_time__stamp">
-                                            September 16, 2016
-
-                                            <span class="blog__post_time__stamp--time_read">
-                                                3 min read
-                                            </span>
-                                        </p>
-
-                                        <p class="blog__post_card_main_read">
-                                            Chief Executive, Tripple Gee & Company Plc, a Central Bank of Nigeria, CBN
-                                            licensed
-                                            security printing firm, and a quoted company on the Nigerian Stock
-                                            Exchange,NSE,Chief
-                                            Gbade Giwa, in this interview...
-                                        </p>
-
-                                        <div class="blog__card_footer_container">
-                                            <div class="blog__read_more_container">
-                                                <span class="read__more_btn">
-                                                    Read More
-                                                </span>
-                                            </div>
-
-                                            <div class="blog__card_social_icon">
-                                                <img src="resources/images/line-twitter.svg" alt="">
-                                                <img src="resources/images/line-facebook.svg" alt="">
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-                                </a> --}}
 
 
                             </div>
@@ -281,14 +187,14 @@
                                 <div class="blog__sub_input_container">
 
                                     <h3 class="blog__sub_input_title">
-                                        Subscribe to our blog
+                                        {{-- Subscribe to our blog --}}
                                     </h3>
 
-                                    <div class="blog__sub_main_input_container">
-                                        <input type="text" name="" class="blog__sub_main_input"
+                                    <form action="{{url('/news-letter/')}}" class="blog__sub_main_input_container">
+                                        <input type="text" name="email" class="blog__sub_main_input"
                                             placeholder="Enter Email Address" id="">
                                         <input type="submit" class="blog__sub_main_submit" value="REGISTER">
-                                    </div>
+                                    </form>
 
                                 </div>
 
@@ -1283,10 +1189,10 @@
                         STAY UPDATED WITH US
                     </h2>
     
-                    <div class="info__input_container">
+                    <form action="{{url('/news-letter/')}}" class="info__input_container">
                         <input type="" class="info__email_input">
                         <input type="submit" value="SUSCRIBE" class="info__submit">
-                    </div>
+                    </form>
     
                     <div class="info__main_content_container">
     
@@ -1307,13 +1213,15 @@
                             <div class="info__inner_contact_container">
                                 <img src="resources/images/phone.svg" alt="" class="info_inner_icon">
                                 <span class="info_inner_text">
-                                    +234-8055190715
+                                    {{-- +234-8055190715 --}}
+                                    {{$contact->contact_number}}
                                 </span>
                             </div>
                             <div class="info__inner_contact_container">
                                 <img src="resources/images/mail.svg" alt="" class="info_inner_icon">
                                 <span class="info_inner_text">
-                                    hello@trudata.com.ng
+                                        {{$contact->contact_email}}
+                                    {{-- hello@trudata.com.ng --}}
                                 </span>
                             </div>
     

@@ -177,7 +177,7 @@ return [
         Unisharp\Ckeditor\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Snowfire\Beautymail\BeautymailServiceProvider::class,
-        Chencha\Share\ShareServiceProvider,
+        // Chencha\Share\ShareServiceProvider,
 
     ],
 
@@ -230,7 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-         'Share' => Chencha\Share\ShareFacade ,
+        //  'Share' => Chencha\Share\ShareFacade ,
 
     ],
 

@@ -10,6 +10,7 @@ use App\Partner;
 use App\Footer;
 use App\Menu;
 use App\Social;
+use App\Contact;
 
 class HomePageController extends Controller
 {
@@ -23,12 +24,14 @@ class HomePageController extends Controller
         // $menu = Menu::all();
         $menu = Menu::orderBy('created_at','DESC')->first();
         $socials = Social::all();
+        $contact = Contact::orderBy('created_at','DESC')->first();
+    //  dd($contact);
         // dd($socials);
        
           
 //  dd($footer);
 
-        return view('welcome')->with('homepage',$homepage)->with('partners',$partners)->with('footer',$footer)->with('menu',$menu)->with('socials',$socials);
+        return view('welcome')->with('homepage',$homepage)->with('partners',$partners)->with('footer',$footer)->with('menu',$menu)->with('socials',$socials)->with('contact',$contact);
     }
 
 
@@ -154,7 +157,7 @@ class HomePageController extends Controller
             if($request->file('benefit_image')!= NULL){
 
                 $this->validate($request, [
-                    'benefit_image' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=587,min-height=1023',
+                    'benefit_image' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=587,min_height=1023',
                   ]);
 
 
@@ -196,7 +199,7 @@ class HomePageController extends Controller
             if($request->file('hero_bg_img') != NULL){
 
                 $this->validate($request, [
-                    'hero_bg_img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min-width=587,min-height=658',
+                    'hero_bg_img' => 'required|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=587,min_height=658',
                    ]);
     
 
@@ -239,7 +242,7 @@ class HomePageController extends Controller
                 $uploadVideo = $request->file('video_upload');
                 $videoExt = $uploadVideo->getClientOriginalExtension();
                 $url_video = Storage::putFile('video', $request->file('video_upload'));
-                dd($url_video);
+              //  dd($url_video);
 
             }else{
 
@@ -291,6 +294,7 @@ class HomePageController extends Controller
       
 
       public function allpartners(){
+          
           $partners = Partner::paginate(5);
         
           return view('partner.all-partners')->with('partners',$partners);

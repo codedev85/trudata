@@ -39,6 +39,18 @@
         .dimension{
             color:red;
         }
+        .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
+        .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
     </style>
 </head>
 
@@ -175,7 +187,7 @@
                                 {{ __('Logout') }}
                                   </a>
                                   <span class="icon icon--logout">
-                                        <img src="../assets/images/log_out.svg" height="20" alt="">
+                                       &nbsp; <img src="../assets/images/log_out.svg" height="20" alt="">
                                     </span>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -201,7 +213,7 @@
                     
                         <div class="form__header--list1">
                                 <p class="">
-                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                    <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/update-term/1') }}">Back</a></span>
                                 </p>
                              
                             </div>
@@ -213,7 +225,7 @@
                             <h3>Add Term Of Use Banner</h3>
                             <br>
                                 <input  type="file" class="input"  name="term_banner" value="">
-                                <span class="dimension">Width= 1277px height=375px</span>
+                                <span class="dimension">Width= 1920px height=466px</span>
                                <img src="{{url('storage/'.$termbanner->hero_bg)}}" width="500px" height="150px" />
                                 {{-- <input type="email" placeholder="title" name="title" value=""/>
                                 <input type="file" name="img" value=""> --}}

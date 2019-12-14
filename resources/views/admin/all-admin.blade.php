@@ -51,6 +51,12 @@
             background-color: transparent;
             border-color: grey;
         }
+        .dropdown-item{
+            color: #ff8b02;
+        }
+        .dropdown-item:hover{
+            color: #ff8b02;
+        }
 
     </style>
     <!-- endbuild -->
@@ -204,7 +210,7 @@
                                 
                                     <div class="form__header--list1">
                                             <p class="">
-                                                <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url()->previous() }}">Back</a></span>
+                                                <img src="../resource/images/left-arrow.svg" alt="" class="back__arrow"><span class=""><a href="{{ url('/admin') }}">Back</a></span>
                                             </p>
                                         
                                         </div>
@@ -246,7 +252,7 @@
                                         class="manage-account_user-list-title main-content__text main-content__text--small">
                                        {{$leader->role['name']}}
                                     </p> --}}
-                                    <p class="manage-account_user-list main-content__text main-content__text--small reset-password">
+                                    <div class="manage-account_user-list main-content__text main-content__text--small admin-mail-btn reset-password">
                                     @if(Auth::user()->role_id < 3) 
                                         <a href="{{url('/edit-admin/'.$admin->id)}}" class="btn btn--danger reset-password">
                                                 Reset Password
@@ -268,7 +274,7 @@
                                         <a href="{{url('/send-mail-to-admin/'.$admin->id)}}" class="btn btn--danger reset-password">
                                            Send Mail
                                          </a>
-                                    </p>
+                                        </div>
 
                                 </div>
                 @endforeach

@@ -61,6 +61,7 @@ class FaqController extends Controller
       $findFaq = Faq::where('id',$id)->first();
 
       return view('faq.edit-faq')->with('findFaq',$findFaq);
+      
 
     }
 

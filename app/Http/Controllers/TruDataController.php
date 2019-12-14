@@ -9,6 +9,7 @@ use App\Trudata;
 use App\Footer;
 use App\Social;
 use App\Menu;
+use Newsletter;
 
 class TruDataController extends Controller
 {
@@ -20,7 +21,10 @@ class TruDataController extends Controller
        $menu = Menu::orderBy('created_at','DESC')->first();
       
       
-        return view('tru-data.trudata')->with('trudata',$trudata)->with('footer',$footer)->with('socials',$socials)->with('menu',$menu);
+        return view('tru-data.trudata')->with('trudata',$trudata)
+                                       ->with('footer',$footer)
+                                       ->with('socials',$socials)
+                                       ->with('menu',$menu);
     }
 
     public function updateWhyUsPage($id){
@@ -238,7 +242,19 @@ class TruDataController extends Controller
 
 
 
+public function subscribe(Request $request){
 
+    // dd($request->email);
+     if(!Newsletter::getMember($request->email)){
+
+     $new = Newsletter::subscribe($request->email);
+
+      return redirect('/')->with('success','You have suscribed successfully check your mail');
+     }
+       $new = Newsletter::subscribe($request->email);
+     return redirect('/')->with('success','You have suscribed successfully check your mail');
+
+  }
 
 
 
