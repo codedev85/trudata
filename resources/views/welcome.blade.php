@@ -353,7 +353,7 @@
                             and delivers result instantly. Fake document can also be reported --}}
                         </p>
 
-                        <a href="about.html" class="home__btn home__btn--colored">
+                        <a href="{{url('/about-us')}}" class="home__btn home__btn--colored">
                             LEARN MORE
                         </a>
 
@@ -375,7 +375,7 @@
                             codes can also be printed on as many documents as possible to further fortify verification. --}}
                         </p>
 
-                        <a href="about.html" class="home__btn home__btn--colored">
+                        <a href="{{url('/about-us')}}" class="home__btn home__btn--colored">
                             LEARN MORE
                         </a>
 
